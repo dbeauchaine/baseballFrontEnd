@@ -22,7 +22,7 @@ describe('PlayerDetailComponent', () => {
                     useValue: {
                         snapshot:
                         {
-                            paramMap: new Map([['id', fakePlayer.id]])
+                            paramMap: new Map([['id', fakePlayer.playerId]])
 
                         }
                     }
@@ -52,7 +52,7 @@ describe('PlayerDetailComponent', () => {
 
     it('should display player name', () => {
         spyOn(mockPlayerService, 'getPlayer').and.callFake(idUsedToGetPlayer => {
-            expect(idUsedToGetPlayer).toEqual(fakePlayer.id);
+            expect(idUsedToGetPlayer).toEqual(fakePlayer.playerId);
             return of(fakePlayer);
         });
 
@@ -60,13 +60,13 @@ describe('PlayerDetailComponent', () => {
 
         const compiled = fixture.debugElement.nativeElement;
 
-        expect(compiled.textContent).toContain(`Player name: ${fakePlayer.name}`);
+        expect(compiled.textContent).toContain(`Player name: ${fakePlayer.nameFirst}`);
     });
 
     function createFakePlayer(): Player {
         let fakePlayer = new Player();
-        fakePlayer.id = 'expectedPlayerId';
-        fakePlayer.name = 'expected name';
+        fakePlayer.playerId = 'expectedPlayerId';
+        fakePlayer.nameFirst = 'expected name';
 
         return fakePlayer;
     }

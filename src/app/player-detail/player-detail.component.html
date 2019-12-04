@@ -1,3 +1,21 @@
-<div *ngIf="player">
-  <p>Player name: {{player.nameFirst}}</p>
-</div>
+<mat-card class="player-detail-card" *ngIf="player">
+  <mat-card-title>{{player.nameFirst}} {{player.nameLast}}</mat-card-title>
+  <mat-card-subtitle>
+
+    <app-label-value label="Throws/Bats" value="{{player.throws}}/{{player.bats}}">
+    </app-label-value>
+    <app-label-value label="Born" value="{{player.birthMonth}}/{{player.birthDay}}/{{player.birthYear}}">
+    </app-label-value>
+    <span *ngIf="player.birthCity">in {{player.birthCity}} </span>
+    <span *ngIf="player.birthState">{{player.birthState}}, </span>
+    <span *ngIf="player.birthCountry">{{player.birthCountry}}</span>
+    <app-label-value label="Died"
+                     value="{{player.deathMonth}}/{{player.deathDay}}/{{player.deathYear}}"
+                     *ngIf="player.deathYear">
+
+    </app-label-value>
+
+  </mat-card-subtitle>
+
+
+</mat-card>

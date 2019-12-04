@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { of } from 'rxjs';
 import { Player } from '../player';
+import { MatCardModule } from '@angular/material/card';
+import { LabelValueComponent } from '../label-value/label-value.component';
+import { By } from '@angular/platform-browser';
 
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
@@ -15,7 +18,8 @@ describe('PlayerDetailComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [PlayerDetailComponent],
+            imports: [MatCardModule],
+            declarations: [PlayerDetailComponent, LabelValueComponent],
             providers: [
                 {
                     provide: ActivatedRoute,
@@ -58,15 +62,16 @@ describe('PlayerDetailComponent', () => {
 
         fixture.detectChanges();
 
-        const compiled = fixture.debugElement.nativeElement;
+        const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
 
-        expect(compiled.textContent).toContain(`Player name: ${fakePlayer.nameFirst}`);
+        expect(titleElement.nativeElement.textContent).toEqual(`${fakePlayer.nameFirst} ${fakePlayer.nameLast}`);
     });
 
     function createFakePlayer(): Player {
         let fakePlayer = new Player();
         fakePlayer.playerId = 'expectedPlayerId';
-        fakePlayer.nameFirst = 'expected name';
+        fakePlayer.nameFirst = 'expectedFirstName';
+        fakePlayer.nameLast = 'expectedLastName';
 
         return fakePlayer;
     }

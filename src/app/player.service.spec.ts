@@ -26,7 +26,7 @@ describe('PlayerService', () => {
         expect(service).toBeTruthy();
     });
 
-    describe('#getPlayer()', () => {
+    describe('getting player information.', () => {
         it('returned object should match mock data',() => {
             const mockPlayer = {
                 nameFirst: 'firstName',

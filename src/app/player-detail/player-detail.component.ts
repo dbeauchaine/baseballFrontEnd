@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
+import { BattingService } from '../batting.service';
+import { Batting } from '../batting';
 
 @Component({
     selector: 'app-player-detail',
@@ -10,10 +12,12 @@ import { Player } from '../player';
 })
 export class PlayerDetailComponent implements OnInit {
     player: Player;
+    batting: Batting[];
 
     constructor(
         private route: ActivatedRoute,
-        private playerService:PlayerService
+        private playerService: PlayerService,
+        private battingService: BattingService
     ) { }
 
     ngOnInit() {
@@ -24,6 +28,12 @@ export class PlayerDetailComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('id');
         this.playerService.getPlayer(id)
             .subscribe( player => this.player = player);
+    }
+
+    getBatting(): void {
+        const id = this.route.snapshot.paramMap.get('id');
+        this.battingService.getBattingStats(id)
+            .subscribe(batting => this.batting = batting);
     }
 
 }

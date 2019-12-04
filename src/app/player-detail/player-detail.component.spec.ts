@@ -7,14 +7,17 @@ import { Player } from '../player';
 import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from '../label-value/label-value.component';
 import { By } from '@angular/platform-browser';
+import { BattingService } from '../batting.service';
+import { Batting } from '../batting';
 
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
+    let mockBattingService: BattingService;
 
     let fakePlayer = createFakePlayer();
-
+    let fakeBatting = createFakeBatting();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -37,9 +40,17 @@ describe('PlayerDetailComponent', () => {
                     {
                         getPlayer:
                         {
-
                         }
-                    }
+                    },
+                },
+                {
+                    provide: BattingService,
+                    useValue:
+                    {
+                        getBattingStats:
+                        {
+                        }
+                    },
                 }
 
             ]
@@ -50,6 +61,7 @@ describe('PlayerDetailComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerDetailComponent);
         mockPlayerService = TestBed.get(PlayerService);
+        mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
 
     });
@@ -74,5 +86,15 @@ describe('PlayerDetailComponent', () => {
         fakePlayer.nameLast = 'expectedLastName';
 
         return fakePlayer;
+    }
+
+    function createFakeBatting(): Batting[] {
+        let fakeBatting = new Batting();
+        fakeBatting.playerId = 'id';
+        fakeBatting.ab = 99;
+        fakeBatting.hr = 20;
+        let fakeBattings: Array<Batting> = [fakeBatting];
+
+        return fakeBattings;
     }
 });

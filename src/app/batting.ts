@@ -1,0 +1,25 @@
+export class Batting {
+    playerId: string;
+    yearId: number;
+    sting: number;
+    teamId: string;
+    lgId: string;
+    g: number;
+    gBatting: number;
+    ab: number;
+    r: number;
+    h: number;
+    _2b: number;
+    _3b: number;
+    hr: number;
+    rbi: number;
+    sb: number;
+    cs: number;
+    bb: number;
+    so: number;
+    ibb: number;
+    hbp: number;
+    sh: number;
+    sf: number;
+    gidp: number
+}

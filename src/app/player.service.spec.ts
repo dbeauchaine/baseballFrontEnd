@@ -36,9 +36,9 @@ describe('PlayerService', () => {
 
             service.getPlayer(mockPlayer.playerId)
                 .subscribe(data => {
-                    expect(data.playerId).toEqual(mockPlayer.playerId);
-                    expect(data.nameFirst).toEqual(mockPlayer.nameFirst);
-                    expect(data.nameLast).toEqual(mockPlayer.nameLast);
+                    expect(data[0].playerId).toEqual(mockPlayer.playerId);
+                    expect(data[0].nameFirst).toEqual(mockPlayer.nameFirst);
+                    expect(data[0].nameLast).toEqual(mockPlayer.nameLast);
                 });
 
             const req = httpMock.expectOne(

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlayerService {
     private playerUrl ='https://localhost:5001/player'
+
     getPlayer(id: string): Observable<Player> {
         const url = `${this.playerUrl}/${id}`;
 

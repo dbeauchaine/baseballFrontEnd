@@ -9,8 +9,8 @@ export class Batting {
     ab: number;
     r: number;
     h: number;
-    _2b: number;
-    _3b: number;
+    x2b: number;
+    x3b: number;
     hr: number;
     rbi: number;
     sb: number;

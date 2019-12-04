@@ -21,17 +21,19 @@ export class PlayerDetailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.getBatting();
         this.getPlayer();
     }
 
     getPlayer(): void {
         const id = this.route.snapshot.paramMap.get('id');
         this.playerService.getPlayer(id)
-            .subscribe( player => this.player = player);
+            .subscribe(player => this.player = player);
     }
 
     getBatting(): void {
         const id = this.route.snapshot.paramMap.get('id');
+        console.log(id);
         this.battingService.getBattingStats(id)
             .subscribe(batting => this.batting = batting);
     }

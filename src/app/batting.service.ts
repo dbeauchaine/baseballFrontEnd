@@ -8,6 +8,7 @@ import { Batting } from './batting';
 })
 export class BattingService {
     private battingUrl = 'https://localhost:5001/batting'
+
     getBattingStats(id: string): Observable<Batting[]> {
         const url = `${this.battingUrl}/${id}`
 

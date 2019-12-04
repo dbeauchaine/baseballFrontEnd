@@ -72,6 +72,11 @@ describe('PlayerDetailComponent', () => {
             return of(fakePlayer);
         });
 
+        spyOn(mockBattingService, 'getBattingStats').and.callFake(idUsedToGetPlayer => {
+            expect(idUsedToGetPlayer).toEqual(fakeBatting[0].playerId);
+            return of(fakeBatting);
+        });
+
         fixture.detectChanges();
 
         const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
@@ -90,7 +95,7 @@ describe('PlayerDetailComponent', () => {
 
     function createFakeBatting(): Batting[] {
         let fakeBatting = new Batting();
-        fakeBatting.playerId = 'id';
+        fakeBatting.playerId = 'expectedPlayerId';
         fakeBatting.ab = 99;
         fakeBatting.hr = 20;
         let fakeBattings: Array<Batting> = [fakeBatting];

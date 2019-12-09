@@ -11,7 +11,8 @@ export class LabelValueComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
+
   }
 
 }

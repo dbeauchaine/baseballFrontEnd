@@ -9,6 +9,9 @@ import { LabelValueComponent } from '../label-value/label-value.component';
 import { By } from '@angular/platform-browser';
 import { BattingService } from '../batting.service';
 import { Batting } from '../batting';
+import { MatTableModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
@@ -21,7 +24,7 @@ describe('PlayerDetailComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [MatCardModule],
+            imports: [MatCardModule, MatTableModule, MatPaginatorModule],
             declarations: [PlayerDetailComponent, LabelValueComponent],
             providers: [
                 {

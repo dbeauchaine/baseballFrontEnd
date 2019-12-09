@@ -1,7 +1,7 @@
 export class Batting {
     playerId: string;
     yearId: number;
-    sting: number;
+    stint: number;
     teamId: string;
     lgId: string;
     g: number;

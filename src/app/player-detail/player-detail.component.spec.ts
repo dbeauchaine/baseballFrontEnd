@@ -4,18 +4,28 @@ import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { of } from 'rxjs';
 import { Player } from '../player';
+import { MatCardModule } from '@angular/material/card';
+import { LabelValueComponent } from '../label-value/label-value.component';
+import { By } from '@angular/platform-browser';
+import { BattingService } from '../batting.service';
+import { Batting } from '../batting';
+import { MatTableModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
+    let mockBattingService: BattingService;
 
     let fakePlayer = createFakePlayer();
-
+    let fakeBatting = createFakeBatting();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [PlayerDetailComponent],
+            imports: [MatCardModule, MatTableModule, MatPaginatorModule],
+            declarations: [PlayerDetailComponent, LabelValueComponent],
             providers: [
                 {
                     provide: ActivatedRoute,
@@ -33,9 +43,17 @@ describe('PlayerDetailComponent', () => {
                     {
                         getPlayer:
                         {
-
                         }
-                    }
+                    },
+                },
+                {
+                    provide: BattingService,
+                    useValue:
+                    {
+                        getBattingStats:
+                        {
+                        }
+                    },
                 }
 
             ]
@@ -46,6 +64,7 @@ describe('PlayerDetailComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerDetailComponent);
         mockPlayerService = TestBed.get(PlayerService);
+        mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
 
     });
@@ -56,18 +75,34 @@ describe('PlayerDetailComponent', () => {
             return of(fakePlayer);
         });
 
+        spyOn(mockBattingService, 'getBattingStats').and.callFake(idUsedToGetPlayer => {
+            expect(idUsedToGetPlayer).toEqual(fakeBatting[0].playerId);
+            return of(fakeBatting);
+        });
+
         fixture.detectChanges();
 
-        const compiled = fixture.debugElement.nativeElement;
+        const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
 
-        expect(compiled.textContent).toContain(`Player name: ${fakePlayer.nameFirst}`);
+        expect(titleElement.nativeElement.textContent).toEqual(`${fakePlayer.nameFirst} ${fakePlayer.nameLast}`);
     });
 
     function createFakePlayer(): Player {
         let fakePlayer = new Player();
         fakePlayer.playerId = 'expectedPlayerId';
-        fakePlayer.nameFirst = 'expected name';
+        fakePlayer.nameFirst = 'expectedFirstName';
+        fakePlayer.nameLast = 'expectedLastName';
 
         return fakePlayer;
+    }
+
+    function createFakeBatting(): Batting[] {
+        let fakeBatting = new Batting();
+        fakeBatting.playerId = 'expectedPlayerId';
+        fakeBatting.ab = 99;
+        fakeBatting.hr = 20;
+        let fakeBattings: Array<Batting> = [fakeBatting];
+
+        return fakeBattings;
     }
 });

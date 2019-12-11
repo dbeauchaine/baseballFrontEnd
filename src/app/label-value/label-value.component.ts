@@ -9,7 +9,7 @@ export class LabelValueComponent implements OnInit {
     @Input() label: string;
     @Input() value: string;
 
-  constructor() { }
+    constructor() {}
 
     ngOnInit() {
 

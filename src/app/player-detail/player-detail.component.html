@@ -1,42 +1,19 @@
+<app-top-menu></app-top-menu>
 <mat-card class="player-detail-card" >
-  <mat-card-title *ngIf="player">{{player.nameFirst}} {{player.nameLast}}</mat-card-title>
-  <mat-card-subtitle *ngIf="player">
-
-    <app-label-value label="Throws/Bats" value="{{player.throws}}/{{player.bats}}">
-    </app-label-value>
-    <app-label-value label="Born" value="{{player.birthMonth}}/{{player.birthDay}}/{{player.birthYear}}">
-    </app-label-value>
-    <span *ngIf="player.birthCity">in {{player.birthCity}} </span>
-    <span *ngIf="player.birthState">{{player.birthState}}, </span>
-    <span *ngIf="player.birthCountry">{{player.birthCountry}}</span>
-    <app-label-value label="Died"
-                     value="{{player.deathMonth}}/{{player.deathDay}}/{{player.deathYear}}"
-                     *ngIf="player.deathYear">
-    </app-label-value>
-
-  </mat-card-subtitle>
+  <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
 
   <mat-card-content>
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource" matSort>
+    <mat-tab-group color ="accent">
+      <mat-tab label="Batting">
+        <app-batting-table [id] ="id"></app-batting-table>
+      </mat-tab>
+      <mat-tab label="Fielding">
 
-        <ng-container *ngFor="let entry of propertyToLabelMap | keyvalue" matColumnDef="{{entry.key}}">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{entry.value}}</th>
-          <td mat-cell *matCellDef="let batting"> {{batting[entry.key]}}</td>
-        </ng-container>
+      </mat-tab>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      </table>
-
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-    </div>
-
+    </mat-tab-group>
+    
   </mat-card-content>
 
 </mat-card>

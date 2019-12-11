@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <button mat-button>Home</button>
+  <button mat-button [matMenuTriggerFor]="players">Players</button>
+  <mat-menu #players="matMenu">
+    <button mat-menu-item>Search</button>
+    <button mat-menu-item>Leaderboard</button>
+  </mat-menu>
+  <button mat-button>Teams</button>
+</mat-toolbar>

@@ -8,14 +8,22 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from './label-value/label-value.component';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-    MatSortModule, MatTableModule} from "@angular/material";
+import {
+    MatInputModule, MatPaginatorModule,
+    MatSortModule, MatTableModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatTabsModule
+} from "@angular/material";
+import { BioInfoComponent } from './bio-info/bio-info.component';
+import { BattingTableComponent } from './batting-table/batting-table.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         PlayerDetailComponent,
         LabelValueComponent,
+        BioInfoComponent,
+        BattingTableComponent,
+        TopMenuComponent,
     ],
     imports: [
         BrowserModule,
@@ -27,7 +35,10 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
-        MatProgressSpinnerModule
+        MatToolbarModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatTabsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

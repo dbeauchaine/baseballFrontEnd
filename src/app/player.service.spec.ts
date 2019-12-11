@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-
 import { PlayerService } from './player.service';
-
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Player } from './player';
 
 describe('PlayerService', () => {
     let httpMock: HttpTestingController;
@@ -27,7 +26,7 @@ describe('PlayerService', () => {
     });
 
     describe('getting player information.', () => {
-        it('returned object should match mock data',() => {
+        it('returned object should match mock data', () => {
             const mockPlayer = {
                 nameFirst: 'firstName',
                 nameLast: 'lastName',
@@ -35,10 +34,10 @@ describe('PlayerService', () => {
             }
 
             service.getPlayer(mockPlayer.playerId)
-                .subscribe(data => {
-                    expect(data[0].playerId).toEqual(mockPlayer.playerId);
-                    expect(data[0].nameFirst).toEqual(mockPlayer.nameFirst);
-                    expect(data[0].nameLast).toEqual(mockPlayer.nameLast);
+                .subscribe((data: Player) => {
+                    expect(data.playerId).toEqual(mockPlayer.playerId);
+                    expect(data.nameFirst).toEqual(mockPlayer.nameFirst);
+                    expect(data.nameLast).toEqual(mockPlayer.nameLast);
                 });
 
             const req = httpMock.expectOne(

@@ -1,31 +1,51 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlayerDetailComponent } from './player-detail.component';
 import { ActivatedRoute } from '@angular/router';
-import { PlayerService } from '../player.service';
 import { of } from 'rxjs';
-import { Player } from '../player';
 import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from '../label-value/label-value.component';
-import { By } from '@angular/platform-browser';
-import { BattingService } from '../batting.service';
-import { Batting } from '../batting';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatFormFieldModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatInputModule, MatTabsModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BioInfoComponent } from '../bio-info/bio-info.component';
+import { TopMenuComponent } from '../top-menu/top-menu.component';
+import { PlayerService } from '../player.service';
+import { Player } from '../player';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BattingTableComponent } from '../batting-table/batting-table.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
-    let mockBattingService: BattingService;
-
     let fakePlayer = createFakePlayer();
-    let fakeBatting = createFakeBatting();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [MatCardModule, MatTableModule, MatPaginatorModule],
-            declarations: [PlayerDetailComponent, LabelValueComponent],
+            imports: [
+                HttpClientTestingModule,
+                MatTabsModule,
+                MatCardModule,
+                MatButtonModule,
+                MatMenuModule,
+                MatToolbarModule,
+                MatFormFieldModule,
+                MatInputModule,
+                MatTableModule,
+                MatPaginatorModule,
+                MatSortModule,
+                NoopAnimationsModule
+            ],
+
+            declarations: [
+                PlayerDetailComponent,
+                LabelValueComponent,
+                BioInfoComponent,
+                TopMenuComponent,
+                BattingTableComponent
+            ],
+
             providers: [
                 {
                     provide: ActivatedRoute,
@@ -37,24 +57,15 @@ describe('PlayerDetailComponent', () => {
                         }
                     }
                 },
+
                 {
                     provide: PlayerService,
                     useValue:
                     {
-                        getPlayer:
-                        {
+                        getPlayer: function () {
                         }
                     },
                 },
-                {
-                    provide: BattingService,
-                    useValue:
-                    {
-                        getBattingStats:
-                        {
-                        }
-                    },
-                }
 
             ]
         })
@@ -64,27 +75,16 @@ describe('PlayerDetailComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerDetailComponent);
         mockPlayerService = TestBed.get(PlayerService);
-        mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
-
     });
 
-    it('should display player name', () => {
+    it('should return player', () => {
         spyOn(mockPlayerService, 'getPlayer').and.callFake(idUsedToGetPlayer => {
             expect(idUsedToGetPlayer).toEqual(fakePlayer.playerId);
             return of(fakePlayer);
         });
 
-        spyOn(mockBattingService, 'getBattingStats').and.callFake(idUsedToGetPlayer => {
-            expect(idUsedToGetPlayer).toEqual(fakeBatting[0].playerId);
-            return of(fakeBatting);
-        });
-
         fixture.detectChanges();
-
-        const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
-
-        expect(titleElement.nativeElement.textContent).toEqual(`${fakePlayer.nameFirst} ${fakePlayer.nameLast}`);
     });
 
     function createFakePlayer(): Player {
@@ -96,13 +96,5 @@ describe('PlayerDetailComponent', () => {
         return fakePlayer;
     }
 
-    function createFakeBatting(): Batting[] {
-        let fakeBatting = new Batting();
-        fakeBatting.playerId = 'expectedPlayerId';
-        fakeBatting.ab = 99;
-        fakeBatting.hr = 20;
-        let fakeBattings: Array<Batting> = [fakeBatting];
 
-        return fakeBattings;
-    }
 });

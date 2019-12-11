@@ -13,6 +13,7 @@ import { Player } from '../player';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BattingTableComponent } from '../batting-table/batting-table.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FieldingTableComponent } from '../fielding-table/fielding-table.component';
 
 
 describe('PlayerDetailComponent', () => {
@@ -43,7 +44,8 @@ describe('PlayerDetailComponent', () => {
                 LabelValueComponent,
                 BioInfoComponent,
                 TopMenuComponent,
-                BattingTableComponent
+                BattingTableComponent,
+                FieldingTableComponent
             ],
 
             providers: [

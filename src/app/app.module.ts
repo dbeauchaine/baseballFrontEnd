@@ -15,6 +15,7 @@ import {
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { BattingTableComponent } from './batting-table/batting-table.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import { FieldingTableComponent } from './fielding-table/fielding-table.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
         BioInfoComponent,
         BattingTableComponent,
         TopMenuComponent,
+        FieldingTableComponent
     ],
     imports: [
         BrowserModule,

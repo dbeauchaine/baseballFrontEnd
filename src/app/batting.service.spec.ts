@@ -42,12 +42,12 @@ describe('BattingService', () => {
                 });
 
             const req = httpMock.expectOne(
-                `https://localhost:5001/batting/id`
+                `https://localhost:5001/batting/${mockBatting.playerId}`
             );
 
             expect(req.request.method).toEqual('GET');
 
-            req.flush(mockBatting);
+            req.flush([mockBatting]);
         });
     });
 });

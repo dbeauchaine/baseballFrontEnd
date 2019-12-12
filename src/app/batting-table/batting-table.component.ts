@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Batting } from '../batting';
 import { BattingService } from '../batting.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-batting-table',

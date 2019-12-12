@@ -10,12 +10,16 @@ import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from './label-value/label-value.component';
 import {
     MatInputModule, MatPaginatorModule,
-    MatSortModule, MatTableModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatTabsModule
+    MatSortModule, MatTableModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule, MatListModule
 } from "@angular/material";
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { BattingTableComponent } from './batting-table/batting-table.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { FieldingTableComponent } from './fielding-table/fielding-table.component';
+import { SearchPlayersComponent } from './search-players/search-players.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PlayerSearchFormComponent } from './player-search-form/player-search-form.component';
+import { PlayerListComponent } from './player-list/player-list.component';
 
 @NgModule({
     declarations: [
@@ -25,10 +29,14 @@ import { FieldingTableComponent } from './fielding-table/fielding-table.componen
         BioInfoComponent,
         BattingTableComponent,
         TopMenuComponent,
-        FieldingTableComponent
+        FieldingTableComponent,
+        SearchPlayersComponent,
+        PlayerSearchFormComponent,
+        PlayerListComponent,
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -40,7 +48,10 @@ import { FieldingTableComponent } from './fielding-table/fielding-table.componen
         MatToolbarModule,
         MatButtonModule,
         MatMenuModule,
-        MatTabsModule
+        MatTabsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatListModule
     ],
     providers: [],
     bootstrap: [AppComponent]

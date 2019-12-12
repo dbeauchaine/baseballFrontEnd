@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class PlayerService {
-    private playerUrl ='https://localhost:5001/player'
+    private playerUrl = 'https://localhost:5001/player'
+
+    constructor(private http: HttpClient) { }
 
     getPlayer(id: string): Observable<Player> {
         const url = `${this.playerUrl}/${id}`;
@@ -15,5 +17,11 @@ export class PlayerService {
         return this.http.get<Player>(url);
     }
 
-    constructor(private http: HttpClient) { }
+    getPlayerByName(firstName: string, lastName: string): Observable<string> {
+        const url = `${this.playerUrl}/?firstName=${firstName}&lastName=${lastName}`;
+
+        return this.http.get(url, { responseType: 'text' });
+    }
+
+
 }

@@ -3,14 +3,16 @@
 
   <mat-card-content>
     <mat-tab-group color ="accent">
-      <mat-tab label="Batting">
-        <app-batting-table [id] ="id"></app-batting-table>
+      <mat-tab label="Batting" *ngIf="battingDataSource">
+        <ng-template matTabContent>
+          <app-data-table [dataSource] ="battingDataSource" [propertyToLabelMap]="battingPropertyToLabelMap"></ app-data-table>
+        </ng-template>
       </mat-tab>
-      <mat-tab label="Fielding">
-        <app-fielding-table [id] ="id"></app-fielding-table>
+        <mat-tab label="Fielding" *ngIf="fieldingDataSource">
+          <ng-template matTabContent>
+          <app-data-table [dataSource] ="fieldingDataSource" [propertyToLabelMap]="fieldingPropertyToLabelMap"></app-data-table>
+        </ng-template>
       </mat-tab>
-
-
     </mat-tab-group>
     
   </mat-card-content>

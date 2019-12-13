@@ -1,7 +1,24 @@
 <mat-nav-list>
-  <h3 mat-subheader>Matching Players:</h3>
-  <mat-divider></mat-divider>
   <mat-list-item routerLink="{{url}}">
-    {{playerForm.value.firstName}} {{playerForm.value.lastName}}
+    <mat-card-title-group *ngIf="player">
+      <mat-card-title class="player-list-title">
+        {{player.nameFirst}} {{player.nameLast}}
+      </mat-card-title>
+      <mat-card-subtitle *ngIf="player">
+
+        <app-label-value label="Throws/Bats" value="{{player.throws}}/{{player.bats}}">
+        </app-label-value>
+        <app-label-value label="Born" value="{{player.birthMonth}}/{{player.birthDay}}/{{player.birthYear}}">
+        </app-label-value>
+        <span *ngIf="player.birthCity">in {{player.birthCity}} </span>
+        <span *ngIf="player.birthState">{{player.birthState}}, </span>
+        <span *ngIf="player.birthCountry">{{player.birthCountry}}</span>
+        <app-label-value label="Died"
+                         value="{{player.deathMonth}}/{{player.deathDay}}/{{player.deathYear}}"
+                         *ngIf="player.deathYear">
+        </app-label-value>
+
+      </mat-card-subtitle>
+    </mat-card-title-group>
   </mat-list-item>
 </mat-nav-list>

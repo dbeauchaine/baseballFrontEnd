@@ -1,15 +1,22 @@
-<mat-card class="search-player-card">
-  <form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()">
+  <mat-card class="search-player-card">
+
     <app-player-search-form [playerForm]="playerForm"> </app-player-search-form>
-    <div *ngIf="playerId; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock>
-      <app-player-list [playerForm]="playerForm" [url]="url"></app-player-list>
-    </ng-template>
-    <ng-template #elseBlock>
-      <p>No Player Found</p>
-    </ng-template>
     <div>
       <button mat-raised-button type="submit" [disabled]="!playerForm.valid">Search</button>
     </div>
-  </form>
-</mat-card>
+  </mat-card>
+
+  <mat-card class="player-list-card">
+    <div *ngIf="players">
+      <h3 mat-subheader>Matching Players:</h3>
+      <mat-divider></mat-divider>
+      <p></p>
+      <div *ngFor="let player of players; index as i">
+        <app-player-list [player]="player" [url]="url[i]"></app-player-list>
+      </div>
+    </div>
+
+
+  </mat-card>
+</form>

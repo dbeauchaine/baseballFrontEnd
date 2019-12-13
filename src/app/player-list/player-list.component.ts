@@ -10,18 +10,9 @@ import { Player } from '../player';
 export class PlayerListComponent implements OnInit {
     @Input() url: string;
     @Input() player: Player;
-    private formattedFirst: string;
-    private formattedLast: string;
 
     constructor() { }
 
     ngOnInit() {
-        this.formattedFirst = this.formatStrings(this.player.nameFirst);
-        this.formattedLast = this.formatStrings(this.player.nameLast);
-        console.log(this.formattedFirst)
-    }
-
-    formatStrings(s:string):string {
-        return s.charAt(0).toUpperCase() + s.slice(1);
     }
 }

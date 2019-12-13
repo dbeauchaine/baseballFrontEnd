@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BattingTableComponent } from './batting-table.component';
+import { DataTableComponent } from './data-table.component';
 import { BattingService } from '../batting.service';
 import { of } from 'rxjs';
 import { Batting } from '../batting';
@@ -9,8 +9,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('BattingTableComponent', () => {
-    let component: BattingTableComponent;
-    let fixture: ComponentFixture<BattingTableComponent>;
+    let component: DataTableComponent;
+    let fixture: ComponentFixture<DataTableComponent>;
     let mockBattingService: BattingService;
     const fakeBatting = createFakeBatting();
 
@@ -27,7 +27,7 @@ describe('BattingTableComponent', () => {
                 
             ],
             declarations: [
-                BattingTableComponent
+                DataTableComponent
             ],
 
             providers: [
@@ -47,10 +47,9 @@ describe('BattingTableComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(BattingTableComponent);
+        fixture = TestBed.createComponent(DataTableComponent);
         mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
-        component.id = fakeBatting[0].playerId;
     });
 
     it('should return batting', () => {

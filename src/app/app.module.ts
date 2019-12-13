@@ -13,13 +13,13 @@ import {
     MatSortModule, MatTableModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule, MatListModule
 } from "@angular/material";
 import { BioInfoComponent } from './bio-info/bio-info.component';
-import { BattingTableComponent } from './batting-table/batting-table.component';
+import { DataTableComponent } from './data-table/data-table.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-import { FieldingTableComponent } from './fielding-table/fielding-table.component';
 import { SearchPlayersComponent } from './search-players/search-players.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PlayerSearchFormComponent } from './player-search-form/player-search-form.component';
 import { PlayerListComponent } from './player-list/player-list.component';
+import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leaderboard.component';
 
 @NgModule({
     declarations: [
@@ -27,12 +27,13 @@ import { PlayerListComponent } from './player-list/player-list.component';
         PlayerDetailComponent,
         LabelValueComponent,
         BioInfoComponent,
-        BattingTableComponent,
+        DataTableComponent,
         TopMenuComponent,
-        FieldingTableComponent,
         SearchPlayersComponent,
         PlayerSearchFormComponent,
         PlayerListComponent,
+        BattingLeaderboardComponent,
+        
     ],
     imports: [
         BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Player } from '../player';
 
 @Component({
     selector: 'app-player-list',
@@ -7,14 +8,17 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./player-list.component.sass']
 })
 export class PlayerListComponent implements OnInit {
-    @Input() playerForm: FormGroup;
     @Input() url: string;
+    @Input() player: Player;
+    private formattedFirst: string;
+    private formattedLast: string;
 
     constructor() { }
 
     ngOnInit() {
-        this.playerForm.value.firstName = this.formatStrings(this.playerForm.value.firstName);
-        this.playerForm.value.lastName = this.formatStrings(this.playerForm.value.lastName);
+        this.formattedFirst = this.formatStrings(this.player.nameFirst);
+        this.formattedLast = this.formatStrings(this.player.nameLast);
+        console.log(this.formattedFirst)
     }
 
     formatStrings(s:string):string {

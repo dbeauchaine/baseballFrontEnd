@@ -20,7 +20,7 @@ export class PlayerDetailComponent implements OnInit {
     public battingPropertyToLabelMap: Map<string, string>;
     public fieldingDataSource: MatTableDataSource<Fielding>;
     public fieldingPropertyToLabelMap: Map<string, string>;
-    
+
 
     constructor(
         private route: ActivatedRoute,
@@ -53,11 +53,11 @@ export class PlayerDetailComponent implements OnInit {
     private getFielding(): void {
         this.fieldingService.getFieldingStats(this.id)
             .subscribe(fielding => {
-                this.fieldingDataSource = new MatTableDataSource(fielding)
+                this.fieldingDataSource = new MatTableDataSource(fielding);
             });
     }
 
-    private generateBattingPropertyToLabelMap():void{
+    private generateBattingPropertyToLabelMap(): void {
         this.battingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
             ['teamId', 'Team'],
@@ -77,14 +77,14 @@ export class PlayerDetailComponent implements OnInit {
             ['sh', 'SH'],
             ['sf', 'SF'],
             ['gidp', 'GIDP']
-        ]);  
+        ]);
     }
 
-    private generateFieldingPropertyToLabelMap():void{
+    private generateFieldingPropertyToLabelMap(): void {
         this.fieldingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
             ['teamId', 'Team'],
-            ['pos','Pos'],
+            ['pos', 'Pos'],
             ['g', 'G'],
             ['gs', 'GS'],
             ['innOuts', 'InnOuts'],

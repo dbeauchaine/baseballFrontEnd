@@ -7,17 +7,17 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
     styleUrls: ['./data-table.component.sass']
 })
 export class DataTableComponent implements OnInit {
-    private displayedColumns: string[];
+    public displayedColumns: string[];
 
     @Input() dataSource: MatTableDataSource<any>;
     @Input() propertyToLabelMap: Map<string, string>;
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
-    
+
     constructor() { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.displayedColumns = Array.from(this.propertyToLabelMap.keys());
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

@@ -30,7 +30,7 @@ describe('Fielding Service', () => {
                 playerId: 'id',
                 pos: 'c',
                 e: 1
-            }
+            };
 
             service.getFieldingStats(mockFielding.playerId)
                 .subscribe(data => {

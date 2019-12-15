@@ -9,19 +9,19 @@ import { Player } from '../player';
     styleUrls: ['./search-players.component.sass']
 })
 export class SearchPlayersComponent implements OnInit {
-    private players: Player[];
-    private playerForm: FormGroup;
-    private url: string[];
+    public players: Player[];
+    public playerForm: FormGroup;
+    public url: string[];
     constructor(private formBuilder: FormBuilder, private playerService: PlayerService) { }
 
     ngOnInit() {
         this.playerForm = this.formBuilder.group({
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
-        })
+        });
     }
 
-    getUrl(players: Player[]) {
+    private getUrl(players: Player[]) {
         this.url = new Array();
 
         for (let i = 0; i < players.length; i++) {
@@ -35,8 +35,9 @@ export class SearchPlayersComponent implements OnInit {
                 this.players = players;
                 this.getUrl(players);
 
-                for (let i = 0; i < players.length; i++)
+                for (let i = 0; i < players.length; i++) {
                   console.log(this.players[i].playerId);
+                }
             });
     }
 }

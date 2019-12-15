@@ -4,7 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from '../label-value/label-value.component';
-import { MatTableModule, MatSortModule, MatFormFieldModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatInputModule, MatTabsModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatFormFieldModule,
+    MatToolbarModule, MatButtonModule, MatMenuModule,
+    MatInputModule, MatTabsModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BioInfoComponent } from '../bio-info/bio-info.component';
 import { TopMenuComponent } from '../top-menu/top-menu.component';
@@ -21,7 +23,7 @@ fdescribe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
-    let fakePlayer = createFakePlayer();
+    const fakePlayer = createFakePlayer();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -64,7 +66,7 @@ fdescribe('PlayerDetailComponent', () => {
                     provide: PlayerService,
                     useValue:
                     {
-                        getPlayer: function () {
+                        getPlayer() {
                         }
                     },
                 },
@@ -94,20 +96,19 @@ fdescribe('PlayerDetailComponent', () => {
 
 
     function createFakePlayer(): Player {
-        let fakePlayer = new Player();
-        fakePlayer.playerId = 'expectedPlayerId';
-        fakePlayer.nameFirst = 'expectedFirstName';
-        fakePlayer.nameLast = 'expectedLastName';
+        const player = new Player();
+        player.playerId = 'expectedPlayerId';
+        player.nameFirst = 'expectedFirstName';
+        player.nameLast = 'expectedLastName';
 
-        return fakePlayer;
+        return player;
     }
 
     @Component({
         selector: 'app-bio-info',
         template: '',
     })
-    class MockBioInfoComponent
-    {
+    class MockBioInfoComponent {
         @Input() player: Player;
     }
 

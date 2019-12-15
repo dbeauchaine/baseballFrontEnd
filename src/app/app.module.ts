@@ -10,8 +10,10 @@ import { MatCardModule } from '@angular/material/card';
 import { LabelValueComponent } from './label-value/label-value.component';
 import {
     MatInputModule, MatPaginatorModule,
-    MatSortModule, MatTableModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule, MatListModule, MatOptionModule, MatSelectModule
-} from "@angular/material";
+    MatSortModule, MatTableModule, MatToolbarModule,
+    MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule,
+    MatListModule, MatOptionModule, MatSelectModule
+} from '@angular/material';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
@@ -33,7 +35,7 @@ import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leade
         PlayerSearchFormComponent,
         PlayerListComponent,
         BattingLeaderboardComponent,
-        
+
     ],
     imports: [
         BrowserModule,

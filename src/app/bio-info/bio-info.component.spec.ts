@@ -36,7 +36,7 @@ describe('BioInfoComponent', () => {
         component.player.nameFirst = 'expectedFirstName';
         component.player.nameLast = 'expectedLastName';
 
-        const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
+        const titleElement = fixture.debugElement.query(By.css('mat-card-title'));
         expect(titleElement.nativeElement.textContent).toEqual(`expectedFirstName expectedLastName`);
     });
 

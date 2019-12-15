@@ -36,7 +36,7 @@ describe('SearchPlayersComponent', () => {
                     provide: PlayerService,
                     useValue:
                     {
-                        getPlayer: function () {
+                        getPlayer() {
                         }
                     },
                 },
@@ -45,7 +45,7 @@ describe('SearchPlayersComponent', () => {
                     provide: FormBuilder,
                     useValue:
                     {
-                        group: function () {
+                        group() {
                         }
                     }
                 }
@@ -61,6 +61,5 @@ describe('SearchPlayersComponent', () => {
     });
 
     it('should create', () => {
-        
     });
 });

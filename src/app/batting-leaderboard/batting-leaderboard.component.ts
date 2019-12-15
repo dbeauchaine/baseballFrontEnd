@@ -10,10 +10,10 @@ import { BattingLeaderboard } from '../battingLeaderboard';
   styleUrls: ['./batting-leaderboard.component.sass']
 })
 export class BattingLeaderboardComponent implements OnInit {
-  private year: number;
-  private validYears: string[];
-  private battingDataSource: MatTableDataSource<BattingLeaderboard>;
-  private battingPropertyToLabelMap: Map<string, string>;
+  public year: number;
+  public validYears: string[];
+  public battingDataSource: MatTableDataSource<BattingLeaderboard>;
+  public battingPropertyToLabelMap: Map<string, string>;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,15 +56,15 @@ export class BattingLeaderboardComponent implements OnInit {
     ]);
   }
 
-  generateValidYears(): string[]{
-    let validDates = new Array();
-    for(let i = 2018; i > 1871; i--){
+  generateValidYears(): string[] {
+    const validDates = new Array();
+    for (let i = 2018; i > 1871; i--) {
       validDates.push(i.toString());
     }
     return validDates;
   }
 
-  public onChange(event): void{
+  public onChange(event): void {
     this.year = Number(event.value);
     this.getBattingByYear();
   }

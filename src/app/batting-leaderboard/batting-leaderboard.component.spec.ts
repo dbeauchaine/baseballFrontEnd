@@ -12,7 +12,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 describe('BattingLeaderboardComponent', () => {
   let component: BattingLeaderboardComponent;
   let fixture: ComponentFixture<BattingLeaderboardComponent>;
-  let fakeBattingData = createFakeBatting();
+  const fakeBattingData = createFakeBatting();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,7 +44,7 @@ describe('BattingLeaderboardComponent', () => {
           provide: BattingService,
           useValue:
           {
-            getBattingStatsByYear: function () {
+            getBattingStatsByYear() {
             }
           },
         },
@@ -65,7 +65,7 @@ describe('BattingLeaderboardComponent', () => {
   });
 
   function createFakeBatting(): BattingLeaderboard {
-    let fakeBatting = new BattingLeaderboard();
+    const fakeBatting = new BattingLeaderboard();
     fakeBatting.playerId = 'expectedPlayerId';
     fakeBatting.nameFirst = 'expectedFirstName';
     fakeBatting.nameLast = 'expectedLastName';

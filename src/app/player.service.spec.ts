@@ -31,7 +31,7 @@ describe('PlayerService', () => {
                 nameFirst: 'firstName',
                 nameLast: 'lastName',
                 playerId: 'id'
-            }
+            };
 
             service.getPlayer(mockPlayer.playerId)
                 .subscribe((data: Player) => {

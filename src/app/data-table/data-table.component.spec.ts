@@ -24,7 +24,7 @@ describe('BattingTableComponent', () => {
                 MatFormFieldModule,
                 MatInputModule,
                 NoopAnimationsModule
-                
+
             ],
             declarations: [
                 DataTableComponent
@@ -35,8 +35,7 @@ describe('BattingTableComponent', () => {
                     provide: BattingService,
                     useValue:
                     {
-                        getBattingStats: function()
-                        {
+                        getBattingStats() {
                         }
                     },
                 }
@@ -62,32 +61,32 @@ describe('BattingTableComponent', () => {
     });
 
     function createFakeBatting(): Batting[] {
-        let fakeBatting = new Batting();
-        fakeBatting.playerId = 'expectedPlayerId';
-        fakeBatting.yearId = 1999;
-        fakeBatting.stint = 1;
-        fakeBatting.teamId = "SEA";
-        fakeBatting.lgId = "AL";
-        fakeBatting.g = 100;
-        fakeBatting.gBatting = 99;
-        fakeBatting.ab = 99;
-        fakeBatting.r = 50;
-        fakeBatting.h = 20;
-        fakeBatting.x2b = 10;
-        fakeBatting.x3b = 3;
-        fakeBatting.hr = 20;
-        fakeBatting.rbi = 40;
-        fakeBatting.sb = 10;
-        fakeBatting.cs = 5;
-        fakeBatting.bb = 20;
-        fakeBatting.so = 25;
-        fakeBatting.ibb = 1;
-        fakeBatting.hbp = 1;
-        fakeBatting.sh = 3;
-        fakeBatting.sf = 2;
-        fakeBatting.gidp = 1;
+        const batting = new Batting();
+        batting.playerId = 'expectedPlayerId';
+        batting.yearId = 1999;
+        batting.stint = 1;
+        batting.teamId = 'SEA';
+        batting.lgId = 'AL';
+        batting.g = 100;
+        batting.gBatting = 99;
+        batting.ab = 99;
+        batting.r = 50;
+        batting.h = 20;
+        batting.x2b = 10;
+        batting.x3b = 3;
+        batting.hr = 20;
+        batting.rbi = 40;
+        batting.sb = 10;
+        batting.cs = 5;
+        batting.bb = 20;
+        batting.so = 25;
+        batting.ibb = 1;
+        batting.hbp = 1;
+        batting.sh = 3;
+        batting.sf = 2;
+        batting.gidp = 1;
 
-        let fakeBattings: Array<Batting> = [fakeBatting];
+        const fakeBattings: Array<Batting> = [batting];
 
         return fakeBattings;
     }

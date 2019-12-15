@@ -1,11 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayerListComponent } from './player-list.component';
-import { MatDividerModule, MatListModule} from '@angular/material';
+import { MatDividerModule, MatListModule, MatCardModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { LabelValueComponent } from '../label-value/label-value.component';
 
 describe('PlayerListComponent', () => {
     let component: PlayerListComponent;
@@ -20,10 +21,12 @@ describe('PlayerListComponent', () => {
                 ReactiveFormsModule,
                 MatListModule,
                 RouterModule,
-                RouterTestingModule
+                RouterTestingModule,
+                MatCardModule
             ],
             declarations: [
-                PlayerListComponent
+                PlayerListComponent,
+                LabelValueComponent
             ],
             providers: [
             ]

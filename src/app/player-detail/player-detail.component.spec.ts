@@ -13,9 +13,11 @@ import { Player } from '../player';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from '../data-table/data-table.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Component, Input } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 
-describe('PlayerDetailComponent', () => {
+fdescribe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
@@ -41,7 +43,7 @@ describe('PlayerDetailComponent', () => {
             declarations: [
                 PlayerDetailComponent,
                 LabelValueComponent,
-                BioInfoComponent,
+                MockBioInfoComponent,
                 TopMenuComponent,
                 DataTableComponent,
             ],
@@ -78,14 +80,18 @@ describe('PlayerDetailComponent', () => {
         component = fixture.componentInstance;
     });
 
-    it('should return player', () => {
+    it('should return player and pass it to bio-info', () => {
         spyOn(mockPlayerService, 'getPlayer').and.callFake(idUsedToGetPlayer => {
             expect(idUsedToGetPlayer).toEqual(fakePlayer.playerId);
             return of(fakePlayer);
         });
 
         fixture.detectChanges();
+
+        const bioInfoComponent = fixture.debugElement.query(By.css('app-bio-info'));
+        expect(bioInfoComponent.componentInstance.player).toEqual(fakePlayer);
     });
+
 
     function createFakePlayer(): Player {
         let fakePlayer = new Player();
@@ -96,5 +102,13 @@ describe('PlayerDetailComponent', () => {
         return fakePlayer;
     }
 
+    @Component({
+        selector: 'app-bio-info',
+        template: '',
+    })
+    class MockBioInfoComponent
+    {
+        @Input() player: Player;
+    }
 
 });

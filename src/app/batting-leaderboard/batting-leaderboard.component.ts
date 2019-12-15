@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BattingService } from '../batting.service';
+import { MatTableDataSource } from '@angular/material';
+import { BattingLeaderboard } from '../battingLeaderboard';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -6,10 +10,62 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./batting-leaderboard.component.sass']
 })
 export class BattingLeaderboardComponent implements OnInit {
+  private year: number;
+  private validYears: string[];
+  private battingDataSource: MatTableDataSource<BattingLeaderboard>;
+  private battingPropertyToLabelMap: Map<string, string>;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private battingService: BattingService,
+  ) { }
 
   ngOnInit() {
+    this.generateBattingPropertyToLabelMap();
+    this.validYears = this.generateValidYears();
   }
 
+  getBattingByYear(): void {
+    this.battingService.getBattingStatsByYear(this.year)
+      .subscribe(batting => {
+        this.battingDataSource = new MatTableDataSource(batting);
+      });
+  }
+
+  generateBattingPropertyToLabelMap(): void {
+    this.battingPropertyToLabelMap = new Map([
+      ['nameFirst', 'First'],
+      ['nameLast', 'Last'],
+      ['teamId', 'Team'],
+      ['g', 'G'],
+      ['ab', 'AB'],
+      ['h', 'H'],
+      ['x2b', '2B'],
+      ['x3b', '3B'],
+      ['hr', 'HR'],
+      ['rbi', 'RBI'],
+      ['bb', 'BB'],
+      ['ibb', 'IBB'],
+      ['hbp', 'HBP'],
+      ['so', 'K'],
+      ['sb', 'SB'],
+      ['cs', 'CS'],
+      ['sh', 'SH'],
+      ['sf', 'SF'],
+      ['gidp', 'GIDP']
+    ]);
+  }
+
+  generateValidYears(): string[]{
+    let validDates = new Array();
+    for(let i = 2018; i > 1871; i--){
+      validDates.push(i.toString());
+    }
+    return validDates;
+  }
+
+  public onChange(event): void{
+    this.year = Number(event.value);
+    this.getBattingByYear();
+  }
 }

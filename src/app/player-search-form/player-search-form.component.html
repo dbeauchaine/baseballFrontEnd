@@ -1,4 +1,4 @@
-<div [formGroup]="playerForm">
+<div *ngIf="playerForm" [formGroup]="playerForm">
   <div>
     <mat-form-field>
       <input matInput formControlName="firstName" placeholder="First Name" />

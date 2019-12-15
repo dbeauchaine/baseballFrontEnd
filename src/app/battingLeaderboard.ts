@@ -1,6 +1,7 @@
-import { Player } from './player';
-
-export class Batting {
+export class BattingLeaderboard {
+    nameFirst: string;
+    nameLast: string;
+    nameGiven: string;
     playerId: string;
     yearId: number;
     stint: number;

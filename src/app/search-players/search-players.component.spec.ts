@@ -7,6 +7,7 @@ import { MatCardModule, MatFormFieldModule, MatDividerModule, MatMenuModule, Mat
 import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PlayerService } from '../player.service';
+import { LabelValueComponent } from '../label-value/label-value.component';
 
 describe('SearchPlayersComponent', () => {
     let component: SearchPlayersComponent;
@@ -23,12 +24,12 @@ describe('SearchPlayersComponent', () => {
                 MatDividerModule,
                 MatMenuModule,
                 MatListModule,
-
             ],
             declarations: [
                 SearchPlayersComponent,
                 PlayerSearchFormComponent,
-                PlayerListComponent
+                PlayerListComponent,
+                LabelValueComponent
             ],
             providers: [
                 {
@@ -60,6 +61,6 @@ describe('SearchPlayersComponent', () => {
     });
 
     it('should create', () => {
-        expect(component).toBeTruthy();
+        
     });
 });

@@ -20,9 +20,6 @@ describe('PlayerSearchFormComponent', () => {
                 PlayerSearchFormComponent,
             ],
             providers: [
-                {
-
-                }
             ],
         })
             .compileComponents();

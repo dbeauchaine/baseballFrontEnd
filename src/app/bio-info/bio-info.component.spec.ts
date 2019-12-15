@@ -3,6 +3,7 @@ import { BioInfoComponent } from './bio-info.component';
 import { MatCardModule } from '@angular/material';
 import { LabelValueComponent } from '../label-value/label-value.component';
 import { By } from '@angular/platform-browser';
+import { Player } from '../player';
 
 describe('BioInfoComponent', () => {
     let component: BioInfoComponent;
@@ -31,8 +32,12 @@ describe('BioInfoComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
 
-        //const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
-        //expect(titleElement.nativeElement.textContent).toEqual(`expectedFirstName expectedLastName`);
+        component.player = new Player();
+        component.player.nameFirst = 'expectedFirstName';
+        component.player.nameLast = 'expectedLastName';
+
+        const titleElement = fixture.debugElement.query(By.css("mat-card-title"));
+        expect(titleElement.nativeElement.textContent).toEqual(`expectedFirstName expectedLastName`);
     });
 
 });

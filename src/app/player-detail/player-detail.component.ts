@@ -14,12 +14,12 @@ import { FieldingService } from '../fielding.service';
     styleUrls: ['./player-detail.component.sass']
 })
 export class PlayerDetailComponent implements OnInit {
-    private id: string;
-    private player: Player;
-    private battingDataSource: MatTableDataSource<Batting>;
-    private battingPropertyToLabelMap: Map<string, string>;
-    private fieldingDataSource: MatTableDataSource<Fielding>;
-    private fieldingPropertyToLabelMap: Map<string, string>;
+    public id: string;
+    public player: Player;
+    public battingDataSource: MatTableDataSource<Batting>;
+    public battingPropertyToLabelMap: Map<string, string>;
+    public fieldingDataSource: MatTableDataSource<Fielding>;
+    public fieldingPropertyToLabelMap: Map<string, string>;
     
 
     constructor(
@@ -38,26 +38,26 @@ export class PlayerDetailComponent implements OnInit {
         this.generateFieldingPropertyToLabelMap();
     }
 
-    getPlayer(): void {
+    private getPlayer(): void {
         this.playerService.getPlayer(this.id)
             .subscribe(player => this.player = player);
     }
 
-    getBatting(): void {
+    private getBatting(): void {
         this.battingService.getBattingStats(this.id)
             .subscribe(batting => {
-                this.battingDataSource = new MatTableDataSource(batting)
+                this.battingDataSource = new MatTableDataSource(batting);
             });
     }
 
-    getFielding(): void {
+    private getFielding(): void {
         this.fieldingService.getFieldingStats(this.id)
             .subscribe(fielding => {
                 this.fieldingDataSource = new MatTableDataSource(fielding)
             });
     }
 
-    generateBattingPropertyToLabelMap():void{
+    private generateBattingPropertyToLabelMap():void{
         this.battingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
             ['teamId', 'Team'],
@@ -80,7 +80,7 @@ export class PlayerDetailComponent implements OnInit {
         ]);  
     }
 
-    generateFieldingPropertyToLabelMap():void{
+    private generateFieldingPropertyToLabelMap():void{
         this.fieldingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
             ['teamId', 'Team'],

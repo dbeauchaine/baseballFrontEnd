@@ -10,12 +10,12 @@ import { Player } from '../player';
 })
 export class SearchPlayersComponent implements OnInit {
     public players: Player[];
-    public playerForm: FormGroup;
+    public playerGroup: FormGroup;
     public url: string[];
     constructor(private formBuilder: FormBuilder, private playerService: PlayerService) { }
 
     ngOnInit() {
-        this.playerForm = this.formBuilder.group({
+        this.playerGroup = this.formBuilder.group({
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
         });
@@ -30,7 +30,7 @@ export class SearchPlayersComponent implements OnInit {
     }
 
     onSubmit(): void {
-        this.playerService.getPlayerByName(this.playerForm.value.firstName, this.playerForm.value.lastName)
+        this.playerService.getPlayerByName(this.playerGroup.value.firstName, this.playerGroup.value.lastName)
             .subscribe((players) => {
                 this.players = players;
                 this.getUrl(players);

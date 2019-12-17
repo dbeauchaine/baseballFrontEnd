@@ -17,12 +17,15 @@ import { DataTableComponent } from '../data-table/data-table.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { BattingService } from '../batting.service';
+import { Batting } from '../batting';
 
 
-fdescribe('PlayerDetailComponent', () => {
+describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
+    let mockBattingService: BattingService;
     const fakePlayer = createFakePlayer();
 
     beforeEach(async(() => {
@@ -79,6 +82,7 @@ fdescribe('PlayerDetailComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerDetailComponent);
         mockPlayerService = TestBed.get(PlayerService);
+        mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
     });
 
@@ -93,7 +97,6 @@ fdescribe('PlayerDetailComponent', () => {
         const bioInfoComponent = fixture.debugElement.query(By.css('app-bio-info'));
         expect(bioInfoComponent.componentInstance.player).toEqual(fakePlayer);
     });
-
 
     function createFakePlayer(): Player {
         const player = new Player();

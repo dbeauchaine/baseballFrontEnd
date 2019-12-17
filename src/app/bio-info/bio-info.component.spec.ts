@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BioInfoComponent } from './bio-info.component';
 import { MatCardModule } from '@angular/material';
-import { LabelValueComponent } from '../label-value/label-value.component';
 import { By } from '@angular/platform-browser';
 import { Player } from '../player';
+import { Component, Input } from '@angular/core';
 
-describe('BioInfoComponent', () => {
+fdescribe('BioInfoComponent', () => {
     let component: BioInfoComponent;
     let fixture: ComponentFixture<BioInfoComponent>;
 
@@ -17,7 +17,7 @@ describe('BioInfoComponent', () => {
             ],
             declarations: [
                 BioInfoComponent,
-                LabelValueComponent
+                MockLabelValueComponent
             ]
         })
             .compileComponents();
@@ -38,6 +38,21 @@ describe('BioInfoComponent', () => {
 
         const titleElement = fixture.debugElement.query(By.css('mat-card-title'));
         expect(titleElement.nativeElement.textContent).toEqual(`expectedFirstName expectedLastName`);
+
+        fixture.detectChanges();
+
+        const bioInfoComponent = fixture.debugElement.query(By.css('app-label-value'));
+        expect(bioInfoComponent.componentInstance.label).toEqual('Throws/Bats');
     });
 
 });
+
+@Component({
+    selector: 'app-label-value',
+    templateUrl: '',
+
+  })
+  export class MockLabelValueComponent {
+      @Input() label: string;
+      @Input() value: string;
+  }

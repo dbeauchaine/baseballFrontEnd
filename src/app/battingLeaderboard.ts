@@ -24,5 +24,5 @@ export class BattingLeaderboard {
     hbp: number;
     sh: number;
     sf: number;
-    gidp: number
+    gidp: number;
 }

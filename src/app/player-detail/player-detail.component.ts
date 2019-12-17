@@ -40,7 +40,9 @@ export class PlayerDetailComponent implements OnInit {
 
     private getPlayer(): void {
         this.playerService.getPlayer(this.id)
-            .subscribe(player => this.player = player);
+            .subscribe(player => {
+                this.player = player;
+            });
     }
 
     private getBatting(): void {

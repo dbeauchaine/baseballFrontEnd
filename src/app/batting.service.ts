@@ -8,8 +8,8 @@ import { BattingLeaderboard } from './battingLeaderboard';
   providedIn: 'root'
 })
 export class BattingService {
-  private battingUrl = 'https://localhost:5001/batting'
-  private yearUrl = 'https://localhost:5001/year'
+  private battingUrl = 'https://localhost:5001/batting';
+  private yearUrl = 'https://localhost:5001/year';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class BattingService {
 
   getBattingStatsByYear(year: number): Observable<BattingLeaderboard[]> {
     const url = `${this.yearUrl}/${year.toString()}`;
-  
+
     return this.http.get<BattingLeaderboard[]>(url);
   }
 }

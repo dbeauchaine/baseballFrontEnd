@@ -35,7 +35,6 @@ import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leade
         PlayerSearchFormComponent,
         PlayerListComponent,
         BattingLeaderboardComponent,
-
     ],
     imports: [
         BrowserModule,

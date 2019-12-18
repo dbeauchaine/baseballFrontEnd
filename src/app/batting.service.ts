@@ -20,7 +20,7 @@ export class BattingService {
   }
 
   getBattingStatsByYear(year: number): Observable<BattingLeaderboard[]> {
-    const url = `${this.yearUrl}/${year.toString()}`;
+    const url = `${this.battingUrl}/year/${year.toString()}`;
 
     return this.http.get<BattingLeaderboard[]>(url);
   }

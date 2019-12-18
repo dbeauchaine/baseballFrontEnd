@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
 
 describe('BattingTableComponent', () => {
     let component: DataTableComponent;
@@ -35,7 +36,9 @@ describe('BattingTableComponent', () => {
                     provide: BattingService,
                     useValue:
                     {
-                        getBattingStats() {
+                        getBattingStats(idUsedToGetBatting) {
+                            expect(idUsedToGetBatting).toEqual(fakeBatting[0].playerId);
+                            return of(fakeBatting);
                         }
                     },
                 }
@@ -52,12 +55,11 @@ describe('BattingTableComponent', () => {
     });
 
     it('should return batting', () => {
-        spyOn(mockBattingService, 'getBattingStats').and.callFake(idUsedToGetBatting => {
-            expect(idUsedToGetBatting).toEqual(fakeBatting[0].playerId);
-            return of(fakeBatting);
-        });
-
+        component.propertyToLabelMap = createFakePropertyToLabelMap();
         fixture.detectChanges();
+
+        let headers = fixture.debugElement.queryAll(By.css('mat-header-cell'));
+        let cells = fixture.debugElement.queryAll(By.css('mat-cell'));
     });
 
     function createFakeBatting(): Batting[] {
@@ -89,5 +91,13 @@ describe('BattingTableComponent', () => {
         const fakeBattings: Array<Batting> = [batting];
 
         return fakeBattings;
+    }
+
+    function createFakePropertyToLabelMap() : Map<string,string>{
+        let propertyToLabelMap = new Map([
+            ['playerId', 'PlayerId']
+        ]);
+
+        return propertyToLabelMap;
     }
 });

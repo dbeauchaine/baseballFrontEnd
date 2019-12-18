@@ -8,14 +8,14 @@ import { Player } from '../player';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
+import { generatePlayer } from '../test-helpers';
 
-describe('SearchPlayersComponent', () => {
+fdescribe('SearchPlayersComponent', () => {
     let component: SearchPlayersComponent;
     let mockPlayerService: PlayerService;
-    let mockFormbuilder: FormBuilder;
     let fixture: ComponentFixture<SearchPlayersComponent>;
-    const fakeplayers = createFakePlayers();
-    let playerGroup: FormGroup;
+    const fakeplayers = generatePlayer();
+    let playerGroup = generateGroup();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -44,7 +44,6 @@ describe('SearchPlayersComponent', () => {
                         }
                     },
                 },
-                FormBuilder,
             ]
         })
             .compileComponents();
@@ -53,55 +52,29 @@ describe('SearchPlayersComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(SearchPlayersComponent);
         mockPlayerService = TestBed.get(PlayerService);
-        mockFormbuilder = TestBed.get(FormBuilder);
         component = fixture.componentInstance;
-        component.players = fakeplayers;
-        playerGroup = new FormGroup({
-            firstName: new FormControl('first', Validators.required),
-            lastName: new FormControl('last', Validators.required),
-        });
+        component.players = [fakeplayers];
+        component.playerGroup = playerGroup;
     });
 
-    it('should create', () => {
-        fixture.detectChanges();
-        expect(component).toBeTruthy();
-    });
-
-    it('should have fake players', fakeAsync(() => {
-        expect(component.players[0]).toEqual(fakeplayers[0]);
-    }));
-
-    it('should update form value from form changes', fakeAsync(() => {
-        updateForm(fakeplayers[1].nameFirst, fakeplayers[1].nameLast);
-        expect(playerGroup.value.firstName).toEqual(fakeplayers[1].nameFirst);
-        expect(playerGroup.value.lastName).toEqual(fakeplayers[1].nameLast);
-      }));
-
-    it('should pass players to app-player-list', () => {
+    it('should be created', () => {
         fixture.detectChanges();
 
-        const playerListComponent = fixture.debugElement.query(By.css('app-player-list'));
-        expect(playerListComponent.componentInstance.players[0]).toEqual(fakeplayers[0]);
+        let searchForm = fixture.debugElement.query(By.css('app-player-search-form'));
+        expect(searchForm.componentInstance.playerForm).toEqual(component.playerGroup);
     });
-
-
 
     function updateForm(firstName, lastName) {
         playerGroup.controls.firstName.setValue(firstName);
         playerGroup.controls.lastName.setValue(lastName);
     }
-    function createFakePlayers(): Player[] {
-        const player = new Player();
-        player.nameFirst = 'first';
-        player.nameLast = 'last';
-
-        const playerTwo = new Player();
-        player.nameFirst = 'first';
-        player.nameLast = 'last';
-
-        return [player, playerTwo];
+    function generateGroup(): FormGroup{
+        let playerGroup = new FormGroup({
+            firstName: new FormControl('', Validators.required),
+            lastName: new FormControl('', Validators.required),
+        });
+        return playerGroup;
     }
-
 
     @Component({
         selector: 'app-player-list',

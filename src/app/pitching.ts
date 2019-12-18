@@ -1,0 +1,32 @@
+export class Pitching {
+    playerId: string;
+    yearId: number;
+    stint: number;
+    teamId: string;
+    lgId: string;
+    w: number;
+    l: number;
+    g: number;
+    gs: number;
+    cg: number;
+    sho: number;
+    sv: number;
+    ipouts: number;
+    h: number;
+    er: number;
+    hr: number;
+    bb: number;
+    so: number;
+    baopp: number;
+    era: number;
+    ibb: number;
+    wp: number;
+    hbp: number;
+    bk: number;
+    bfp: number;
+    gf: number;
+    r: number;
+    sh: number;
+    sf: number;
+    gidp: number;
+}

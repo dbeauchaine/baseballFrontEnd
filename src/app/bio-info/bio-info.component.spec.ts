@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BioInfoComponent } from './bio-info.component';
+import { ComponentFixture, async, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
-import { Player } from '../player';
 import { Component, Input } from '@angular/core';
+import { generatePlayer } from '../test-helpers';
 
-fdescribe('BioInfoComponent', () => {
+describe('BioInfoComponent', () => {
     let component: BioInfoComponent;
     let fixture: ComponentFixture<BioInfoComponent>;
 
@@ -26,30 +26,37 @@ fdescribe('BioInfoComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(BioInfoComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should render player data', () => {
         expect(component).toBeTruthy();
 
-        component.player = new Player();
-        component.player.nameFirst = 'expectedFirstName';
-        component.player.nameLast = 'expectedLastName';
+        component.player = generatePlayer();
 
-        const titleElement = fixture.debugElement.query(By.css('mat-card-title'));
-        expect(titleElement.nativeElement.textContent).toEqual(`expectedFirstName expectedLastName`);
 
         fixture.detectChanges();
 
-        const bioInfoComponent = fixture.debugElement.query(By.css('app-label-value'));
-        expect(bioInfoComponent.componentInstance.label).toEqual('Throws/Bats');
+        const titleElement = fixture.debugElement.query(By.css('mat-card-title'));
+        expect(titleElement.nativeElement.textContent).toEqual(`${component.player.nameFirst} ${component.player.nameLast}`);
+
+        const bioInfoComponents = fixture.debugElement.queryAll(By.css('app-label-value'));
+        expect(bioInfoComponents[0].componentInstance.label).toEqual('Throws/Bats');
+        expect(bioInfoComponents[0].componentInstance.value).toEqual(`${component.player.throws}/${component.player.bats}`);
+        expect(bioInfoComponents[1].componentInstance.label).toEqual('Born');
+        expect(bioInfoComponents[1].componentInstance.value)
+        .toEqual(`${component.player.birthMonth}/${component.player.birthDay}/${component.player.birthYear}`);
+        expect(bioInfoComponents[2].componentInstance.label).toEqual('Died');
+        expect(bioInfoComponents[2].componentInstance.value)
+        .toEqual(`${component.player.deathMonth}/${component.player.deathDay}/${component.player.deathYear}`);
     });
 
 });
 
+
+
 @Component({
     selector: 'app-label-value',
-    templateUrl: '',
+    template: '',
 
   })
   export class MockLabelValueComponent {

@@ -13,5 +13,5 @@
 </mat-card>
 <mat-card class="batting-leaderboard">
     <mat-card-title class="leaderboard-title" *ngIf="year">{{year}} Batting Leaderboard</mat-card-title>
-    <app-data-table class="leaderboard-table" *ngIf="battingDataSource" [dataSource] = "battingDataSource" [propertyToLabelMap] = "battingPropertyToLabelMap"></app-data-table>
+    <app-data-table class="leaderboard-table" *ngIf="battingLeaderboard" [data] = "battingLeaderboard" [propertyToLabelMap] = "battingPropertyToLabelMap"></app-data-table>
 </mat-card>

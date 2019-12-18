@@ -34,10 +34,6 @@ export class SearchPlayersComponent implements OnInit {
             .subscribe((players) => {
                 this.players = players;
                 this.getUrl(players);
-
-                for (let i = 0; i < players.length; i++) {
-                  console.log(this.players[i].playerId);
-                }
             });
     }
 }

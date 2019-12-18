@@ -7,6 +7,8 @@ import { Batting } from '../batting';
 import { BattingService } from '../batting.service';
 import { Fielding } from '../fielding';
 import { FieldingService } from '../fielding.service';
+import { Pitching } from '../pitching';
+import { PitchingService } from '../pitching.service';
 
 @Component({
     selector: 'app-player-detail',
@@ -16,17 +18,20 @@ import { FieldingService } from '../fielding.service';
 export class PlayerDetailComponent implements OnInit {
     public id: string;
     public player: Player;
-    public battingDataSource: MatTableDataSource<Batting>;
+    public batting: Batting[];
     public battingPropertyToLabelMap: Map<string, string>;
-    public fieldingDataSource: MatTableDataSource<Fielding>;
+    public fielding: Fielding[];
     public fieldingPropertyToLabelMap: Map<string, string>;
+    public pitching: Pitching[];
+    public pitchingPropertyToLabelMap: Map<string, string>;
 
 
     constructor(
         private route: ActivatedRoute,
         private playerService: PlayerService,
         private battingService: BattingService,
-        private fieldingService: FieldingService
+        private fieldingService: FieldingService,
+        private pitchingService: PitchingService
     ) { }
 
     ngOnInit() {
@@ -34,8 +39,10 @@ export class PlayerDetailComponent implements OnInit {
         this.getPlayer();
         this.getBatting();
         this.getFielding();
+        this.getPitching();
         this.generateBattingPropertyToLabelMap();
         this.generateFieldingPropertyToLabelMap();
+        this.generatePitchingPropertyToLabelMap();
     }
 
     private getPlayer(): void {
@@ -48,17 +55,31 @@ export class PlayerDetailComponent implements OnInit {
     private getBatting(): void {
         this.battingService.getBattingStats(this.id)
             .subscribe(batting => {
-                this.battingDataSource = new MatTableDataSource(batting);
+                if(batting.length > 0)
+                {
+                    this.batting = batting;
+                }
             });
     }
 
     private getFielding(): void {
         this.fieldingService.getFieldingStats(this.id)
             .subscribe(fielding => {
-                this.fieldingDataSource = new MatTableDataSource(fielding);
+                if(fielding.length > 0)
+                {
+                    this.fielding = fielding;
+                }
             });
     }
 
+    private getPitching(): void {
+        this.pitchingService.getPitchingStats(this.id)
+            .subscribe(pitching => {
+                if (pitching.length > 0) {
+                    this.pitching = pitching;
+                }
+            });
+    }
     private generateBattingPropertyToLabelMap(): void {
         this.battingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
@@ -99,6 +120,35 @@ export class PlayerDetailComponent implements OnInit {
             ['sb', 'SB'],
             ['cs', 'CS'],
             ['zr', 'ZR'],
+        ]);
+    }
+
+    private generatePitchingPropertyToLabelMap(): void {
+        this.pitchingPropertyToLabelMap = new Map([
+            ['yearId', 'Year'],
+            ['teamId', 'Team'],
+            ['g', 'G'],
+            ['gs', 'GS'],
+            ['w', 'W'],
+            ['l', 'L'],
+            ['cg', 'CG'],
+            ['sho', 'SO'],
+            ['sv', 'SV'],
+            ['era', 'ERA'],
+            ['h', 'H'],
+            ['hr', 'HR'],
+            ['so', 'K'],
+            ['bb', 'BB'],
+            ['ibb', 'IBB'],
+            ['er', 'ER'],
+            ['r', 'R'],
+            ['baopp', 'Opp. BA'],
+            ['wp', 'WP'],
+            ['hbp', 'HBP'],
+            ['bk', 'BK'],
+            ['sf', 'SF'],
+            ['sh', 'SH'],
+            ['gidp', 'GIDP'],
         ]);
     }
 }

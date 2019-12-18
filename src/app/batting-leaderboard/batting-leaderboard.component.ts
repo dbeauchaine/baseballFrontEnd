@@ -12,7 +12,7 @@ import { BattingLeaderboard } from '../battingLeaderboard';
 export class BattingLeaderboardComponent implements OnInit {
   public year: number;
   public validYears: string[];
-  public battingDataSource: MatTableDataSource<BattingLeaderboard>;
+  public battingLeaderboard: BattingLeaderboard[];
   public battingPropertyToLabelMap: Map<string, string>;
 
   constructor(
@@ -28,7 +28,7 @@ export class BattingLeaderboardComponent implements OnInit {
   getBattingByYear(): void {
     this.battingService.getBattingStatsByYear(this.year)
       .subscribe(batting => {
-        this.battingDataSource = new MatTableDataSource(batting);
+        this.battingLeaderboard = batting;
       });
   }
 

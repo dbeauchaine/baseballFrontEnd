@@ -3,11 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlayerSearchFormComponent } from './player-search-form.component';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { Player } from '../player';
+import { By } from '@angular/platform-browser';
 
 describe('PlayerSearchFormComponent', () => {
     let component: PlayerSearchFormComponent;
     let fixture: ComponentFixture<PlayerSearchFormComponent>;
-    let playerGroup: FormGroup;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -17,7 +19,7 @@ describe('PlayerSearchFormComponent', () => {
                 ReactiveFormsModule,
             ],
             declarations: [
-                PlayerSearchFormComponent,
+                PlayerSearchFormComponent
             ],
             providers: [
             ],
@@ -28,10 +30,9 @@ describe('PlayerSearchFormComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerSearchFormComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('should create', () => {
-        expect(component).toBeTruthy();
+        fixture.detectChanges();
     });
 });

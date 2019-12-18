@@ -7,10 +7,10 @@ import { Fielding } from './fielding';
   providedIn: 'root'
 })
 export class FieldingService {
-    private fieldingUrl = 'https://localhost:5001/fielding'
+    private fieldingUrl = 'https://localhost:5001/fielding';
 
     getFieldingStats(id: string): Observable<Fielding[]> {
-        const url = `${this.fieldingUrl}/${id}`
+        const url = `${this.fieldingUrl}/${id}`;
 
         return this.http.get<Fielding[]>(url);
     }

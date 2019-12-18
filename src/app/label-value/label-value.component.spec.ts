@@ -16,10 +16,15 @@ describe('LabelValueComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LabelValueComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should display label and value', () => {
+    component.label = "label";
+    component.value ="value";
+
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.label).toEqual(`${component.label}`);
+    expect(fixture.componentInstance.value).toEqual(`${component.value}`);
   });
 });

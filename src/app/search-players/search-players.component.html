@@ -1,9 +1,9 @@
 <form (ngSubmit)="onSubmit()">
   <mat-card class="search-player-card">
 
-    <app-player-search-form [playerForm]="playerForm"> </app-player-search-form>
+    <app-player-search-form [playerForm]="playerGroup"> </app-player-search-form>
     <div>
-      <button mat-raised-button type="submit" [disabled]="!playerForm.valid">Search</button>
+      <button mat-raised-button type="submit" [disabled]="!playerGroup.valid">Search</button>
     </div>
   </mat-card>
 

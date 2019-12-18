@@ -1,4 +1,4 @@
-export class BattingLeaderboard {
+export class PitchingLeaderboard {
     nameFirst: string;
     nameLast: string;
     nameGiven: string;
@@ -7,21 +7,28 @@ export class BattingLeaderboard {
     stint: number;
     teamId: string;
     lgId: string;
+    w: number;
+    l: number;
     g: number;
-    gBatting: number;
-    ab: number;
-    r: number;
+    gs: number;
+    cg: number;
+    sho: number;
+    sv: number;
+    ipouts: number;
     h: number;
-    x2b: number;
-    x3b: number;
+    er: number;
     hr: number;
-    rbi: number;
-    sb: number;
-    cs: number;
     bb: number;
     so: number;
+    baopp: number;
+    era: number;
     ibb: number;
+    wp: number;
     hbp: number;
+    bk: number;
+    bfp: number;
+    gf: number;
+    r: number;
     sh: number;
     sf: number;
     gidp: number;

@@ -23,5 +23,5 @@ export class Batting {
     hbp: number;
     sh: number;
     sf: number;
-    gidp: number
+    gidp: number;
 }

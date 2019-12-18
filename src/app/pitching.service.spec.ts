@@ -1,19 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FieldingService } from './fielding.service';
+import { PitchingService } from './pitching.service';
 
-describe('Fielding Service', () => {
+describe('PitchingService', () => {
     let httpMock: HttpTestingController;
-    let service: FieldingService;
+    let service: PitchingService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [FieldingService],
+            providers: [PitchingService],
             imports: [HttpClientTestingModule],
         });
 
         httpMock = TestBed.get(HttpTestingController);
-        service = TestBed.get(FieldingService);
+        service = TestBed.get(PitchingService);
     });
 
     afterEach(() => {
@@ -24,28 +24,28 @@ describe('Fielding Service', () => {
         expect(service).toBeTruthy();
     });
 
-    describe('Getting Fielding Data', () => {
+    describe('Getting Batting Data', () => {
         it('returned data should match mock data', () => {
-            const mockFielding = {
+            const mockPitching = {
                 playerId: 'id',
-                pos: 'c',
-                e: 1
-            };
+                w: 20,
+                hr: 1
+            }
 
-            service.getFieldingStats(mockFielding.playerId)
+            service.getPitchingStats(mockPitching.playerId)
                 .subscribe(data => {
-                    expect(data[0].playerId).toEqual(mockFielding.playerId);
-                    expect(data[0].pos).toEqual(mockFielding.pos);
-                    expect(data[0].e).toEqual(mockFielding.e);
+                    expect(data[0].playerId).toEqual(mockPitching.playerId);
+                    expect(data[0].w).toEqual(mockPitching.w);
+                    expect(data[0].hr).toEqual(mockPitching.hr);
                 });
 
             const req = httpMock.expectOne(
-                `https://localhost:5001/fielding/${mockFielding.playerId}`
+                `https://localhost:5001/pitching/${mockPitching.playerId}`
             );
 
             expect(req.request.method).toEqual('GET');
 
-            req.flush([mockFielding]);
+            req.flush([mockPitching]);
         });
     });
 });

@@ -1,10 +1,12 @@
-<mat-toolbar class="top-menu-toolbar" color="primary">
-  <button mat-button routerLink="/player-search">Home</button>
-  <button mat-button [matMenuTriggerFor]="players">Players</button>
-  <mat-menu #players="matMenu">
-    <button mat-menu-item routerLink="/player-search">Search</button>
-    <button mat-menu-item routerLink="/batting-leaderboard">Batting Leaderboard</button>
-    <button mat-menu-item>Pitcher Leaderboard</button>
-  </mat-menu>
-  <button mat-button>Teams</button>
-</mat-toolbar>
+<div class="mat-elevation-z8">
+  <mat-toolbar class="top-menu-toolbar" color="primary">
+    <button mat-button routerLink="/player-search">Home</button>
+    <button mat-button [matMenuTriggerFor]="players">Players</button>
+    <mat-menu #players="matMenu">
+      <button mat-menu-item routerLink="/player-search">Search</button>
+      <button mat-menu-item routerLink="/batting-leaderboard">Batting Leaderboard</button>
+      <button mat-menu-item>Pitcher Leaderboard</button>
+    </mat-menu>
+    <button mat-button>Teams</button>
+  </mat-toolbar>
+</div>

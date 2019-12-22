@@ -82,6 +82,7 @@ export class PlayerDetailComponent implements OnInit {
     }
     private generateBattingPropertyToLabelMap(): void {
         this.battingPropertyToLabelMap = new Map([
+            ['avg', 'AVG'],
             ['yearId', 'Year'],
             ['teamId', 'Team'],
             ['g', 'G'],

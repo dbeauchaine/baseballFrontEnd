@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, flush, fakeAsync } from '@angular/core/testing';
 import { PlayerDetailComponent } from './player-detail.component';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
@@ -7,7 +7,7 @@ import { LabelValueComponent } from '../label-value/label-value.component';
 import {
     MatTableModule, MatSortModule, MatFormFieldModule,
     MatToolbarModule, MatButtonModule, MatMenuModule,
-    MatInputModule, MatTabsModule, MatTableDataSource
+    MatInputModule, MatTabsModule, MatDividerModule
 } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TopMenuComponent } from '../top-menu/top-menu.component';
@@ -25,7 +25,7 @@ import { FieldingService } from '../fielding.service';
 import { PitchingService } from '../pitching.service';
 
 
-describe('PlayerDetailComponent', () => {
+fdescribe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
@@ -51,7 +51,8 @@ describe('PlayerDetailComponent', () => {
                 MatTableModule,
                 MatPaginatorModule,
                 MatSortModule,
-                NoopAnimationsModule
+                NoopAnimationsModule,
+                MatDividerModule,
             ],
 
             declarations: [
@@ -140,20 +141,36 @@ describe('PlayerDetailComponent', () => {
         expect(bioInfoComponent.componentInstance.player).toEqual(fakePlayer);
     });
 
-    it('should pass stats to table', () => {
+    fit('should pass stats to table', fakeAsync(() => {
         fixture.detectChanges();
 
-        const battingTableComponent = fixture.debugElement.query(By.css('.batting-table'));
-        expect(battingTableComponent.componentInstance.data).toEqual(fakeBatting);
+        checkTable("Batting", ".batting-table", fakeBatting);
 
-        const fieldingTab = fixture.debugElement.query(By.css('.fielding-tab'));
-        fieldingTab.nativeElement.click();
+        checkTable("Fielding",".fielding-table", fakeFielding);
+  
+        checkTable("Pitching", ".pitching-table", fakePitching);
+    }));
 
-        const fieldingTableComponent = fixture.debugElement.query(By.css('.fielding-table'))
-        expect(fieldingTableComponent.componentInstance.data).toEqual(fakeFielding);
-        // expect(tableComponent[1].componentInstance.data).toEqual(fakeFielding);
-        // expect(tableComponent[2].componentInstance.data).toEqual(fakePitching);
-    });
+    function checkTable(label: string, className:string, expectedData:any){
+        clickTab(label);
+
+        const tableComponent = fixture.debugElement.query(By.css(className));
+        expect(tableComponent.componentInstance.data).toEqual(expectedData);
+    }
+
+    function clickTab(label: string){
+        const tabs = fixture.debugElement.queryAll(By.css('.mat-tab-label-content'));
+        const tab = tabs.find(item => {
+            return item.nativeElement.textContent == label;
+        });
+
+        tab.nativeElement.click();
+
+        //workaround for async material tab behavior
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+    }
 
     function createFakePlayer(): Player {
         const player = new Player();

@@ -1,5 +1,3 @@
-import { Player } from './player';
-
 export class Batting {
     playerId: string;
     yearId: number;
@@ -24,4 +22,5 @@ export class Batting {
     sh: number;
     sf: number;
     gidp: number;
+    avg: number;
 }

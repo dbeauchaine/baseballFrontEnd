@@ -13,7 +13,7 @@ export class PlayerService {
 
     getPlayer(id: string): Observable<Player> {
         const url = `${this.playerUrl}/${id}`;
-
+        
         return this.http.get<Player>(url);
     }
 
@@ -22,6 +22,5 @@ export class PlayerService {
 
         return this.http.get<Player[]>(url);
     }
-
 
 }

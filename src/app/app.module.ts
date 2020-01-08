@@ -22,7 +22,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PlayerSearchFormComponent } from './player-search-form/player-search-form.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leaderboard.component';
-import { PlayerDetailTabComponent } from './player-detail-tab/player-detail-tab.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +35,6 @@ import { PlayerDetailTabComponent } from './player-detail-tab/player-detail-tab.
         PlayerSearchFormComponent,
         PlayerListComponent,
         BattingLeaderboardComponent,
-        PlayerDetailTabComponent,
     ],
     imports: [
         BrowserModule,

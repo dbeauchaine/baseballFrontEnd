@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { generatePlayer } from '../test-helpers';
 
-fdescribe('SearchPlayersComponent', () => {
+describe('SearchPlayersComponent', () => {
     let component: SearchPlayersComponent;
     let mockPlayerService: PlayerService;
     let fixture: ComponentFixture<SearchPlayersComponent>;

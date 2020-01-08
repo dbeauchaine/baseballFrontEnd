@@ -1,4 +1,5 @@
 export class Player {
+    nameFull: string;
     playerId: string;
     birthYear: number;
     birthMonth: number;

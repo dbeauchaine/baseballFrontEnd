@@ -13,15 +13,14 @@ export class PlayerService {
 
     getPlayer(id: string): Observable<Player> {
         const url = `${this.playerUrl}/${id}`;
-
+        
         return this.http.get<Player>(url);
     }
 
-    getPlayerByName(firstName: string, lastName: string): Observable<Player[]> {
-        const url = `${this.playerUrl}/?firstName=${firstName}&lastName=${lastName}`;
+    getPlayerByName(name: string): Observable<Player[]> {
+        const url = `${this.playerUrl}/?name=${name}`;
 
         return this.http.get<Player[]>(url);
     }
-
 
 }

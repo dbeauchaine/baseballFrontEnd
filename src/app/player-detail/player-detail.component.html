@@ -1,28 +1,27 @@
 <mat-card class="player-detail-card">
   <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
-
   <mat-card-content>
+    <mat-divider></mat-divider>
+    <p class="regular-season-title">Regular Season Stats</p>
     <mat-tab-group color="accent">
-      <mat-tab class="batting-tab" label="Batting" *ngIf="batting">
+    <mat-tab label="Batting" *ngIf="batting">
         <ng-template matTabContent>
           <app-data-table class="batting-table" [data]="batting" [propertyToLabelMap]="battingPropertyToLabelMap">
           </app-data-table>
         </ng-template>
       </mat-tab>
-      <mat-tab class="fielding-tab" label="Fielding" *ngIf="fielding">
+      <mat-tab label="Fielding" *ngIf="fielding">
         <ng-template matTabContent>
           <app-data-table class="fielding-table" [data]="fielding" [propertyToLabelMap]="fieldingPropertyToLabelMap">
           </app-data-table>
         </ng-template>
       </mat-tab>
-      <mat-tab class="pitching-tab" label="Pitching" *ngIf="pitching">
+      <mat-tab label="Pitching" *ngIf="pitching">
         <ng-template matTabContent>
           <app-data-table class="pitching-table" [data]="pitching" [propertyToLabelMap]="pitchingPropertyToLabelMap">
           </app-data-table>
         </ng-template>
       </mat-tab>
     </mat-tab-group>
-
   </mat-card-content>
-
 </mat-card>

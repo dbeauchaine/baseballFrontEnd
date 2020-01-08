@@ -1,4 +1,4 @@
-<mat-card-title *ngIf="player">{{player.nameFirst}} {{player.nameLast}}</mat-card-title>
+<mat-card-title class="player-title" *ngIf="player">{{player.nameFirst}} {{player.nameLast}}</mat-card-title>
 <mat-card-subtitle *ngIf="player">
 
   <app-label-value label="Throws/Bats" value="{{player.throws}}/{{player.bats}}">

@@ -16,8 +16,7 @@ export class SearchPlayersComponent implements OnInit {
 
     ngOnInit() {
         this.playerGroup = this.formBuilder.group({
-            firstName: ['', [Validators.required]],
-            lastName: ['', [Validators.required]],
+            name: ['', [Validators.required]],
         });
     }
 
@@ -30,7 +29,7 @@ export class SearchPlayersComponent implements OnInit {
     }
 
     onSubmit(): void {
-        this.playerService.getPlayerByName(this.playerGroup.value.firstName, this.playerGroup.value.lastName)
+        this.playerService.getPlayerByName(this.playerGroup.value.name)
             .subscribe((players) => {
                 this.players = players;
                 this.getUrl(players);

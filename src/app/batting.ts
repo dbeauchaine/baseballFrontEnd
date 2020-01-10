@@ -23,4 +23,13 @@ export class Batting {
     sf: number;
     gidp: number;
     avg: number;
+    slg: number;
+    obp: number;
+    ops: number;
+}
+
+export interface IBattingResponse
+{
+    total:number;
+    results: Batting[];
 }

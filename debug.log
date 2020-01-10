@@ -2,3 +2,7 @@
 [1205/104629.987:ERROR:file_io.cc(89)] ReadExactly: expected 40, observed 0
 [1217/192910.117:ERROR:process_info.cc(359)] UncheckedAllocate
 [1217/192910.117:ERROR:process_info.cc(359)] UncheckedAllocate
+[0109/165412.753:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0109/165412.754:ERROR:file_io.cc(89)] ReadExactly: expected 40, observed 0
+[0109/165412.789:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0109/165412.790:ERROR:file_io.cc(89)] ReadExactly: expected 40, observed 0

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Batting } from '../batting';
 import { BattingService } from '../batting.service';
 import { Fielding } from '../fielding';
@@ -82,9 +81,12 @@ export class PlayerDetailComponent implements OnInit {
     }
     private generateBattingPropertyToLabelMap(): void {
         this.battingPropertyToLabelMap = new Map([
-            ['avg', 'AVG'],
             ['yearId', 'Year'],
             ['teamId', 'Team'],
+            ['avg', 'AVG'],
+            ['slg', 'SLG'],
+            ['obp', 'OBP'],
+            ['ops', 'OPS'],
             ['g', 'G'],
             ['ab', 'AB'],
             ['h', 'H'],

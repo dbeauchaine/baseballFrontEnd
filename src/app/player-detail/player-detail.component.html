@@ -1,27 +1,32 @@
-<mat-card class="player-detail-card">
-  <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
-  <mat-card-content>
-    <mat-divider></mat-divider>
-    <p class="regular-season-title">Regular Season Stats</p>
-    <mat-tab-group color="accent">
-    <mat-tab label="Batting" *ngIf="batting">
-        <ng-template matTabContent>
-          <app-data-table class="batting-table" [data]="batting" [propertyToLabelMap]="battingPropertyToLabelMap">
-          </app-data-table>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Fielding" *ngIf="fielding">
-        <ng-template matTabContent>
-          <app-data-table class="fielding-table" [data]="fielding" [propertyToLabelMap]="fieldingPropertyToLabelMap">
-          </app-data-table>
-        </ng-template>
-      </mat-tab>
-      <mat-tab label="Pitching" *ngIf="pitching">
-        <ng-template matTabContent>
-          <app-data-table class="pitching-table" [data]="pitching" [propertyToLabelMap]="pitchingPropertyToLabelMap">
-          </app-data-table>
-        </ng-template>
-      </mat-tab>
-    </mat-tab-group>
-  </mat-card-content>
-</mat-card>
+<div class="player-detail-div">
+  <mat-card class="player-detail-card">
+    <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <p class="regular-season-title">Regular Season Stats</p>
+      <mat-card class="table-card">
+        <mat-tab-group color="accent" [selectedIndex]="0">
+          <mat-tab label="Batting">
+            <app-data-table *ngIf="batting" class="batting-table" [data]="batting"
+              [propertyToLabelMap]="battingPropertyToLabelMap">
+            </app-data-table>
+          </mat-tab>
+          <mat-tab label="Fielding">
+            <ng-template matTabContent>
+              <app-data-table *ngIf="fielding" class="fielding-table" [data]="fielding"
+                [propertyToLabelMap]="fieldingPropertyToLabelMap">
+              </app-data-table>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Pitching">
+            <ng-template matTabContent>
+              <app-data-table *ngIf="pitching" class="pitching-table" [data]="pitching"
+                [propertyToLabelMap]="pitchingPropertyToLabelMap">
+              </app-data-table>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

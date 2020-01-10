@@ -12,8 +12,8 @@
       <h3 mat-subheader>Matching Players:</h3>
       <mat-divider></mat-divider>
       <p></p>
-      <div *ngFor="let player of players; index as i">
-        <app-player-list [player]="player" [url]="url[i]"></app-player-list>
+      <div *ngFor="let player of players">
+        <app-player-list [player]="player"></app-player-list>
       </div>
     </div>
 

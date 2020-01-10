@@ -8,11 +8,11 @@ import { Player } from '../player';
     styleUrls: ['./player-list.component.sass']
 })
 export class PlayerListComponent implements OnInit {
-    @Input() url: string;
     @Input() player: Player;
-
+    url: string;
     constructor() { }
 
     ngOnInit() {
+        this.url = `/player-detail/${this.player.playerId}`
     }
 }

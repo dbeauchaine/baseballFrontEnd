@@ -12,7 +12,8 @@ import {
     MatInputModule, MatPaginatorModule,
     MatSortModule, MatTableModule, MatToolbarModule,
     MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule,
-    MatListModule, MatOptionModule, MatSelectModule
+    MatListModule, MatOptionModule, MatSelectModule, MatAutocompleteModule, 
+    MatProgressSpinnerModule, MatGridListModule
 } from '@angular/material';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { DataTableComponent } from './data-table/data-table.component';
@@ -22,7 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PlayerSearchFormComponent } from './player-search-form/player-search-form.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leaderboard.component';
-
+import { PlayerSearchComponent } from './player-search/player-search.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -35,6 +36,7 @@ import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leade
         PlayerSearchFormComponent,
         PlayerListComponent,
         BattingLeaderboardComponent,
+        PlayerSearchComponent,
     ],
     imports: [
         BrowserModule,
@@ -55,7 +57,10 @@ import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leade
         ReactiveFormsModule,
         MatListModule,
         MatOptionModule,
-        MatSelectModule
+        MatSelectModule,
+        MatAutocompleteModule,
+        MatProgressSpinnerModule,
+        MatGridListModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

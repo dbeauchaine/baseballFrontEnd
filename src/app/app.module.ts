@@ -13,7 +13,7 @@ import {
     MatSortModule, MatTableModule, MatToolbarModule,
     MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule,
     MatListModule, MatOptionModule, MatSelectModule, MatAutocompleteModule, 
-    MatProgressSpinnerModule, MatGridListModule
+    MatProgressSpinnerModule, MatGridListModule, MatExpansionModule
 } from '@angular/material';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { DataTableComponent } from './data-table/data-table.component';
@@ -61,6 +61,7 @@ import { PlayerSearchComponent } from './player-search/player-search.component';
         MatAutocompleteModule,
         MatProgressSpinnerModule,
         MatGridListModule,
+        MatExpansionModule
     ],
     providers: [],
     bootstrap: [AppComponent]

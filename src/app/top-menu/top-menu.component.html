@@ -1,6 +1,7 @@
 <div class="mat-elevation-z8">
-  <mat-toolbar class="top-menu-toolbar" color="primary">
-    <mat-toolbar-row>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="main-toolbar-row">
+      <app-player-search class="top-menu-search"></app-player-search>
       <button mat-button routerLink="/player-search">Home</button>
       <button mat-button [matMenuTriggerFor]="players">Players</button>
       <mat-menu #players="matMenu">
@@ -10,7 +11,6 @@
       </mat-menu>
       <button mat-button>Teams</button>
       <span class ="fill-space"></span>
-      <app-player-search class="top-menu-search"></app-player-search>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

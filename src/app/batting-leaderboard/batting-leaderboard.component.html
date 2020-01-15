@@ -1,17 +1,32 @@
-<mat-card class="batting-leaderboard-card">
-    <mat-card-title>Batting Leaderboard By Year</mat-card-title>
-    <mat-card-content>
-        Please Select a Year:
-        <mat-form-field>
-            <mat-label>Year</mat-label>
-            <mat-select (selectionChange)="onChange($event)">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let year of validYears" [value]="year">{{year}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-card-content>
-</mat-card>
-<mat-card class="batting-leaderboard">
-    <mat-card-title class="leaderboard-title" *ngIf="year">{{year}} Batting Leaderboard</mat-card-title>
-    <app-data-table class="leaderboard-table" *ngIf="battingLeaderboard" [data] = "battingLeaderboard" [propertyToLabelMap] = "battingPropertyToLabelMap"></app-data-table>
-</mat-card>
+<div class="batting-leaderboard-div">
+    <mat-card class="batting-leaderboard-card mat-elevation-z8">
+        <mat-card-title>Batting Leaderboard By Year</mat-card-title>
+        <mat-card-content>
+            Please Select a Year:
+            <mat-form-field>
+                <mat-label>Year</mat-label>
+                <mat-select (selectionChange)="onChange($event)">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let year of validYears" [value]="year">{{year}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-card-title class="leaderboard-title" *ngIf="year">{{year}} Batting Leaderboard</mat-card-title>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>Regular Season Statistics</mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+                            <mat-tab label="Batting">
+                                <ng-template matTabContent>
+                                    <app-data-table class="leaderboard-table" *ngIf="battingLeaderboard"
+                                        [data]="battingLeaderboard" [propertyToLabelMap]="battingPropertyToLabelMap">
+                                    </app-data-table>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </ng-template>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>

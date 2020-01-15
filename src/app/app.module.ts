@@ -24,6 +24,7 @@ import { PlayerSearchFormComponent } from './player-search-form/player-search-fo
 import { PlayerListComponent } from './player-list/player-list.component';
 import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leaderboard.component';
 import { PlayerSearchComponent } from './player-search/player-search.component';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -37,6 +38,7 @@ import { PlayerSearchComponent } from './player-search/player-search.component';
         PlayerListComponent,
         BattingLeaderboardComponent,
         PlayerSearchComponent,
+        HomePageComponent,
     ],
     imports: [
         BrowserModule,

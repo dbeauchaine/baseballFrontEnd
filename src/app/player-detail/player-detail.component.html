@@ -1,18 +1,20 @@
 <div class="player-detail-div">
-  <mat-card class="player-detail-card" style="text-align: center;">
+  <mat-card class="player-detail-card">
     <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
     <mat-card-content class="player-detail-card-content">
       <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>Regular Season Statistics</mat-panel-title>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
           <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
             <mat-tab label="Batting">
-              <app-data-table *ngIf="batting" class="batting-table" [data]="batting"
+              <ng-template matTabContent>
+              <app-data-table #battingTable *ngIf="batting" class="batting-table" [data]="batting"
                 [propertyToLabelMap]="battingPropertyToLabelMap">
               </app-data-table>
+            </ng-template>
             </mat-tab>
             <mat-tab label="Fielding">
               <ng-template matTabContent>
@@ -35,3 +37,4 @@
     </mat-card-content>
   </mat-card>
 </div>
+<router-outlet></router-outlet>

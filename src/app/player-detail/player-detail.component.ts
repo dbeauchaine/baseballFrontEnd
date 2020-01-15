@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
@@ -8,6 +8,7 @@ import { Fielding } from '../fielding';
 import { FieldingService } from '../fielding.service';
 import { Pitching } from '../pitching';
 import { PitchingService } from '../pitching.service';
+import { DataTableComponent } from '../data-table/data-table.component';
 
 @Component({
     selector: 'app-player-detail',
@@ -24,6 +25,7 @@ export class PlayerDetailComponent implements OnInit {
     public pitching: Pitching[];
     public pitchingPropertyToLabelMap: Map<string, string>;
 
+    @ViewChild(DataTableComponent, { static: true }) battingTable: DataTableComponent;
 
     constructor(
         private route: ActivatedRoute,
@@ -34,14 +36,16 @@ export class PlayerDetailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.id = this.route.snapshot.paramMap.get('id');
-        this.getPlayer();
-        this.getBatting();
-        this.getFielding();
-        this.getPitching();
-        this.generateBattingPropertyToLabelMap();
-        this.generateFieldingPropertyToLabelMap();
-        this.generatePitchingPropertyToLabelMap();
+        this.route.paramMap.subscribe(id => {
+            this.id = id.get('id');
+            this.getPlayer();
+            this.getBatting();
+            this.getFielding();
+            this.getPitching();
+            this.generateBattingPropertyToLabelMap();
+            this.generateFieldingPropertyToLabelMap();
+            this.generatePitchingPropertyToLabelMap();
+        });
     }
 
     private getPlayer(): void {

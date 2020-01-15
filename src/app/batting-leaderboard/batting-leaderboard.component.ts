@@ -34,8 +34,8 @@ export class BattingLeaderboardComponent implements OnInit {
 
   generateBattingPropertyToLabelMap(): void {
     this.battingPropertyToLabelMap = new Map([
-      ['nameFirst', 'First'],
-      ['nameLast', 'Last'],
+      ['nameFirst', 'First Name'],
+      ['nameLast', 'Last Name'],
       ['teamId', 'Team'],
       ['avg', 'AVG'],
       ['slg', 'SLG'],

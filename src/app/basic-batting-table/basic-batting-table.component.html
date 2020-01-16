@@ -1,0 +1,117 @@
+<mat-form-field>
+    <input class="filter-input" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Table">
+</mat-form-field>
+<div class="mat-elvation-z8">
+    <table class="player-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="yearId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Year</th>
+            <td mat-cell *matCellDef="let batting">{{batting.yearId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="teamId" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
+            <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.teamId}}">
+                <img src="assets/logos/{{batting.teamId}}.png" height="30" alt="{{batting.teamId}}"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="lgId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>League</th>
+            <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.lgId}}">
+                <img src="assets/logos/{{batting.lgId}}.png" height="30" alt="{{batting.lgId}}"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="g">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Games">G</th>
+            <td mat-cell *matCellDef="let batting">{{batting.g}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ab">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="At Bats">AB</th>
+            <td mat-cell *matCellDef="let batting">{{batting.ab}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="r">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Runs">R</th>
+            <td mat-cell *matCellDef="let batting">{{batting.r}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="h">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Hits">H</th>
+            <td mat-cell *matCellDef="let batting">{{batting.h}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="singles">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Singles">1B</th>
+            <td mat-cell *matCellDef="let batting">{{batting.singles}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="x2b">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Doubles">2B</th>
+            <td mat-cell *matCellDef="let batting">{{batting.x2b}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="x3b">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Triples">3B</th>
+            <td mat-cell *matCellDef="let batting">{{batting.x3b}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hr">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Homeruns">HR</th>
+            <td mat-cell *matCellDef="let batting">{{batting.hr}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rbi">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Runs Batted In">RBI</th>
+            <td mat-cell *matCellDef="let batting">{{batting.rbi}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sb">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Stolen Bases">SB</th>
+            <td mat-cell *matCellDef="let batting">{{batting.sb}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cs">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Caught Stealing">CS</th>
+            <td mat-cell *matCellDef="let batting">{{batting.cs}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="bb">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Walks">BB</th>
+            <td mat-cell *matCellDef="let batting">{{batting.bb}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="so">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Strikeouts">K</th>
+            <td mat-cell *matCellDef="let batting">{{batting.so}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ibb">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Intentional Walks">IBB</th>
+            <td mat-cell *matCellDef="let batting">{{batting.ibb}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hbp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Hit By Pitch">HBP</th>
+            <td mat-cell *matCellDef="let batting">{{batting.hbp}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Sacrifice Hits">SH</th>
+            <td mat-cell *matCellDef="let batting">{{batting.sh}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sf">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Sacrifice Flies">SF</th>
+            <td mat-cell *matCellDef="let batting">{{batting.sf}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gidp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Ground Into Double Playe">GIDP</th>
+            <td mat-cell *matCellDef="let batting">{{batting.gidp}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"></mat-paginator>
+</div>

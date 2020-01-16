@@ -1,15 +1,13 @@
-export class Batting {
+export class BattingPost {
     playerId: string;
     yearId: number;
-    stint: number;
+    round: string;
     teamId: string;
     lgId: string;
     g: number;
-    gBatting: number;
     ab: number;
     r: number;
     h: number;
-    singles: number;
     x2b: number;
     x3b: number;
     hr: number;

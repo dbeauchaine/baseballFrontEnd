@@ -1,0 +1,47 @@
+<mat-form-field>
+    <input class="filter-input" matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Table">
+</mat-form-field>
+<div class="mat-elvation-z8">
+    <table class="player-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="yearId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Year</th>
+            <td mat-cell *matCellDef="let batting">{{batting.yearId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="teamId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
+            <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.teamId}}">
+                <img src="assets/logos/{{batting.teamId}}.png" height="30" alt="{{batting.teamId}}"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="lgId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>League</th>
+            <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.lgId}}">
+                <img src="assets/logos/{{batting.lgId}}.png" height="30" alt="{{batting.lgId}}"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="avg">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Average">AVG</th>
+            <td mat-cell *matCellDef="let batting">{{batting.avg}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="slg">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Slugging %">SLG</th>
+            <td mat-cell *matCellDef="let batting">{{batting.slg}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="obp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On Base %">OBP</th>
+            <td mat-cell *matCellDef="let batting">{{batting.obp}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ops">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On Base % Plus Slugging %">OPS</th>
+            <td mat-cell *matCellDef="let batting">{{batting.ops}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"></mat-paginator>
+</div>

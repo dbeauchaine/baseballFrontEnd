@@ -3,35 +3,52 @@
     <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
     <mat-card-content class="player-detail-card-content">
       <mat-accordion>
-        <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel [expanded]="false">
           <mat-expansion-panel-header>
-            <mat-panel-title>Regular Season Statistics</mat-panel-title>
+            <mat-panel-title>Batting Statistics</mat-panel-title>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
-          <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
-            <mat-tab label="Batting">
-              <ng-template matTabContent>
-              <app-data-table #battingTable *ngIf="batting" class="batting-table" [data]="batting"
-                [propertyToLabelMap]="battingPropertyToLabelMap">
-              </app-data-table>
-            </ng-template>
-            </mat-tab>
-            <mat-tab label="Fielding">
-              <ng-template matTabContent>
-                <app-data-table *ngIf="fielding" class="fielding-table" [data]="fielding"
-                  [propertyToLabelMap]="fieldingPropertyToLabelMap">
-                </app-data-table>
-              </ng-template>
-            </mat-tab>
-            <mat-tab label="Pitching">
-              <ng-template matTabContent>
-                <app-data-table *ngIf="pitching" class="pitching-table" [data]="pitching"
-                  [propertyToLabelMap]="pitchingPropertyToLabelMap">
-                </app-data-table>
-              </ng-template>
-            </mat-tab>
-          </mat-tab-group>
-        </ng-template>
+            <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+              <mat-tab label="Regular Season Box Stats">
+                <ng-template matTabContent>
+                  <app-basic-batting-table *ngIf="batting" [data]="batting"></app-basic-batting-table>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Regular Season Advanced Stats">
+                <ng-template matTabContent>
+                  <app-advanced-batting-table *ngIf="batting" [data]="batting"></app-advanced-batting-table>
+                </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Pitching Statistics</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+              <mat-tab label="Regular Season Stats">
+                <ng-template matTabContent>
+                  <app-basic-pitching-table *ngIf="pitching" [data]="pitching"></app-basic-pitching-table>
+                </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel [expanded]="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Fielding Statistics</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+              <mat-tab label="Regular Season Stats">
+                <ng-template matTabContent>
+                  <app-basic-fielding-table *ngIf="fielding" [data]="fielding"></app-basic-fielding-table>
+                </ng-template>
+              </mat-tab>
+            </mat-tab-group>
+          </ng-template>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card-content>

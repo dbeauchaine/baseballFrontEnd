@@ -10,16 +10,25 @@
                     <mat-option *ngFor="let year of validYears" [value]="year">{{year}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-card-title class="leaderboard-title" *ngIf="year">{{year}} Batting Leaderboard</mat-card-title>
             <mat-accordion>
                 <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header>Regular Season Statistics</mat-expansion-panel-header>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{year}} Batting Leaderboard</mat-panel-title>
+                    </mat-expansion-panel-header>
                     <ng-template matExpansionPanelContent>
                         <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
-                            <mat-tab label="Batting">
+                            <mat-tab label="Regular-Season Batting">
                                 <ng-template matTabContent>
                                     <app-data-table class="leaderboard-table" *ngIf="battingLeaderboard"
                                         [data]="battingLeaderboard" [propertyToLabelMap]="battingPropertyToLabelMap">
+                                    </app-data-table>
+                                </ng-template>
+                            </mat-tab>
+                            <mat-tab label="Post-Season Batting">
+                                <ng-template matTabContent>
+                                    <app-data-table class="post-leaderboard-table" *ngIf="battingPostLeaderboard"
+                                        [data]="battingPostLeaderboard"
+                                        [propertyToLabelMap]="battingPostPropertyToLabelMap">
                                     </app-data-table>
                                 </ng-template>
                             </mat-tab>

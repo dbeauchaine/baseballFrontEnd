@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,  } from '@angular/core';
+import { Component, OnInit, ViewChild, } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
@@ -9,6 +9,7 @@ import { FieldingService } from '../fielding.service';
 import { Pitching } from '../pitching';
 import { PitchingService } from '../pitching.service';
 import { DataTableComponent } from '../data-table/data-table.component';
+import { BattingPost } from '../battingPost';
 
 @Component({
     selector: 'app-player-detail',
@@ -24,8 +25,8 @@ export class PlayerDetailComponent implements OnInit {
     public fieldingPropertyToLabelMap: Map<string, string>;
     public pitching: Pitching[];
     public pitchingPropertyToLabelMap: Map<string, string>;
-
-    @ViewChild(DataTableComponent, { static: true }) battingTable: DataTableComponent;
+    public battingPost: BattingPost[];
+    public battingPostPropertyToLabelMap: Map<string, string>;
 
     constructor(
         private route: ActivatedRoute,
@@ -40,11 +41,13 @@ export class PlayerDetailComponent implements OnInit {
             this.id = id.get('id');
             this.getPlayer();
             this.getBatting();
+            this.getBattingPost();
             this.getFielding();
             this.getPitching();
             this.generateBattingPropertyToLabelMap();
             this.generateFieldingPropertyToLabelMap();
             this.generatePitchingPropertyToLabelMap();
+            this.generateBattingPostPropertyToLabelMap();
         });
     }
 
@@ -58,18 +61,25 @@ export class PlayerDetailComponent implements OnInit {
     private getBatting(): void {
         this.battingService.getBattingStats(this.id)
             .subscribe(batting => {
-                if(batting.length > 0)
-                {
+                if (batting.length > 0) {
                     this.batting = batting;
                 }
             });
     }
 
+    private getBattingPost(): void {
+        this.battingService.getBattingPostStats(this.id)
+        .subscribe(batting => {
+            if(batting.length > 0) {
+                this.battingPost = batting;
+            }
+        });
+    }
+
     private getFielding(): void {
         this.fieldingService.getFieldingStats(this.id)
             .subscribe(fielding => {
-                if(fielding.length > 0)
-                {
+                if (fielding.length > 0) {
                     this.fielding = fielding;
                 }
             });
@@ -87,6 +97,34 @@ export class PlayerDetailComponent implements OnInit {
         this.battingPropertyToLabelMap = new Map([
             ['yearId', 'Year'],
             ['teamId', 'Team'],
+            ['avg', 'AVG'],
+            ['slg', 'SLG'],
+            ['obp', 'OBP'],
+            ['ops', 'OPS'],
+            ['g', 'G'],
+            ['ab', 'AB'],
+            ['h', 'H'],
+            ['x2b', '2B'],
+            ['x3b', '3B'],
+            ['hr', 'HR'],
+            ['rbi', 'RBI'],
+            ['bb', 'BB'],
+            ['ibb', 'IBB'],
+            ['hbp', 'HBP'],
+            ['so', 'K'],
+            ['sb', 'SB'],
+            ['cs', 'CS'],
+            ['sh', 'SH'],
+            ['sf', 'SF'],
+            ['gidp', 'GIDP']
+        ]);
+    }
+
+    private generateBattingPostPropertyToLabelMap(): void {
+        this.battingPostPropertyToLabelMap = new Map([
+            ['yearId', 'Year'],
+            ['teamId', 'Team'],
+            ['round', "Round"],
             ['avg', 'AVG'],
             ['slg', 'SLG'],
             ['obp', 'OBP'],

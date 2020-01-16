@@ -13,7 +13,7 @@ import {
     MatSortModule, MatTableModule, MatToolbarModule,
     MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule,
     MatListModule, MatOptionModule, MatSelectModule, MatAutocompleteModule, 
-    MatProgressSpinnerModule, MatGridListModule, MatExpansionModule
+    MatProgressSpinnerModule, MatGridListModule, MatExpansionModule, MatIconModule, MatTooltipModule
 } from '@angular/material';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { DataTableComponent } from './data-table/data-table.component';
@@ -25,6 +25,12 @@ import { PlayerListComponent } from './player-list/player-list.component';
 import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leaderboard.component';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TeamStatsComponent } from './team-stats/team-stats.component';
+import { TeamStandingsComponent } from './team-standings/team-standings.component';
+import { BasicBattingTableComponent } from './basic-batting-table/basic-batting-table.component';
+import { AdvancedBattingTableComponent } from './advanced-batting-table/advanced-batting-table.component';
+import { BasicPitchingTableComponent } from './basic-pitching-table/basic-pitching-table.component';
+import { BasicFieldingTableComponent } from './basic-fielding-table/basic-fielding-table.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -39,6 +45,12 @@ import { HomePageComponent } from './home-page/home-page.component';
         BattingLeaderboardComponent,
         PlayerSearchComponent,
         HomePageComponent,
+        TeamStatsComponent,
+        TeamStandingsComponent,
+        BasicBattingTableComponent,
+        AdvancedBattingTableComponent,
+        BasicPitchingTableComponent,
+        BasicFieldingTableComponent,
     ],
     imports: [
         BrowserModule,
@@ -63,7 +75,9 @@ import { HomePageComponent } from './home-page/home-page.component';
         MatAutocompleteModule,
         MatProgressSpinnerModule,
         MatGridListModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatIconModule,
+        MatTooltipModule
     ],
     providers: [],
     bootstrap: [AppComponent]

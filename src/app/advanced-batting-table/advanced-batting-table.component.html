@@ -22,22 +22,22 @@
 
         <ng-container matColumnDef="avg">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Average">AVG</th>
-            <td mat-cell *matCellDef="let batting">{{batting.avg}}</td>
+            <td mat-cell *matCellDef="let batting">{{batting.avg | number : '0.3-3'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="slg">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Slugging %">SLG</th>
-            <td mat-cell *matCellDef="let batting">{{batting.slg}}</td>
+            <td mat-cell *matCellDef="let batting">{{batting.slg | number : '0.3-3'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="obp">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On Base %">OBP</th>
-            <td mat-cell *matCellDef="let batting">{{batting.obp}}</td>
+            <td mat-cell *matCellDef="let batting">{{batting.obp | number : '0.3-3'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="ops">
             <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="On Base % Plus Slugging %">OPS</th>
-            <td mat-cell *matCellDef="let batting">{{batting.ops}}</td>
+            <td mat-cell *matCellDef="let batting">{{batting.ops | number : '0.3-3'}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

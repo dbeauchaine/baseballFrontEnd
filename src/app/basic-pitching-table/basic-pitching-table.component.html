@@ -92,7 +92,7 @@
         
         <ng-container matColumnDef="era">
             <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Earned Run Average">ERA</th>
-            <td mat-cell *matCellDef="let pitching">{{pitching.era}}</td>
+            <td mat-cell *matCellDef="let pitching">{{pitching.era | number : '1.2-2'}}</td>
         </ng-container>
         
         <ng-container matColumnDef="ibb">

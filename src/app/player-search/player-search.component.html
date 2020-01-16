@@ -7,7 +7,7 @@
       <mat-spinner diameter="50"></mat-spinner>
     </mat-option>
     <mat-option *ngFor="let player of players | async" [value]="player"
-      routerLink="../player/{{player.playerId}}">
+      routerLink="/player/{{player.playerId}}">
       <nav>
         {{player.nameFirst}} {{player.nameLast}}
         <small> | Born: {{player.birthMonth}}/{{player.birthDay}}/{{player.birthYear}} </small>

@@ -26,7 +26,7 @@ export class AdvancedBattingTableComponent implements OnInit {
   }
 
   generateDisplayedColumns(): string[] {
-    return ['yearId','teamId','lgId','avg', 'slg', 'obp', 'ops'];
+    return ['yearId', 'teamId', 'lgId', 'avg', 'slg', 'obp', 'ops'];
   }
 
   applyFilter(filterValue: string) {

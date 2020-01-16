@@ -1,15 +1,16 @@
-export class Batting {
+export class BattingPostLeaderboard {
+    nameFirst: string;
+    nameLast: string;
+    nameGiven: string;
     playerId: string;
     yearId: number;
-    stint: number;
+    round: string;
     teamId: string;
     lgId: string;
     g: number;
-    gBatting: number;
     ab: number;
     r: number;
     h: number;
-    singles: number;
     x2b: number;
     x3b: number;
     hr: number;
@@ -23,8 +24,4 @@ export class Batting {
     sh: number;
     sf: number;
     gidp: number;
-    avg: number;
-    slg: number;
-    obp: number;
-    ops: number;
 }

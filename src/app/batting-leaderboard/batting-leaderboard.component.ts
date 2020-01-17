@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
 import { BattingService } from '../batting.service';
-import { MatTableDataSource } from '@angular/material';
 import { BattingLeaderboard } from '../battingLeaderboard';
 import { BattingPostLeaderboard } from '../battingPostLeaderboard';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -19,20 +18,20 @@ export class BattingLeaderboardComponent implements OnInit {
   public battingPostPropertyToLabelMap: Map<string, string>;
 
   constructor(
-    private route: ActivatedRoute,
     private battingService: BattingService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
-    this.generateBattingPropertyToLabelMap();
-    this.generateBattingPostPropertyToLabelMap();
     this.validYears = this.generateValidYears();
+    this.titleService.setTitle(`Batting Leaderboards`);
   }
 
   getBattingByYear(): void {
     this.battingService.getBattingStatsByYear(this.year)
       .subscribe(batting => {
         this.battingLeaderboard = batting;
+        this.titleService.setTitle(`${this.year} Batting Leaderboards`)
       });
   }
 
@@ -41,64 +40,6 @@ export class BattingLeaderboardComponent implements OnInit {
     .subscribe(batting => {
       this.battingPostLeaderboard = batting;
     });
-  }
-
-  generateBattingPropertyToLabelMap(): void {
-    this.battingPropertyToLabelMap = new Map([
-      ['nameFirst', 'First Name'],
-      ['nameLast', 'Last Name'],
-      ['teamId', 'Team'],
-      ['avg', 'AVG'],
-      ['slg', 'SLG'],
-      ['obp', 'OBP'],
-      ['ops', 'OPS'],
-      ['g', 'G'],
-      ['ab', 'AB'],
-      ['h', 'H'],
-      ['x2b', '2B'],
-      ['x3b', '3B'],
-      ['hr', 'HR'],
-      ['rbi', 'RBI'],
-      ['bb', 'BB'],
-      ['ibb', 'IBB'],
-      ['hbp', 'HBP'],
-      ['so', 'K'],
-      ['sb', 'SB'],
-      ['cs', 'CS'],
-      ['sh', 'SH'],
-      ['sf', 'SF'],
-      ['gidp', 'GIDP']
-    ]);
-  }
-
-  generateBattingPostPropertyToLabelMap(): void {
-    this.battingPostPropertyToLabelMap = new Map([
-      ['nameFirst', 'First Name'],
-      ['nameLast', 'Last Name'],
-      ['teamId', 'Team'],
-      ['yearId', 'Year'],
-      ['round', 'Round'],
-      ['avg', 'AVG'],
-      ['slg', 'SLG'],
-      ['obp', 'OBP'],
-      ['ops', 'OPS'],
-      ['g', 'G'],
-      ['ab', 'AB'],
-      ['h', 'H'],
-      ['x2b', '2B'],
-      ['x3b', '3B'],
-      ['hr', 'HR'],
-      ['rbi', 'RBI'],
-      ['bb', 'BB'],
-      ['ibb', 'IBB'],
-      ['hbp', 'HBP'],
-      ['so', 'K'],
-      ['sb', 'SB'],
-      ['cs', 'CS'],
-      ['sh', 'SH'],
-      ['sf', 'SF'],
-      ['gidp', 'GIDP']
-    ]);
   }
 
   generateValidYears(): string[] {

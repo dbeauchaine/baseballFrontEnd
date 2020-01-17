@@ -10,17 +10,20 @@ import { Pitching } from '../pitching';
 export class BasicPitchingTableComponent implements OnInit {
   public displayedColumns: string[];
   public dataSource: MatTableDataSource<Pitching>;
-  @Input() data: any;
+  @Input() data: Pitching[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    this.displayedColumns = this.generateDisplayedColumns();
+  }
+
+  ngOnChanges(){
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.displayedColumns = this.generateDisplayedColumns();
   }
 
   generateDisplayedColumns(): string[] {

@@ -10,17 +10,20 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 export class BasicFieldingTableComponent implements OnInit {
   public displayedColumns: string[];
   public dataSource: MatTableDataSource<Fielding>;
-  @Input() data: any;
+  @Input() data: Fielding[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
+    this.displayedColumns = this.generateDisplayedColumns();
+  }
+
+  ngOnChanges(){
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.displayedColumns = this.generateDisplayedColumns();
   }
 
   generateDisplayedColumns(): string[] {

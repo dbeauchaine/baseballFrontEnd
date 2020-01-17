@@ -6,8 +6,10 @@ export class BattingPost {
     lgId: string;
     g: number;
     ab: number;
+    pa: number;
     r: number;
     h: number;
+    singles: number;
     x2b: number;
     x3b: number;
     hr: number;
@@ -25,4 +27,8 @@ export class BattingPost {
     slg: number;
     obp: number;
     ops: number;
+    bbRate: number;
+    kRate: number;
+    iso: number;
+    babip: number;
 }

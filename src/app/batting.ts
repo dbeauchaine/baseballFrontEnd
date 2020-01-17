@@ -7,6 +7,7 @@ export class Batting {
     g: number;
     gBatting: number;
     ab: number;
+    pa: number;
     r: number;
     h: number;
     singles: number;
@@ -27,4 +28,8 @@ export class Batting {
     slg: number;
     obp: number;
     ops: number;
+    bbRate: number;
+    kRate: number;
+    iso: number;
+    babip: number;
 }

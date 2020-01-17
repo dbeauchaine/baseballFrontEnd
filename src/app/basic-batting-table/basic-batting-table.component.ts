@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Batting } from '../batting';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 
 @Component({
   selector: 'app-basic-batting-table',
@@ -9,23 +10,40 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 })
 export class BasicBattingTableComponent implements OnInit {
   public displayedColumns: string[];
-  public dataSource: MatTableDataSource<Batting>;
+  public dataSource: MatTableDataSource<any>;
   @Input() data: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.displayedColumns = this.generateDisplayedColumns();
   }
 
+  ngOnChanges() {
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   generateDisplayedColumns(): string[] {
-    return ['yearId', 'teamId', 'lgId', 'g', 'ab', 'r', 'h', 'singles', 'x2b', 'x3b', 'hr', 'rbi',
-      'sb', 'cs', 'bb', 'so', 'ibb', 'hbp', 'sh', 'sf', 'gidp'];
+    let columns:string[] = ['yearId']; 
+    
+    if(this.data[0].nameFirst){
+      columns = columns.concat(['nameFirst','nameLast'])
+    }
+
+    columns = columns.concat(['teamId', 'lgId']);
+
+    if (this.data[0].round) {
+      columns = columns.concat('round');
+    }
+
+    columns = columns.concat(['g', 'ab', 'r', 'h', 'singles', 'x2b', 'x3b', 'hr', 'rbi',
+      'sb', 'cs', 'bb', 'so', 'ibb', 'hbp', 'sh', 'sf', 'gidp']);
+
+      return columns;
   }
 
   applyFilter(filterValue: string) {

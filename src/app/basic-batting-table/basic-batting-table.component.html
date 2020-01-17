@@ -8,6 +8,16 @@
             <td mat-cell *matCellDef="let batting">{{batting.yearId}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="nameFirst">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+            <td mat-cell *matCellDef="let batting">{{batting.nameFirst}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nameLast">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+            <td mat-cell *matCellDef="let batting">{{batting.nameLast}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="teamId" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
             <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.teamId}}">
@@ -20,6 +30,11 @@
                 <img src="assets/logos/{{batting.lgId}}.png" height="30" alt="{{batting.lgId}}"></td>
         </ng-container>
 
+        <ng-container matColumnDef="round">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Playoff Round">Round</th>
+            <td mat-cell *matCellDef="let batting">{{batting.round}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="g">
             <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Games">G</th>
             <td mat-cell *matCellDef="let batting">{{batting.g}}</td>
@@ -28,6 +43,11 @@
         <ng-container matColumnDef="ab">
             <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="At Bats">AB</th>
             <td mat-cell *matCellDef="let batting">{{batting.ab}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="pa">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Plate Appearances">PA</th>
+            <td mat-cell *matCellDef="let batting">{{batting.pa}}</td>
         </ng-container>
 
         <ng-container matColumnDef="r">

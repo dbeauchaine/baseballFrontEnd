@@ -11,7 +11,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class AdvancedBattingTableComponent implements OnInit {
 
   public displayedColumns: string[];
-  public dataSource: MatTableDataSource<Batting>;
+  public dataSource: MatTableDataSource<any>;
   @Input() data: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -19,14 +19,25 @@ export class AdvancedBattingTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.displayedColumns = this.generateDisplayedColumns();
   }
 
+  ngOnChanges(){
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   generateDisplayedColumns(): string[] {
-    return ['yearId', 'teamId', 'lgId', 'avg', 'slg', 'obp', 'ops'];
+    let columns:string[] = ['yearId'];
+
+    if(this.data[0].nameFirst){
+      columns = columns.concat(['nameFirst','nameLast']);
+    }
+
+    columns = columns.concat(['teamId', 'lgId', 'avg', 'slg', 'obp', 'ops','iso','babip','bbRate','kRate']);
+
+    return columns;
   }
 
   applyFilter(filterValue: string) {

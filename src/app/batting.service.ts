@@ -20,9 +20,9 @@ export class BattingService {
     return this.http.get<Batting[]>(url);
   }
 
-  getBattingPostStats(id: string): Observable<BattingPost[]>{
+  getBattingPostStats(id: string): Observable<BattingPost[]> {
     const url = `${this.battingUrl}/post/${id}`;
-    
+
     return this.http.get<BattingPost[]>(url);
   }
   getBattingStatsByYear(year: number): Observable<BattingLeaderboard[]> {
@@ -31,7 +31,7 @@ export class BattingService {
     return this.http.get<BattingLeaderboard[]>(url);
   }
 
-  getBattingPostStatsByYear(year: number): Observable<BattingPostLeaderboard[]>{
+  getBattingPostStatsByYear(year: number): Observable<BattingPostLeaderboard[]> {
     const url = `${this.battingUrl}/post/year/${year.toString()}`;
 
     return this.http.get<BattingPostLeaderboard[]>(url);

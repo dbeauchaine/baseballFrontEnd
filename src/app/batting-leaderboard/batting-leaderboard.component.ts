@@ -14,8 +14,6 @@ export class BattingLeaderboardComponent implements OnInit {
   public validYears: string[];
   public battingLeaderboard: BattingLeaderboard[];
   public battingPostLeaderboard: BattingPostLeaderboard[];
-  public battingPropertyToLabelMap: Map<string, string>;
-  public battingPostPropertyToLabelMap: Map<string, string>;
   public default:string;
 
   constructor(

@@ -15,7 +15,10 @@ export class BasicBattingTableComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.displayedColumns = this.generateDisplayedColumns();
@@ -52,6 +55,10 @@ export class BasicBattingTableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  goToPlayer(row){
+    this.router.navigateByUrl(`player/${row.playerId}`);
   }
 
 }

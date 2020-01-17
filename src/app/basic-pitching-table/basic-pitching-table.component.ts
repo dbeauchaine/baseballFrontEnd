@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Pitching } from '../pitching';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-pitching-table',
@@ -14,7 +15,7 @@ export class BasicPitchingTableComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.displayedColumns = this.generateDisplayedColumns();
@@ -37,5 +38,9 @@ export class BasicPitchingTableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  goToPlayer(row){
+    this.router.navigateByUrl(`player/${row.playerId}`);
   }
 }

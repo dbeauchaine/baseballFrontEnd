@@ -9,18 +9,18 @@
         </ng-container>
 
         <ng-container matColumnDef="nameFirst">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-            <td mat-cell *matCellDef="let batting">{{batting.nameFirst}}</td>
+            <th mat-header-cell class="name-header" *matHeaderCellDef mat-sort-header>First Name</th>
+            <td mat-cell class="name-cell" *matCellDef="let batting">{{batting.nameFirst}}</td>
         </ng-container>
 
         <ng-container matColumnDef="nameLast">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
-            <td mat-cell *matCellDef="let batting">{{batting.nameLast}}</td>
+            <th mat-header-cell class="name-header" *matHeaderCellDef mat-sort-header>Last Name</th>
+            <td mat-cell class="name-cell" *matCellDef="let batting">{{batting.nameLast}}</td>
         </ng-container>
 
         <ng-container matColumnDef="teamId" >
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Team</th>
-            <td mat-cell class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.teamId}}">
+            <td mat-cell class="logo-cell" class="logo-cell" *matCellDef="let batting" matTooltip="{{batting.teamId}}">
                 <img src="assets/logos/{{batting.teamId}}.png" height="30" alt="{{batting.teamId}}"></td>
         </ng-container>
 

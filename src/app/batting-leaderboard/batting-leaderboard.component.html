@@ -5,8 +5,7 @@
             Please Select a Year:
             <mat-form-field>
                 <mat-label>Year</mat-label>
-                <mat-select (selectionChange)="onChange($event)">
-                    <mat-option>None</mat-option>
+                <mat-select [(ngModel)]="default" (selectionChange)="onChange($event)">
                     <mat-option *ngFor="let year of validYears" [value]="year">{{year}}</mat-option>
                 </mat-select>
             </mat-form-field>

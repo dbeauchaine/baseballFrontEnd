@@ -16,6 +16,7 @@ export class BattingLeaderboardComponent implements OnInit {
   public battingPostLeaderboard: BattingPostLeaderboard[];
   public battingPropertyToLabelMap: Map<string, string>;
   public battingPostPropertyToLabelMap: Map<string, string>;
+  public default:string;
 
   constructor(
     private battingService: BattingService,
@@ -23,8 +24,12 @@ export class BattingLeaderboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.default = '2018';
+    this.year = Number(this.default);
     this.validYears = this.generateValidYears();
     this.titleService.setTitle(`Batting Leaderboards`);
+    this.getBattingByYear();
+    this.getBattingPostByYear();
   }
 
   getBattingByYear(): void {

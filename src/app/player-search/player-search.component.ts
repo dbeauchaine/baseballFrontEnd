@@ -27,7 +27,7 @@ export class PlayerSearchComponent implements OnInit {
   ngOnInit(): void {
     this.playersForm = this.fb.group({
       userInput: null
-    })
+    });
 
     this.players = this.playersForm.get('userInput')
       .valueChanges

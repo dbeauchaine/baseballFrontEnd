@@ -53,8 +53,9 @@ export class BattingLeaderboardComponent implements OnInit {
     return validDates;
   }
 
-  public onChange(event): void {
-    this.year = Number(event.value);
+  public updateData(event): void {
+    console.log(event);
+    this.year = event;
     this.getBattingByYear();
     this.getBattingPostByYear();
   }

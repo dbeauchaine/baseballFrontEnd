@@ -31,6 +31,7 @@ import { BasicBattingTableComponent } from './basic-batting-table/basic-batting-
 import { AdvancedBattingTableComponent } from './advanced-batting-table/advanced-batting-table.component';
 import { BasicPitchingTableComponent } from './basic-pitching-table/basic-pitching-table.component';
 import { BasicFieldingTableComponent } from './basic-fielding-table/basic-fielding-table.component';
+import { YearSelectComponent } from './year-select/year-select.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { BasicFieldingTableComponent } from './basic-fielding-table/basic-fieldi
         AdvancedBattingTableComponent,
         BasicPitchingTableComponent,
         BasicFieldingTableComponent,
+        YearSelectComponent,
     ],
     imports: [
         BrowserModule,

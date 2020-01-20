@@ -21,15 +21,10 @@ export class BasicPitchingTableComponent implements OnInit {
     this.displayedColumns = this.generateDisplayedColumns();
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-
-  generateDisplayedColumns(): string[] {
-    return ['yearId', 'teamId', 'lgId', 'era', 'w', 'l', 'g', 'gs', 'cg', 'sho', 'sv', 'ipouts',
-      'h', 'er', 'hr', 'bb', 'so', 'baopp', 'ibb', 'wp', 'hbp', 'bk', 'bfp', 'r', 'sh', 'sf', 'gidp'];
   }
 
   applyFilter(filterValue: string) {
@@ -40,7 +35,117 @@ export class BasicPitchingTableComponent implements OnInit {
     }
   }
 
-  goToPlayer(row){
+  goToPlayer(row) {
     this.router.navigateByUrl(`player/${row.playerId}`);
+  }
+
+  generateDisplayedColumns(): string[] {
+    let columns: string[] = ['yearId'];
+
+    if(this.data[0].teamId){
+      columns = columns.concat(['teamId'])
+    }
+
+    if(this.data[0].lgId){
+      columns = columns.concat(['lgId'])
+    }
+
+    if(this.data[0].era){
+      columns = columns.concat(['era'])
+    }
+
+    if(this.data[0].w){
+      columns = columns.concat(['w'])
+    }
+
+    if(this.data[0].l){
+      columns = columns.concat(['l'])
+    }
+
+    if(this.data[0].g){
+      columns = columns.concat(['g'])
+    }
+
+    if(this.data[0].gs){
+      columns = columns.concat(['gs'])
+    }
+
+    if(this.data[0].cg){
+      columns = columns.concat(['cg'])
+    }
+
+    if(this.data[0].sho){
+      columns = columns.concat(['sho'])
+    }
+
+    if(this.data[0].sv){
+      columns = columns.concat(['sv'])
+    }
+
+    if(this.data[0].ipouts){
+      columns = columns.concat(['ipouts'])
+    }
+
+    if(this.data[0].h){
+      columns = columns.concat(['h'])
+    }
+    
+    if(this.data[0].er){
+      columns = columns.concat(['er'])
+    }
+
+    if(this.data[0].hr){
+      columns = columns.concat(['hr'])
+    }
+
+    if(this.data[0].bb){
+      columns = columns.concat(['bb'])
+    }
+
+    if(this.data[0].so){
+      columns = columns.concat(['so'])
+    }
+
+    if(this.data[0].baopp){
+      columns = columns.concat(['baopp'])
+    }
+
+    if(this.data[0].ibb){
+      columns = columns.concat(['ibb'])
+    }
+
+    if(this.data[0].wp){
+      columns = columns.concat(['wp'])
+    }
+
+    if(this.data[0].hbp){
+      columns = columns.concat(['hbp'])
+    }
+
+    if(this.data[0].bk){
+      columns = columns.concat(['bk'])
+    }
+
+    if(this.data[0].bfp){
+      columns = columns.concat(['bfp'])
+    }
+
+    if(this.data[0].r){
+      columns = columns.concat(['r'])
+    }
+
+    if(this.data[0].sh){
+      columns = columns.concat(['sh'])
+    }
+
+    if(this.data[0].sf){
+      columns = columns.concat(['sf'])
+    }
+
+    if(this.data[0].gidp){
+      columns = columns.concat(['gidp'])
+    }
+    
+    return columns;
   }
 }

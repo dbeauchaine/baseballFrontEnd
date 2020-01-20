@@ -29,18 +29,6 @@ export class AdvancedBattingTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  generateDisplayedColumns(): string[] {
-    let columns:string[] = ['yearId'];
-
-    if(this.data[0].nameFirst){
-      columns = columns.concat(['nameFirst','nameLast']);
-    }
-
-    columns = columns.concat(['teamId', 'lgId', 'avg', 'slg', 'obp', 'ops','iso','babip','bbRate','kRate']);
-
-    return columns;
-  }
-
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -51,5 +39,55 @@ export class AdvancedBattingTableComponent implements OnInit {
 
   goToPlayer(row){
     this.router.navigateByUrl(`player/${row.playerId}`);
+  }
+
+  generateDisplayedColumns(): string[] {
+    let columns:string[] = ['yearId'];
+
+    if(this.data[0].nameFirst){
+      columns = columns.concat(['nameFirst','nameLast']);
+    }
+
+    if(this.data[0].teamId){
+      columns = columns.concat(['teamId']);
+    }
+
+    if(this.data[0].lgId){
+      columns = columns.concat(['lgId']);
+    }
+
+    if(this.data[0].avg){
+      columns = columns.concat(['avg']);
+    }
+
+    if(this.data[0].slg){
+      columns = columns.concat(['slg']);
+    }
+
+    if(this.data[0].obp){
+      columns = columns.concat(['obp']);
+    }
+
+    if(this.data[0].ops){
+      columns = columns.concat(['ops']);
+    }
+
+    if(this.data[0].iso){
+      columns = columns.concat(['iso']);
+    }
+
+    if(this.data[0].babip){
+      columns = columns.concat(['babip']);
+    }
+
+    if(this.data[0].bbRate){
+      columns = columns.concat(['bbRate']);
+    }
+
+    if(this.data[0].kRate){
+      columns = columns.concat(['kRate']);
+    }
+
+    return columns;
   }
 }

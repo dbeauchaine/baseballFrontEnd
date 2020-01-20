@@ -56,35 +56,35 @@ export class AdvancedBattingTableComponent implements OnInit {
       columns = columns.concat(['lgId']);
     }
 
-    if(this.data[0].avg){
+    if(this.data[0].avg !== null){
       columns = columns.concat(['avg']);
     }
 
-    if(this.data[0].slg){
+    if(this.data[0].slg !== null){
       columns = columns.concat(['slg']);
     }
 
-    if(this.data[0].obp){
+    if(this.data[0].obp !== null){
       columns = columns.concat(['obp']);
     }
 
-    if(this.data[0].ops){
+    if(this.data[0].ops !== null){
       columns = columns.concat(['ops']);
     }
 
-    if(this.data[0].iso){
+    if(this.data[0].iso !== null){
       columns = columns.concat(['iso']);
     }
 
-    if(this.data[0].babip){
+    if(this.data[0].babip !== null){
       columns = columns.concat(['babip']);
     }
 
-    if(this.data[0].bbRate){
+    if(this.data[0].bbRate !== null){
       columns = columns.concat(['bbRate']);
     }
 
-    if(this.data[0].kRate){
+    if(this.data[0].kRate !== null){
       columns = columns.concat(['kRate']);
     }
 

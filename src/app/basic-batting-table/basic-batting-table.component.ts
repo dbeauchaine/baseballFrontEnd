@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Batting } from '../batting';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
-import { Player } from '../player';
 
 @Component({
   selector: 'app-basic-batting-table',
@@ -30,18 +29,6 @@ export class BasicBattingTableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  goToPlayer(row:Player){
-    this.router.navigateByUrl(`player/${row.playerId}`);
-  }
 
   generateDisplayedColumns(): string[] {
     let columns:string[] = ['yearId']; 
@@ -52,67 +39,77 @@ export class BasicBattingTableComponent implements OnInit {
     if(this.data[0].teamId){
       columns = columns.concat(['teamId'])
     }
-    if(this.data[0].lgId){
-    columns = columns.concat(['lgId']);
-    }
+    if(this.data[0].lgId)
+    columns = columns.concat(['teamId', 'lgId']);
+
     if (this.data[0].round) {
-      columns = columns.concat('round');
+      columns = columns.concat(['round']);
     }
-    if (this.data[0].g) {
-      columns = columns.concat('g');
-    }
-    if (this.data[0].ab) {
+
+    if (this.data[0].ab !== null) {
       columns = columns.concat('ab');
     }
-    if (this.data[0].r) {
+    if (this.data[0].r !== null) {
       columns = columns.concat('r');
     }
-    if (this.data[0].h) {
+    if (this.data[0].h !== null) {
       columns = columns.concat('h');
     }
-    if (this.data[0].singles) {
+    if (this.data[0].singles !== null) {
       columns = columns.concat('singles');
     }
-    if (this.data[0].x2b) {
+    if (this.data[0].x2b !== null) {
       columns = columns.concat('x2b');
     }
-    if (this.data[0].x3b) {
+    if (this.data[0].x3b !== null) {
       columns = columns.concat('x3b');
     }
-    if (this.data[0].hr) {
+    if (this.data[0].hr !== null) {
       columns = columns.concat('hr');
     }
-    if (this.data[0].rbi) {
+    if (this.data[0].rbi !== null) {
       columns = columns.concat('rbi');
     }
-    if (this.data[0].sb) {
+    if (this.data[0].sb !== null) {
       columns = columns.concat('cs');
     }
-    if (this.data[0].cs) {
+    if (this.data[0].cs !== null) {
       columns = columns.concat('cs');
     }
-    if (this.data[0].bb) {
+    if (this.data[0].bb !== null) {
       columns = columns.concat('bb');
     }
-    if (this.data[0].so) {
+    if (this.data[0].so !== null) {
       columns = columns.concat('so');
     }
-    if (this.data[0].ibb) {
+    if (this.data[0].ibb !== null) {
       columns = columns.concat('ibb');
     }
-    if (this.data[0].hbp) {
+    if (this.data[0].hbp !== null) {
       columns = columns.concat('hbp');
     }
-    if (this.data[0].sh) {
+    if (this.data[0].sh !== null) {
       columns = columns.concat('sh');
     }
-    if (this.data[0].sf) {
+    if (this.data[0].sf !== null) {
       columns = columns.concat('sf');
     }
-    if (this.data[0].gidp) {
+    if (this.data[0].gidp !== null) {
       columns = columns.concat('gidp');
     }
       return columns;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  goToPlayer(row){
+    this.router.navigateByUrl(`player/${row.playerId}`);
   }
 
 }

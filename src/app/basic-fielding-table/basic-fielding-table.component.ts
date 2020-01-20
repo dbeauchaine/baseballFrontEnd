@@ -54,47 +54,47 @@ export class BasicFieldingTableComponent implements OnInit {
       columns = columns.concat(['pos']);
     }
 
-    if(this.data[0].g){
+    if(this.data[0].g !== null){
       columns = columns.concat(['g']);
     }
 
-    if(this.data[0].gs){
+    if(this.data[0].gs !== null){
       columns = columns.concat(['gs']);
     }
 
-    if(this.data[0].innOuts){
+    if(this.data[0].innOuts !== null){
       columns = columns.concat(['innOuts']);
     }
 
-    if(this.data[0].po){
+    if(this.data[0].po !== null){
       columns = columns.concat(['po']);
     }
 
-    if(this.data[0].a){
+    if(this.data[0].a !== null){
       columns = columns.concat(['a']);
     }
 
-    if(this.data[0].e){
+    if(this.data[0].e !== null){
       columns = columns.concat(['e']);
     }
 
-    if(this.data[0].dp){
+    if(this.data[0].dp !== null){
       columns = columns.concat(['dp']);
     }
 
-    if(this.data[0].zr){
+    if(this.data[0].zr !== null){
       columns = columns.concat(['zr']);
     }
 
-    if(this.data[0].wp){
+    if(this.data[0].wp !== null){
       columns = columns.concat(['wp']);
     }
 
-    if(this.data[0].sb){
+    if(this.data[0].sb !== null){
       columns = columns.concat(['sb']);
     }
 
-    if(this.data[0].cs){
+    if(this.data[0].cs !== null){
       columns = columns.concat(['cs']);
     }
 

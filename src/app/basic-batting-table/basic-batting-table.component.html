@@ -35,6 +35,16 @@
             <td mat-cell *matCellDef="let batting">{{batting.round}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="w">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Wins">W</th>
+            <td mat-cell *matCellDef="let batting">{{batting.w}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="l">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Losses">L</th>
+            <td mat-cell *matCellDef="let batting">{{batting.l}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="g">
             <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Games">G</th>
             <td mat-cell *matCellDef="let batting">{{batting.g}}</td>

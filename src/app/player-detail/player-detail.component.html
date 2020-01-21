@@ -1,6 +1,8 @@
 <div class="player-detail-div">
   <mat-card class="player-detail-card">
-    <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
+    <mat-card-title>
+      <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
+    </mat-card-title>
     <mat-card-content class="player-detail-card-content">
       <mat-accordion>
         <mat-expansion-panel *ngIf="batting" [expanded]="true">

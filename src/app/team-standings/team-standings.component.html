@@ -1,5 +1,55 @@
-<div class="team-standings-div">
-    <mat-card>
-        <p>team-standings works!</p>
+<div class="team-detail-div">
+    <mat-card class="team-leaderboard-card mat-elevation-z8">
+        <mat-card-title>Team Standings By Year</mat-card-title>
+        <mat-card-content>
+            <app-year-select (yearChange)="updateData($event)"></app-year-select>
+            <mat-accordion>
+                <mat-expansion-panel *ngIf="teams" [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{year}} Regular-Season Stats</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="min-ab">* minimum 100 Atbats.</p>
+                    <ng-template matExpansionPanelContent>
+                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+                            <mat-tab label="Box Stats">
+                                <ng-template matTabContent>
+                                    <app-basic-batting-table *ngIf="teams" [data]="teams">
+                                    </app-basic-batting-table>
+                                </ng-template>
+                            </mat-tab>
+                            <mat-tab label="Advanced Stats">
+                                <ng-template matTabContent>
+                                    <app-advanced-batting-table *ngIf="teams" [data]="teams">
+                                    </app-advanced-batting-table>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </ng-template>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="teamsPost" [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{year}} Post-Season Leaderboard</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+                            <mat-tab label="Box Stats">
+                                <ng-template matTabContent>
+                                    <app-basic-batting-table *ngIf="teamsPost"
+                                        [data]="teamsPost">
+                                    </app-basic-batting-table>
+                                </ng-template>
+                            </mat-tab>
+                            <mat-tab label="Advanced Stats">
+                                <ng-template matTabContent>
+                                    <app-advanced-batting-table *ngIf="teamsPost"
+                                        [data]="teamsPost">
+                                    </app-advanced-batting-table>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </ng-template>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
     </mat-card>
-</div>
+  </div>

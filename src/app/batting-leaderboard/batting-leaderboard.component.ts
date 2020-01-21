@@ -3,6 +3,7 @@ import { BattingService } from '../batting.service';
 import { BattingLeaderboard } from '../battingLeaderboard';
 import { BattingPostLeaderboard } from '../battingPostLeaderboard';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -11,20 +12,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class BattingLeaderboardComponent implements OnInit {
   public year: number;
-  public validYears: string[];
   public battingLeaderboard: BattingLeaderboard[];
   public battingPostLeaderboard: BattingPostLeaderboard[];
   public default:string;
 
   constructor(
     private battingService: BattingService,
-    private titleService: Title
+    private titleService: Title,
+    private router:Router
   ) { }
 
   ngOnInit() {
     this.default = '2018';
     this.year = Number(this.default);
-    this.validYears = this.generateValidYears();
     this.titleService.setTitle(`Batting Leaderboards`);
     this.getBattingByYear();
     this.getBattingPostByYear();
@@ -45,18 +45,10 @@ export class BattingLeaderboardComponent implements OnInit {
     });
   }
 
-  generateValidYears(): string[] {
-    const validDates = new Array();
-    for (let i = 2018; i > 1871; i--) {
-      validDates.push(i.toString());
-    }
-    return validDates;
-  }
-
   public updateData(event): void {
-    console.log(event);
     this.year = event;
     this.getBattingByYear();
     this.getBattingPostByYear();
+    this.router.navigateByUrl(`/batting-leaderboard/${this.year}`);
   }
 }

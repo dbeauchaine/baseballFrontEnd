@@ -6,13 +6,13 @@
       </button>
       <button mat-button [matMenuTriggerFor]="leaderboards">Leaderboards</button>
       <mat-menu #leaderboards="matMenu">
-        <button mat-menu-item routerLink="/batting-leaderboard">Batting Leaderboard</button>
+        <button mat-menu-item routerLink="/batting-leaderboard/2018">Batting Leaderboard</button>
         <button mat-menu-item>Pitcher Leaderboard</button>
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="teams">Teams</button>
       <mat-menu #teams="matMenu">
-        <button mat-menu-item routerLink="/team">Team Statistics</button>
-        <button mat-menu-item routerLink="/standings">Standings</button>
+        <button mat-menu-item routerLink="/team/SEA">Team Statistics</button>
+        <button mat-menu-item routerLink="/teams/standings/2018">Standings</button>
       </mat-menu>
       <span class ="filler"></span>
       <app-player-search class="top-menu-search"></app-player-search>

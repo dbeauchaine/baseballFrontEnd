@@ -13,9 +13,9 @@ const routes: Routes = [
     { path: 'player-search', component: SearchPlayersComponent},
     { path: 'home-page', component: HomePageComponent},
     { path: '', redirectTo: '/home-page', pathMatch: 'full' },
-    { path: 'batting-leaderboard', component: BattingLeaderboardComponent},
-    { path: 'team', component: TeamStatsComponent},
-    { path: 'standings', component: TeamStandingsComponent}
+    { path: 'batting-leaderboard/:year', component: BattingLeaderboardComponent},
+    { path: 'team/:id', component: TeamStatsComponent},
+    { path: 'teams/standings/:year', component: TeamStandingsComponent}
 ];
 
 @NgModule({

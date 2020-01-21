@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../team';
 import { TeamService } from '../team.service';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-team-stats',
@@ -9,45 +10,30 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./team-stats.component.sass']
 })
 export class TeamStatsComponent implements OnInit {
-
-  public year: number;
-  public validYears: string[];
-  public teams: Team[];
-  public default:string;
+  public team: Team[];
+  public id: string;
 
   constructor(
     private teamService:TeamService,
-    private titleService: Title
+    private titleService: Title,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.default = '2018';
-    this.year = Number(this.default);
-    this.validYears = this.generateValidYears();
-    this.titleService.setTitle(`Team Leaderboards`);
-    this.getTeamsByYear();
+    this.route.paramMap.subscribe(id => {
+      this.id = id.get('id');
+      this.titleService.setTitle(`Team Stats`);
+      this.getTeam();
+    });
 
   }
 
-  getTeamsByYear(): void { 
-    this.teamService.getTeamStatsByYear(this.year)
-    .subscribe(teams =>{
-      this.teams = teams;
-      this.titleService.setTitle(`${this.year} Team Leaderboards`)   
+  getTeam(): void { 
+    this.teamService.getTeamStats(this.id)
+    .subscribe(team =>{
+      this.team = team;
+      this.titleService.setTitle(`${this.id} Stats`)   
     })
-  }
-
-  generateValidYears(): string[] {
-    const validDates = new Array();
-    for (let i = 2018; i > 1871; i--) {
-      validDates.push(i.toString());
-    }
-    return validDates;
-  }
-
-  public onChange(event): void {
-    this.year = Number(event.value);
-    this.getTeamsByYear();
   }
 
 }

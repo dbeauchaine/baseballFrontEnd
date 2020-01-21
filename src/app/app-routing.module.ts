@@ -6,6 +6,7 @@ import { BattingLeaderboardComponent } from './batting-leaderboard/batting-leade
 import { HomePageComponent } from './home-page/home-page.component';
 import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { TeamStandingsComponent } from './team-standings/team-standings.component';
+import { TeamListComponent } from './team-list/team-list.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
     { path: '', redirectTo: '/home-page', pathMatch: 'full' },
     { path: 'batting-leaderboard/:year', component: BattingLeaderboardComponent},
     { path: 'team/:id', component: TeamStatsComponent},
-    { path: 'teams/standings/:year', component: TeamStandingsComponent}
+    { path: 'teams/standings/:year', component: TeamStandingsComponent},
+    { path: 'teams', component: TeamListComponent}
 ];
 
 @NgModule({

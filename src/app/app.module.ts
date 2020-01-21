@@ -33,6 +33,8 @@ import { BasicPitchingTableComponent } from './basic-pitching-table/basic-pitchi
 import { BasicFieldingTableComponent } from './basic-fielding-table/basic-fielding-table.component';
 import { YearSelectComponent } from './year-select/year-select.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
+import { TeamListComponent } from './team-list/team-list.component';
+import { TeamListElementComponent } from './team-list-element/team-list-element.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +58,8 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
         BasicFieldingTableComponent,
         YearSelectComponent,
         TeamDetailComponent,
+        TeamListComponent,
+        TeamListElementComponent,
     ],
     imports: [
         BrowserModule,

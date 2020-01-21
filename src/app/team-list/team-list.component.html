@@ -1,0 +1,71 @@
+<div class="team-list-div">
+    <mat-card>
+        <mat-card-title> 
+            <img class="teamPhoto" src="assets/logos/AL.png"
+            onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" width="40" />
+            American League
+        </mat-card-title>
+        <mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>East</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="alEast">
+                        <app-team-list-element [teams]="alEast"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Central</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="alCentral">
+                        <app-team-list-element [teams]="alCentral"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>West</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="alWest">
+                        <app-team-list-element [teams]="alWest"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+
+        <mat-card-title> 
+            <img class="teamPhoto" src="assets/logos/NL.png"
+            onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" width="40" />
+            National League
+        </mat-card-title>
+        <mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>East</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="nlEast">
+                        <app-team-list-element [teams]="nlEast"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Central</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="nlCentral">
+                        <app-team-list-element [teams]="nlCentral"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+                <mat-expansion-panel [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>West</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngIf="nlWest">
+                        <app-team-list-element [teams]="nlWest"></app-team-list-element>
+                    </ng-container>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>

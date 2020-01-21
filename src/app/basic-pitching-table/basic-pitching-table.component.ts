@@ -50,99 +50,99 @@ export class BasicPitchingTableComponent implements OnInit {
       columns = columns.concat(['lgId'])
     }
 
-    if(this.data[0].era !== null){
+    if(typeof(this.data[0].era) !== 'undefined'){
       columns = columns.concat(['era'])
     }
 
-    if(this.data[0].w !== null){
+    if(typeof(this.data[0].w) !== 'undefined'){
       columns = columns.concat(['w'])
     }
 
-    if(this.data[0].l !== null){
+    if(typeof(this.data[0].l) !== 'undefined'){
       columns = columns.concat(['l'])
     }
 
-    if(this.data[0].g !== null){
+    if(typeof(this.data[0].g) !== 'undefined'){
       columns = columns.concat(['g'])
     }
 
-    if(this.data[0].gs !== null){
+    if(typeof(this.data[0].gs) !== 'undefined'){
       columns = columns.concat(['gs'])
     }
 
-    if(this.data[0].cg !== null){
+    if(typeof(this.data[0].cg) !== 'undefined'){
       columns = columns.concat(['cg'])
     }
 
-    if(this.data[0].sho !== null){
+    if(typeof(this.data[0].sho) !== 'undefined'){
       columns = columns.concat(['sho'])
     }
 
-    if(this.data[0].sv !== null){
+    if(typeof(this.data[0].sv) !== 'undefined'){
       columns = columns.concat(['sv'])
     }
 
-    if(this.data[0].ipouts !== null){
+    if(typeof(this.data[0].ipouts) !== 'undefined'){
       columns = columns.concat(['ipouts'])
     }
 
-    if(this.data[0].h !== null){
+    if(typeof(this.data[0].h) !== 'undefined'){
       columns = columns.concat(['h'])
     }
     
-    if(this.data[0].er !== null){
+    if(typeof(this.data[0].er) !== 'undefined'){
       columns = columns.concat(['er'])
     }
 
-    if(this.data[0].hr !== null){
+    if(typeof(this.data[0].hr) !== 'undefined'){
       columns = columns.concat(['hr'])
     }
 
-    if(this.data[0].bb !== null){
+    if(typeof(this.data[0].bb) !== 'undefined'){
       columns = columns.concat(['bb'])
     }
 
-    if(this.data[0].so !== null){
+    if(typeof(this.data[0].so) !== 'undefined'){
       columns = columns.concat(['so'])
     }
 
-    if(this.data[0].baopp !== null){
+    if(typeof(this.data[0].baopp) !== 'undefined'){
       columns = columns.concat(['baopp'])
     }
 
-    if(this.data[0].ibb !== null){
+    if(typeof(this.data[0].ibb) !== 'undefined'){
       columns = columns.concat(['ibb'])
     }
 
-    if(this.data[0].wp !== null){
+    if(typeof(this.data[0].wp) !== 'undefined'){
       columns = columns.concat(['wp'])
     }
 
-    if(this.data[0].hbp !== null){
+    if(typeof(this.data[0].hbp) !== 'undefined'){
       columns = columns.concat(['hbp'])
     }
 
-    if(this.data[0].bk !== null){
+    if(typeof(this.data[0].bk) !== 'undefined'){
       columns = columns.concat(['bk'])
     }
 
-    if(this.data[0].bfp !== null){
+    if(typeof(this.data[0].bfp) !== 'undefined'){
       columns = columns.concat(['bfp'])
     }
 
-    if(this.data[0].r !== null){
+    if(typeof(this.data[0].r) !== 'undefined'){
       columns = columns.concat(['r'])
     }
 
-    if(this.data[0].sh !== null){
+    if(typeof(this.data[0].sh) !== 'undefined'){
       columns = columns.concat(['sh'])
     }
 
-    if(this.data[0].sf !== null){
+    if(typeof(this.data[0].sf) !== 'undefined'){
       columns = columns.concat(['sf'])
     }
 
-    if(this.data[0].gidp !== null){
+    if(typeof(this.data[0].gidp) !== 'undefined'){
       columns = columns.concat(['gidp'])
     }
     

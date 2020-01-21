@@ -54,47 +54,47 @@ export class BasicFieldingTableComponent implements OnInit {
       columns = columns.concat(['pos']);
     }
 
-    if(this.data[0].g !== null){
+    if(typeof(this.data[0].g) !== 'undefined'){
       columns = columns.concat(['g']);
     }
 
-    if(this.data[0].gs !== null){
+    if(typeof(this.data[0].gs) !== 'undefined'){
       columns = columns.concat(['gs']);
     }
 
-    if(this.data[0].innOuts !== null){
+    if(typeof(this.data[0].innOuts) !== 'undefined'){
       columns = columns.concat(['innOuts']);
     }
 
-    if(this.data[0].po !== null){
+    if(typeof(this.data[0].po) !== 'undefined'){
       columns = columns.concat(['po']);
     }
 
-    if(this.data[0].a !== null){
+    if(typeof(this.data[0].a) !== 'undefined'){
       columns = columns.concat(['a']);
     }
 
-    if(this.data[0].e !== null){
+    if(typeof(this.data[0].e) !== 'undefined'){
       columns = columns.concat(['e']);
     }
 
-    if(this.data[0].dp !== null){
+    if(typeof(this.data[0].dp) !== 'undefined'){
       columns = columns.concat(['dp']);
     }
 
-    if(this.data[0].zr !== null){
+    if(typeof(this.data[0].zr) !== 'undefined'){
       columns = columns.concat(['zr']);
     }
 
-    if(this.data[0].wp !== null){
+    if(typeof(this.data[0].wp) !== 'undefined'){
       columns = columns.concat(['wp']);
     }
 
-    if(this.data[0].sb !== null){
+    if(typeof(this.data[0].sb) !== 'undefined'){
       columns = columns.concat(['sb']);
     }
 
-    if(this.data[0].cs !== null){
+    if(typeof(this.data[0].cs) !== 'undefined'){
       columns = columns.concat(['cs']);
     }
 

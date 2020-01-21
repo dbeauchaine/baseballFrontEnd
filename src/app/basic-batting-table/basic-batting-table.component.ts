@@ -40,61 +40,61 @@ export class BasicBattingTableComponent implements OnInit {
       columns = columns.concat(['teamId'])
     }
     if(this.data[0].lgId)
-    columns = columns.concat(['teamId', 'lgId']);
+    columns = columns.concat(['lgId']);
 
     if (this.data[0].round) {
       columns = columns.concat(['round']);
     }
 
-    if (this.data[0].ab !== null) {
+    if (typeof(this.data[0].ab) !== 'undefined') {
       columns = columns.concat('ab');
     }
-    if (this.data[0].r !== null) {
+    if (typeof(this.data[0].r) !== 'undefined') {
       columns = columns.concat('r');
     }
-    if (this.data[0].h !== null) {
+    if (typeof(this.data[0].h) !== 'undefined') {
       columns = columns.concat('h');
     }
-    if (this.data[0].singles !== null) {
+    if (typeof(this.data[0].singles) !== 'undefined') {
       columns = columns.concat('singles');
     }
-    if (this.data[0].x2b !== null) {
+    if (typeof(this.data[0].x2b) !== 'undefined') {
       columns = columns.concat('x2b');
     }
-    if (this.data[0].x3b !== null) {
+    if (typeof(this.data[0].x3b) !== 'undefined') {
       columns = columns.concat('x3b');
     }
-    if (this.data[0].hr !== null) {
+    if (typeof(this.data[0].hr) !== 'undefined') {
       columns = columns.concat('hr');
     }
-    if (this.data[0].rbi !== null) {
+    if (typeof(this.data[0].rbi) !== 'undefined') {
       columns = columns.concat('rbi');
     }
-    if (this.data[0].sb !== null) {
+    if (typeof(this.data[0].sb) !== 'undefined') {
+      columns = columns.concat('sb');
+    }
+    if (typeof(this.data[0].cs) !== 'undefined') {
       columns = columns.concat('cs');
     }
-    if (this.data[0].cs !== null) {
-      columns = columns.concat('cs');
-    }
-    if (this.data[0].bb !== null) {
+    if (typeof(this.data[0].bb) !== 'undefined') {
       columns = columns.concat('bb');
     }
-    if (this.data[0].so !== null) {
+    if (typeof(this.data[0].so) !== 'undefined') {
       columns = columns.concat('so');
     }
-    if (this.data[0].ibb !== null) {
+    if (typeof(this.data[0].ibb) !== 'undefined') {
       columns = columns.concat('ibb');
     }
-    if (this.data[0].hbp !== null) {
+    if (typeof(this.data[0].hbp) !== 'undefined') {
       columns = columns.concat('hbp');
     }
-    if (this.data[0].sh !== null) {
+    if (typeof(this.data[0].sh) !== 'undefined') {
       columns = columns.concat('sh');
     }
-    if (this.data[0].sf !== null) {
+    if (typeof(this.data[0].sf) !== 'undefined') {
       columns = columns.concat('sf');
     }
-    if (this.data[0].gidp !== null) {
+    if (typeof(this.data[0].gidp) !== 'undefined') {
       columns = columns.concat('gidp');
     }
       return columns;

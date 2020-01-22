@@ -1,9 +1,9 @@
 import { Component, OnInit} from '@angular/core';
-import { BattingService } from '../batting.service';
 import { BattingLeaderboard } from '../battingLeaderboard';
 import { BattingPostLeaderboard } from '../battingPostLeaderboard';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BattingService } from '../batting.service';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -14,20 +14,21 @@ export class BattingLeaderboardComponent implements OnInit {
   public year: number;
   public battingLeaderboard: BattingLeaderboard[];
   public battingPostLeaderboard: BattingPostLeaderboard[];
-  public default:string;
 
   constructor(
-    private battingService: BattingService,
     private titleService: Title,
-    private router:Router
+    private router: Router,
+    private route:ActivatedRoute,
+    private battingService: BattingService
   ) { }
 
   ngOnInit() {
-    this.default = '2018';
-    this.year = Number(this.default);
+    this.route.paramMap.subscribe(year => {
+    this.year = Number(year.get('year'));
     this.titleService.setTitle(`Batting Leaderboards`);
     this.getBattingByYear();
     this.getBattingPostByYear();
+    });
   }
 
   getBattingByYear(): void {

@@ -14,7 +14,7 @@ export class YearSelectComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.default = '2018';
+    this.default = 'None';
     this.year = Number(this.default);
     this.validYears = this.generateValidYears();
   }

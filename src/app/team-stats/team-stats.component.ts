@@ -38,7 +38,6 @@ export class TeamStatsComponent implements OnInit {
   }
 
   goToTeam(event): void {
-    console.log(event.teamId)
     this.router.navigateByUrl(`team/${event.teamId}`);
   }
 

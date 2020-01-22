@@ -13,22 +13,22 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-batting-table *ngIf="batting" [data]="batting"></app-basic-batting-table>
+                  <app-basic-batting-table class="basic-batting-table" *ngIf="batting" [data]="batting"></app-basic-batting-table>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Regular Season Advanced Stats">
                 <ng-template matTabContent>
-                  <app-advanced-batting-table *ngIf="batting" [data]="batting"></app-advanced-batting-table>
+                  <app-advanced-batting-table class ="advanced-batting-table" *ngIf="batting" [data]="batting"></app-advanced-batting-table>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Post-Season Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-batting-table *ngIf="battingPost" [data]="battingPost"></app-basic-batting-table>
+                  <app-basic-batting-table class="post-basic-batting-table" *ngIf="battingPost" [data]="battingPost"></app-basic-batting-table>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Post-Season Advanced Stats">
                 <ng-template matTabContent>
-                  <app-advanced-batting-table *ngIf="battingPost" [data]="battingPost"></app-advanced-batting-table>
+                  <app-advanced-batting-table class="post-advanced-batting-table" *ngIf="battingPost" [data]="battingPost"></app-advanced-batting-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
@@ -42,7 +42,7 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Stats">
                 <ng-template matTabContent>
-                  <app-basic-pitching-table *ngIf="pitching" [data]="pitching"></app-basic-pitching-table>
+                  <app-basic-pitching-table class="basic-pitching-table" *ngIf="pitching" [data]="pitching"></app-basic-pitching-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
@@ -56,7 +56,7 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Stats">
                 <ng-template matTabContent>
-                  <app-basic-fielding-table *ngIf="fielding" [data]="fielding"></app-basic-fielding-table>
+                  <app-basic-fielding-table class="basic-fielding-table" *ngIf="fielding" [data]="fielding"></app-basic-fielding-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>

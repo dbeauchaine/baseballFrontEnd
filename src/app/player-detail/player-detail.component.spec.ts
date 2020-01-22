@@ -7,7 +7,11 @@ import { LabelValueComponent } from '../label-value/label-value.component';
 import {
     MatTableModule, MatSortModule, MatFormFieldModule,
     MatToolbarModule, MatButtonModule, MatMenuModule,
-    MatInputModule, MatTabsModule, MatDividerModule
+    MatInputModule, MatTabsModule, MatDividerModule,
+    MatExpansionModule, MatIconModule, MatTooltipModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    MatOptionModule,
 } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TopMenuComponent } from '../top-menu/top-menu.component';
@@ -23,9 +27,18 @@ import { Fielding } from '../fielding';
 import { Pitching } from '../pitching';
 import { FieldingService } from '../fielding.service';
 import { PitchingService } from '../pitching.service';
+import { BasicBattingTableComponent } from '../basic-batting-table/basic-batting-table.component';
+import { AdvancedBattingTableComponent } from '../advanced-batting-table/advanced-batting-table.component';
+import { BasicPitchingTableComponent } from '../basic-pitching-table/basic-pitching-table.component';
+import { BasicFieldingTableComponent } from '../basic-fielding-table/basic-fielding-table.component';
+import { PlayerSearchComponent } from '../player-search/player-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BattingPost } from '../battingPost';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 
-fdescribe('PlayerDetailComponent', () => {
+describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
     let mockPlayerService: PlayerService;
@@ -36,6 +49,7 @@ fdescribe('PlayerDetailComponent', () => {
     const fakeBatting = createFakeBatting();
     const fakeFielding = createFakeFielding();
     const fakePitching = createFakePitching();
+    const fakeBattingPost = createFakeBattingPost();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -53,6 +67,15 @@ fdescribe('PlayerDetailComponent', () => {
                 MatSortModule,
                 NoopAnimationsModule,
                 MatDividerModule,
+                MatExpansionModule,
+                MatIconModule,
+                MatTooltipModule,
+                MatFormFieldModule,
+                ReactiveFormsModule,
+                MatAutocompleteModule,
+                MatProgressSpinnerModule,
+                MatOptionModule,
+                RouterTestingModule
             ],
 
             declarations: [
@@ -60,18 +83,19 @@ fdescribe('PlayerDetailComponent', () => {
                 LabelValueComponent,
                 MockBioInfoComponent,
                 TopMenuComponent,
+                BasicBattingTableComponent,
+                AdvancedBattingTableComponent,
+                BasicPitchingTableComponent,
+                BasicFieldingTableComponent,
                 MockDataTableComponent,
+                PlayerSearchComponent,
             ],
 
             providers: [
                 {
                     provide: ActivatedRoute,
                     useValue: {
-                        snapshot:
-                        {
-                            paramMap: new Map([['id', fakePlayer.playerId]])
-
-                        }
+                        paramMap: of(new Map([['id', fakePlayer.playerId]]))
                     }
                 },
 
@@ -93,6 +117,11 @@ fdescribe('PlayerDetailComponent', () => {
                             getBattingStats(id: string) {
                                 expect(id).toEqual(fakeBatting[0].playerId);
                                 return of(fakeBatting);
+                            },
+
+                            getBattingPostStats(id: string) {
+                                expect(id).toEqual(fakeBatting[0].playerId);
+                                return of(fakeBattingPost);
                             }
                         } as BattingService,
                 },
@@ -141,30 +170,47 @@ fdescribe('PlayerDetailComponent', () => {
         expect(bioInfoComponent.componentInstance.player).toEqual(fakePlayer);
     });
 
-    fit('should pass stats to table', fakeAsync(() => {
+    it('should pass stats to table', fakeAsync(() => {
         fixture.detectChanges();
 
-        checkTable("Batting", ".batting-table", fakeBatting);
+        checkTable("Batting Statistics","Regular Season Box Stats", ".basic-batting-table", fakeBatting);
 
-        checkTable("Fielding",".fielding-table", fakeFielding);
-  
-        checkTable("Pitching", ".pitching-table", fakePitching);
+        checkTable("Batting Statistics","Regular Season Advanced Stats", ".advanced-batting-table", fakeBatting);
+    
+        checkTable("Pitching Statistics", "Regular Season Stats", ".basic-pitching-table", fakePitching);
+
+        checkTable("Fielding Statistics", "Regular Season Stats", ".basic-fielding-table", fakeFielding);
     }));
 
-    function checkTable(label: string, className:string, expectedData:any){
-        clickTab(label);
+    function checkTable(expansionLabel: string, tabLabel: string, className: string, expectedData: any) {
+        clickExpansion(expansionLabel);
+        clickTab(tabLabel);
 
         const tableComponent = fixture.debugElement.query(By.css(className));
         expect(tableComponent.componentInstance.data).toEqual(expectedData);
     }
 
-    function clickTab(label: string){
+    function clickTab(label: string) {
         const tabs = fixture.debugElement.queryAll(By.css('.mat-tab-label-content'));
         const tab = tabs.find(item => {
             return item.nativeElement.textContent == label;
         });
 
         tab.nativeElement.click();
+
+        //workaround for async material tab behavior
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+    }
+
+    function clickExpansion(label: string) {
+        const expansions = fixture.debugElement.queryAll(By.css('.mat-expansion-panel-header-title'));
+        const expansion = expansions.find(item => {
+            return item.nativeElement.textContent == label;
+        });
+
+        expansion.nativeElement.click();
 
         //workaround for async material tab behavior
         fixture.detectChanges();
@@ -186,7 +232,16 @@ fdescribe('PlayerDetailComponent', () => {
         batting.playerId = 'id';
         batting.h = 20;
         batting.hr = 2;
+        batting.avg = .242;
+        return [batting];
+    }
 
+    function createFakeBattingPost(): BattingPost[] {
+        const batting = new BattingPost();
+        batting.playerId = 'id';
+        batting.h = 20;
+        batting.hr = 2;
+        batting.avg = .242;
         return [batting];
     }
 

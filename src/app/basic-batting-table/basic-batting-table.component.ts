@@ -38,6 +38,7 @@ export class BasicBattingTableComponent implements OnInit {
     this.rowClick.emit(row);
   }
 
+
   generateDisplayedColumns(): string[] {
     let columns: string[] = ['yearId'];
 

@@ -1,14 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamListElementComponent } from './team-list-element.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatListModule } from '@angular/material';
 
-describe('TeamListElementComponent', () => {
+fdescribe('TeamListElementComponent', () => {
   let component: TeamListElementComponent;
   let fixture: ComponentFixture<TeamListElementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamListElementComponent ]
+      imports: [
+        RouterTestingModule,
+        MatListModule,
+      ],
+      declarations: [ 
+        TeamListElementComponent 
+      ]
     })
     .compileComponents();
   }));

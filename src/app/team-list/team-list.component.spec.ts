@@ -8,10 +8,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-fdescribe('TeamListComponent', () => {
+describe('TeamListComponent', () => {
   let component: TeamListComponent;
   let fixture: ComponentFixture<TeamListComponent>;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

@@ -43,4 +43,8 @@ export class TeamStandingsComponent implements OnInit {
     this.router.navigateByUrl(`/teams/standings/${this.year}`)
   }
 
+  goToTeam(event): void {
+    this.router.navigateByUrl(`team/${event.teamId}`);
+  }
+
 }

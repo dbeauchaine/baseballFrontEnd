@@ -13,13 +13,15 @@
                         <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
                             <mat-tab label="Box Stats">
                                 <ng-template matTabContent>
-                                    <app-basic-batting-table *ngIf="battingLeaderboard" [data]="battingLeaderboard">
+                                    <app-basic-batting-table *ngIf="battingLeaderboard" [data]="battingLeaderboard"
+                                        (rowClick)="goToPlayer($event)">
                                     </app-basic-batting-table>
                                 </ng-template>
                             </mat-tab>
                             <mat-tab label="Advanced Stats">
                                 <ng-template matTabContent>
-                                    <app-advanced-batting-table *ngIf="battingLeaderboard" [data]="battingLeaderboard">
+                                    <app-advanced-batting-table *ngIf="battingLeaderboard" [data]="battingLeaderboard"
+                                        (rowClick)="goToPlayer($event)">
                                     </app-advanced-batting-table>
                                 </ng-template>
                             </mat-tab>
@@ -35,14 +37,14 @@
                             <mat-tab label="Box Stats">
                                 <ng-template matTabContent>
                                     <app-basic-batting-table *ngIf="battingPostLeaderboard"
-                                        [data]="battingPostLeaderboard">
+                                        [data]="battingPostLeaderboard" (rowClick)="goToPlayer($event)">
                                     </app-basic-batting-table>
                                 </ng-template>
                             </mat-tab>
                             <mat-tab label="Advanced Stats">
                                 <ng-template matTabContent>
                                     <app-advanced-batting-table *ngIf="battingPostLeaderboard"
-                                        [data]="battingPostLeaderboard">
+                                        [data]="battingPostLeaderboard" (rowClick)="goToPlayer($event)">
                                     </app-advanced-batting-table>
                                 </ng-template>
                             </mat-tab>

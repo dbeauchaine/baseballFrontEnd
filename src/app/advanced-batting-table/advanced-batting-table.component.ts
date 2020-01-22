@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Batting } from '../batting';
 import { MatPaginator, MatSort } from '@angular/material';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-advanced-batting-table',
@@ -14,10 +12,11 @@ export class AdvancedBattingTableComponent implements OnInit {
   public displayedColumns: string[];
   public dataSource: MatTableDataSource<any>;
   @Input() data: any;
+  @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit() {
     this.displayedColumns = this.generateDisplayedColumns();
@@ -37,8 +36,8 @@ export class AdvancedBattingTableComponent implements OnInit {
     }
   }
 
-  goToPlayer(row){
-    this.router.navigateByUrl(`player/${row.playerId}`);
+  itemClick(row){
+    this.rowClick.emit(row);
   }
 
   generateDisplayedColumns(): string[] {

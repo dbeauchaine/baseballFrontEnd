@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Batting } from '../batting';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 
 @Component({
   selector: 'app-basic-batting-table',
@@ -14,11 +12,9 @@ export class BasicBattingTableComponent implements OnInit {
   @Input() data: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit() {
     this.displayedColumns = this.generateDisplayedColumns();
@@ -28,6 +24,18 @@ export class BasicBattingTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  itemClick(row){
+    this.rowClick.emit(row);
   }
 
   generateDisplayedColumns(): string[] {
@@ -104,17 +112,4 @@ export class BasicBattingTableComponent implements OnInit {
     }
     return columns;
   }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  goToPlayer(row) {
-    this.router.navigateByUrl(`player/${row.playerId}`);
-  }
-
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../team';
 import { TeamService } from '../team.service';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-stats',
@@ -16,7 +16,8 @@ export class TeamStatsComponent implements OnInit {
   constructor(
     private teamService:TeamService,
     private titleService: Title,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,5 +36,11 @@ export class TeamStatsComponent implements OnInit {
       this.titleService.setTitle(`${this.id} Stats`)   
     })
   }
+
+  goToTeam(event): void {
+    console.log(event.teamId)
+    this.router.navigateByUrl(`team/${event.teamId}`);
+  }
+
 
 }

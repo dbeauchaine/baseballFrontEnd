@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Pitching } from '../pitching';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-pitching-table',
@@ -14,8 +13,9 @@ export class BasicPitchingTableComponent implements OnInit {
   @Input() data: Pitching[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-
-  constructor(private router: Router) { }
+  @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
+  
+  constructor() { }
 
   ngOnInit() {
     this.displayedColumns = this.generateDisplayedColumns();
@@ -35,10 +35,9 @@ export class BasicPitchingTableComponent implements OnInit {
     }
   }
 
-  goToPlayer(row) {
-    this.router.navigateByUrl(`player/${row.playerId}`);
+  itemClick(row){
+    this.rowClick.emit(row);
   }
-
   generateDisplayedColumns(): string[] {
     let columns: string[] = ['yearId'];
 

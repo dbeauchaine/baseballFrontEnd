@@ -51,4 +51,8 @@ export class BattingLeaderboardComponent implements OnInit {
     this.getBattingPostByYear();
     this.router.navigateByUrl(`/batting-leaderboard/${this.year}`);
   }
+
+  public goToPlayer(event): void{
+    this.router.navigateByUrl(`player/${event.playerId}`);
+  }
 }

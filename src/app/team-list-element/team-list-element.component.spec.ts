@@ -4,7 +4,7 @@ import { TeamListElementComponent } from './team-list-element.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatListModule } from '@angular/material';
 
-fdescribe('TeamListElementComponent', () => {
+describe('TeamListElementComponent', () => {
   let component: TeamListElementComponent;
   let fixture: ComponentFixture<TeamListElementComponent>;
 

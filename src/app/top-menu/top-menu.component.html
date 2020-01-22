@@ -1,22 +1,21 @@
-<div class="mat-elevation-z8">
-  <mat-toolbar color="primary">
+<div>
+  <mat-toolbar class="mat-elevation-z12" color="primary">
     <mat-toolbar-row class="main-toolbar-row">
-      <button mat-icon-button 
-              matTooltip="Home"
-              routerLink="/home-page">
-        <mat-icon >home</mat-icon>
+      <button mat-icon-button matTooltip="Home" routerLink="/home-page">
+        <mat-icon>home</mat-icon>
       </button>
       <button mat-button [matMenuTriggerFor]="leaderboards">Leaderboards</button>
       <mat-menu #leaderboards="matMenu">
-        <button mat-menu-item routerLink="/batting-leaderboard">Batting Leaderboard</button>
+        <button mat-menu-item routerLink="/batting-leaderboard/2018">Batting Leaderboard</button>
         <button mat-menu-item>Pitcher Leaderboard</button>
       </mat-menu>
       <button mat-button [matMenuTriggerFor]="teams">Teams</button>
       <mat-menu #teams="matMenu">
-        <button mat-menu-item routerLink="/team">Team Statistics</button>
-        <button mat-menu-item routerLink="/standings">Standings</button>
+        <button mat-menu-item routerLink="/team/SEA">Team Statistics</button>
+        <button mat-menu-item routerLink="/teams/standings/2018">Standings</button>
+        <button mat-menu-item routerLink="/teams">List</button>
       </mat-menu>
-      <span class ="fill-space"></span>
+      <span class ="filler"></span>
       <app-player-search class="top-menu-search"></app-player-search>
     </mat-toolbar-row>
   </mat-toolbar>

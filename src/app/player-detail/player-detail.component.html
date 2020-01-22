@@ -1,9 +1,11 @@
 <div class="player-detail-div">
   <mat-card class="player-detail-card">
-    <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
+    <mat-card-title>
+      <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
+    </mat-card-title>
     <mat-card-content class="player-detail-card-content">
       <mat-accordion>
-        <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel *ngIf="batting" [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>Batting Statistics</mat-panel-title>
           </mat-expansion-panel-header>
@@ -19,10 +21,20 @@
                   <app-advanced-batting-table *ngIf="batting" [data]="batting"></app-advanced-batting-table>
                 </ng-template>
               </mat-tab>
+              <mat-tab label="Post-Season Box Stats">
+                <ng-template matTabContent>
+                  <app-basic-batting-table *ngIf="battingPost" [data]="battingPost"></app-basic-batting-table>
+                </ng-template>
+              </mat-tab>
+              <mat-tab label="Post-Season Advanced Stats">
+                <ng-template matTabContent>
+                  <app-advanced-batting-table *ngIf="battingPost" [data]="battingPost"></app-advanced-batting-table>
+                </ng-template>
+              </mat-tab>
             </mat-tab-group>
           </ng-template>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel *ngIf="pitching" [expanded]="false">
           <mat-expansion-panel-header>
             <mat-panel-title>Pitching Statistics</mat-panel-title>
           </mat-expansion-panel-header>
@@ -36,7 +48,7 @@
             </mat-tab-group>
           </ng-template>
         </mat-expansion-panel>
-        <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel *ngIf="fielding" [expanded]="false">
           <mat-expansion-panel-header>
             <mat-panel-title>Fielding Statistics</mat-panel-title>
           </mat-expansion-panel-header>
@@ -54,4 +66,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-<router-outlet></router-outlet>

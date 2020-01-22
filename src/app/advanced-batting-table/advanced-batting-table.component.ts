@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Batting } from '../batting';
 import { MatPaginator, MatSort } from '@angular/material';
 
 @Component({
@@ -11,22 +10,22 @@ import { MatPaginator, MatSort } from '@angular/material';
 export class AdvancedBattingTableComponent implements OnInit {
 
   public displayedColumns: string[];
-  public dataSource: MatTableDataSource<Batting>;
+  public dataSource: MatTableDataSource<any>;
   @Input() data: any;
+  @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() { }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.displayedColumns = this.generateDisplayedColumns();
   }
 
-  generateDisplayedColumns(): string[] {
-    return ['yearId','teamId','lgId','avg', 'slg', 'obp', 'ops'];
+  ngOnChanges(){
+    this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(filterValue: string) {
@@ -35,5 +34,59 @@ export class AdvancedBattingTableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  itemClick(row){
+    this.rowClick.emit(row);
+  }
+
+  generateDisplayedColumns(): string[] {
+    let columns:string[] = ['yearId'];
+
+    if(this.data[0].nameFirst){
+      columns = columns.concat(['nameFirst','nameLast']);
+    }
+
+    if(this.data[0].teamId){
+      columns = columns.concat(['teamId']);
+    }
+
+    if(this.data[0].lgId){
+      columns = columns.concat(['lgId']);
+    }
+
+    if(typeof(this.data[0].avg) !== 'undefined'){
+      columns = columns.concat(['avg']);
+    }
+
+    if(typeof(this.data[0].slg) !== 'undefined'){
+      columns = columns.concat(['slg']);
+    }
+
+    if(typeof(this.data[0].obp) !== 'undefined'){
+      columns = columns.concat(['obp']);
+    }
+
+    if(typeof(this.data[0].ops) !== 'undefined'){
+      columns = columns.concat(['ops']);
+    }
+
+    if(typeof(this.data[0].iso) !== 'undefined'){
+      columns = columns.concat(['iso']);
+    }
+
+    if(typeof(this.data[0].babip) !== 'undefined'){
+      columns = columns.concat(['babip']);
+    }
+
+    if(typeof(this.data[0].bbRate) !== 'undefined'){
+      columns = columns.concat(['bbRate']);
+    }
+
+    if(typeof(this.data[0].kRate) !== 'undefined'){
+      columns = columns.concat(['kRate']);
+    }
+
+    return columns;
   }
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BattingService } from '../batting.service';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit} from '@angular/core';
 import { BattingLeaderboard } from '../battingLeaderboard';
 import { BattingPostLeaderboard } from '../battingPostLeaderboard';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BattingService } from '../batting.service';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -12,27 +12,30 @@ import { BattingPostLeaderboard } from '../battingPostLeaderboard';
 })
 export class BattingLeaderboardComponent implements OnInit {
   public year: number;
-  public validYears: string[];
   public battingLeaderboard: BattingLeaderboard[];
   public battingPostLeaderboard: BattingPostLeaderboard[];
-  public battingPropertyToLabelMap: Map<string, string>;
-  public battingPostPropertyToLabelMap: Map<string, string>;
 
   constructor(
-    private route: ActivatedRoute,
-    private battingService: BattingService,
+    private titleService: Title,
+    private router: Router,
+    private route:ActivatedRoute,
+    private battingService: BattingService
   ) { }
 
   ngOnInit() {
-    this.generateBattingPropertyToLabelMap();
-    this.generateBattingPostPropertyToLabelMap();
-    this.validYears = this.generateValidYears();
+    this.route.paramMap.subscribe(year => {
+    this.year = Number(year.get('year'));
+    this.titleService.setTitle(`Batting Leaderboards`);
+    this.getBattingByYear();
+    this.getBattingPostByYear();
+    });
   }
 
   getBattingByYear(): void {
     this.battingService.getBattingStatsByYear(this.year)
       .subscribe(batting => {
         this.battingLeaderboard = batting;
+        this.titleService.setTitle(`${this.year} Batting Leaderboards`)
       });
   }
 
@@ -43,75 +46,14 @@ export class BattingLeaderboardComponent implements OnInit {
     });
   }
 
-  generateBattingPropertyToLabelMap(): void {
-    this.battingPropertyToLabelMap = new Map([
-      ['nameFirst', 'First Name'],
-      ['nameLast', 'Last Name'],
-      ['teamId', 'Team'],
-      ['avg', 'AVG'],
-      ['slg', 'SLG'],
-      ['obp', 'OBP'],
-      ['ops', 'OPS'],
-      ['g', 'G'],
-      ['ab', 'AB'],
-      ['h', 'H'],
-      ['x2b', '2B'],
-      ['x3b', '3B'],
-      ['hr', 'HR'],
-      ['rbi', 'RBI'],
-      ['bb', 'BB'],
-      ['ibb', 'IBB'],
-      ['hbp', 'HBP'],
-      ['so', 'K'],
-      ['sb', 'SB'],
-      ['cs', 'CS'],
-      ['sh', 'SH'],
-      ['sf', 'SF'],
-      ['gidp', 'GIDP']
-    ]);
-  }
-
-  generateBattingPostPropertyToLabelMap(): void {
-    this.battingPostPropertyToLabelMap = new Map([
-      ['nameFirst', 'First Name'],
-      ['nameLast', 'Last Name'],
-      ['teamId', 'Team'],
-      ['yearId', 'Year'],
-      ['round', 'Round'],
-      ['avg', 'AVG'],
-      ['slg', 'SLG'],
-      ['obp', 'OBP'],
-      ['ops', 'OPS'],
-      ['g', 'G'],
-      ['ab', 'AB'],
-      ['h', 'H'],
-      ['x2b', '2B'],
-      ['x3b', '3B'],
-      ['hr', 'HR'],
-      ['rbi', 'RBI'],
-      ['bb', 'BB'],
-      ['ibb', 'IBB'],
-      ['hbp', 'HBP'],
-      ['so', 'K'],
-      ['sb', 'SB'],
-      ['cs', 'CS'],
-      ['sh', 'SH'],
-      ['sf', 'SF'],
-      ['gidp', 'GIDP']
-    ]);
-  }
-
-  generateValidYears(): string[] {
-    const validDates = new Array();
-    for (let i = 2018; i > 1871; i--) {
-      validDates.push(i.toString());
-    }
-    return validDates;
-  }
-
-  public onChange(event): void {
-    this.year = Number(event.value);
+  public updateData(event): void {
+    this.year = event;
     this.getBattingByYear();
     this.getBattingPostByYear();
+    this.router.navigateByUrl(`/batting-leaderboard/${this.year}`);
+  }
+
+  public goToPlayer(event): void{
+    this.router.navigateByUrl(`player/${event.playerId}`);
   }
 }

@@ -1,0 +1,12 @@
+<img id="playerPhoto" src="assets/logos/{{team.teamId}}.png" onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" width ="100"/>
+<mat-card-header>
+  <mat-card-title class="team-title" *ngIf="team">{{team.name}}</mat-card-title>
+  <mat-card-subtitle *ngIf="team">
+    <app-label-value label="League" value="{{team.lgId}}">
+    </app-label-value>
+    <app-label-value label="Division" value="{{team.divId}}">
+    </app-label-value>
+    <app-label-value label="Park" value="{{team.park}}">
+    </app-label-value>
+</mat-card-subtitle>
+</mat-card-header>

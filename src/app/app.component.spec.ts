@@ -5,7 +5,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
 import { Component } from '@angular/core';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [

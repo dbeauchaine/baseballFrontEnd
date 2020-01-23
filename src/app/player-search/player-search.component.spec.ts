@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayerSearchComponent } from './player-search.component';
-import { MatFormFieldModule, MatAutocompleteModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatFormFieldModule, MatAutocompleteModule, MatProgressSpinnerModule, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PlayerService } from '../player.service';
 import { of } from 'rxjs';
 import { Player } from '../player';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PlayerSearchComponent', () => {
   let component: PlayerSearchComponent;
@@ -21,7 +22,9 @@ describe('PlayerSearchComponent', () => {
         ReactiveFormsModule,
         MatAutocompleteModule,
         MatProgressSpinnerModule,
-        RouterTestingModule
+        RouterTestingModule,
+        MatInputModule,
+        NoopAnimationsModule
       ],
       declarations: [
         PlayerSearchComponent
@@ -32,7 +35,7 @@ describe('PlayerSearchComponent', () => {
           useValue:
             {
               group() {
-                return new FormGroup({id:new FormControl(fakePlayer.playerId)});
+                return new FormGroup({userInput:new FormControl(fakePlayer.nameFull)});
               }
             },
         },
@@ -68,6 +71,7 @@ describe('PlayerSearchComponent', () => {
     player.playerId = 'id';
     player.nameFirst = 'expectedFirstName';
     player.nameLast = 'expectedLastName';
+    player.nameFull= 'expectedFirstName expectedLastName';
 
     return player;
 }

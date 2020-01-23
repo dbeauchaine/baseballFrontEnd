@@ -43,7 +43,6 @@ describe('TopMenuComponent', () => {
     })
     class MockPlayerSearchComponent {
         @Input() data: any;
-        @Input() propertyToLabelMap: Map<string, string>;
     }
 
 });

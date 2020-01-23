@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import { Title, By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('TeamStatsComponent', () => {
+describe('TeamStatsComponent', () => {
   let component: TeamStatsComponent;
   let fixture: ComponentFixture<TeamStatsComponent>;
   const fakeTeam = createFakeTeam();

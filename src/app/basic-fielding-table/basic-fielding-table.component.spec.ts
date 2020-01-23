@@ -34,7 +34,7 @@ describe('BasicFieldingTableComponent', () => {
     component.data = createFakeFielding();
   });
 
-  it('should create', () => {
+  it('should render proper headers', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

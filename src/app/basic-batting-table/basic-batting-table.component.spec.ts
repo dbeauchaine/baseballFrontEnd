@@ -35,7 +35,7 @@ describe('BasicBattingTableComponent', () => {
     component.data = createFakeBatting();
   });
 
-  it('should create', () => {
+  it('should render proper headers', () => {
     fixture.detectChanges();
     const headers = fixture.debugElement.queryAll(By.css('mat-header-cell'));
     headers.forEach(header =>{

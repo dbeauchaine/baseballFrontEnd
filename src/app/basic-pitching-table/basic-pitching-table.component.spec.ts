@@ -34,7 +34,7 @@ describe('BasicPitchingTableComponent', () => {
     component.data = createFakePitching();
   });
 
-  it('should create', () => {
+  it('should render proper headers', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

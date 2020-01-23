@@ -24,7 +24,7 @@ describe('PitchingService', () => {
         expect(service).toBeTruthy();
     });
 
-    describe('Getting Batting Data', () => {
+    describe('Getting Pitching Data', () => {
         it('returned data should match mock data', () => {
             const mockPitching = {
                 playerId: 'id',

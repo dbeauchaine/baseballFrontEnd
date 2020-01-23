@@ -40,7 +40,7 @@ export class Team {
     dp:number;
     fp:number;
     name:number;
-    park:number;
+    park:string;
     attendance:number;
     bpf:number;
     ppf:number;

@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopMenuComponent } from './top-menu.component';
-import { MatMenuModule, MatToolbarModule, MatButtonModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 describe('TopMenuComponent', () => {
     let component: TopMenuComponent;
     let fixture: ComponentFixture<TopMenuComponent>;
@@ -14,9 +15,13 @@ describe('TopMenuComponent', () => {
                 MatToolbarModule,
                 MatButtonModule,
                 ReactiveFormsModule,
-                FormsModule
+                FormsModule,
+                MatIconModule,
             ],
-            declarations: [TopMenuComponent]
+            declarations: [
+                TopMenuComponent,
+                MockPlayerSearchComponent,
+            ]
 
         })
             .compileComponents();
@@ -31,4 +36,13 @@ describe('TopMenuComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    @Component({
+        selector: 'app-player-search',
+        template: '',
+    })
+    class MockPlayerSearchComponent {
+        @Input() data: any;
+    }
+
 });

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamListElementComponent } from './team-list-element.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatListModule } from '@angular/material';
 
 describe('TeamListElementComponent', () => {
   let component: TeamListElementComponent;
@@ -8,7 +10,13 @@ describe('TeamListElementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamListElementComponent ]
+      imports: [
+        RouterTestingModule,
+        MatListModule,
+      ],
+      declarations: [ 
+        TeamListElementComponent 
+      ]
     })
     .compileComponents();
   }));

@@ -2,7 +2,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-import { MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { Component } from '@angular/core';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -11,10 +12,12 @@ describe('AppComponent', () => {
                 RouterTestingModule,
                 MatMenuModule,
                 MatToolbarModule,
+                MatIconModule,
             ],
             declarations: [
                 AppComponent,
-                TopMenuComponent
+                MockTopMenuComponent,
+                MockPlayerSearchComponent,
             ],
         }).compileComponents();
     }));
@@ -30,4 +33,18 @@ describe('AppComponent', () => {
         const app = fixture.debugElement.componentInstance;
         expect(app.title).toEqual('angular-baseball');
     });
+
+    @Component({
+        selector: 'app-player-search',
+        template: '',
+    })
+    class MockPlayerSearchComponent {
+    }
+
+    @Component({
+        selector: 'app-top-menu',
+        template: '',
+    })
+    class MockTopMenuComponent {
+    }
 });

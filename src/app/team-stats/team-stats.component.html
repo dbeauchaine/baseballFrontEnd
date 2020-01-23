@@ -1,4 +1,4 @@
-<div class="team-detail-div">
+<div class="team-stat-div">
   <mat-card class="team-detail-card">
     <mat-card-title>
       <app-team-detail *ngIf="team[0]" [team]="team[0]"></app-team-detail>
@@ -13,13 +13,13 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-batting-table *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
+                  <app-basic-batting-table class="basic-batting-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
                   </app-basic-batting-table>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Advanced Stats">
                 <ng-template matTabContent>
-                  <app-advanced-batting-table *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
+                  <app-advanced-batting-table class="advanced-batting-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
                   </app-advanced-batting-table>
                 </ng-template>
               </mat-tab>
@@ -32,9 +32,9 @@
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
-              <mat-tab label="Regular Season Stats">
+              <mat-tab label="Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-pitching-table *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
+                  <app-basic-pitching-table class="basic-pitching-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
                   </app-basic-pitching-table>
                 </ng-template>
               </mat-tab>

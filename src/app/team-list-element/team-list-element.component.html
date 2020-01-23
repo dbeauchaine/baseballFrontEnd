@@ -1,10 +1,11 @@
 <mat-nav-list>
     <mat-list-item *ngFor="let team of teams | keyvalue" routerLink="/team/{{team.key}}">
-        <span>
+        <span class="image">
             <img class="teamPhoto" src="assets/logos/{{team.key}}.png"
                 onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" width="30" />
         </span>
-        <span>
+        <span class="filler"></span>
+        <span class="name">
             {{team.value}}
         </span>
     </mat-list-item>

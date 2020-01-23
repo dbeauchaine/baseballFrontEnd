@@ -24,4 +24,14 @@ export class BattingPostLeaderboard {
     sh: number;
     sf: number;
     gidp: number;
+    pa: number;
+    singles:number;
+    avg: number;
+    slg: number;
+    obp: number;
+    ops: number;
+    bbRate: number;
+    kRate: number;
+    iso: number;
+    babip: number;
 }

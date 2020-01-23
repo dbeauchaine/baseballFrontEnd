@@ -13,7 +13,7 @@ describe('TeamStatsComponent', () => {
   let component: TeamStatsComponent;
   let fixture: ComponentFixture<TeamStatsComponent>;
   const fakeTeam = createFakeTeam();
-  let mockTeamService:TeamService;
+  let mockTeamService: TeamService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -80,31 +80,31 @@ describe('TeamStatsComponent', () => {
     const teamDetailComponent = fixture.debugElement.query(By.css('app-team-detail'));
 
     expect(teamDetailComponent.componentInstance.team).toEqual(fakeTeam[0]);
-});
+  });
 
-it('should pass stats to table', fakeAsync(() => {
+  it('should pass stats to table', fakeAsync(() => {
     fixture.detectChanges();
 
-    checkTable("Batting Statistics","Box Stats", ".basic-batting-table", fakeTeam);
+    checkTable("Batting Statistics", "Box Stats", ".basic-batting-table", fakeTeam);
 
-    checkTable("Batting Statistics","Advanced Stats", ".advanced-batting-table", fakeTeam);
+    checkTable("Batting Statistics", "Advanced Stats", ".advanced-batting-table", fakeTeam);
 
     checkTable("Pitching Statistics", "Box Stats", ".basic-pitching-table", fakeTeam);
 
-}));
+  }));
 
-function checkTable(expansionLabel: string, tabLabel: string, className: string, expectedData: any) {
+  function checkTable(expansionLabel: string, tabLabel: string, className: string, expectedData: any) {
     clickExpansion(expansionLabel);
     clickTab(tabLabel);
 
     const tableComponent = fixture.debugElement.query(By.css(className));
     expect(tableComponent.componentInstance.data).toEqual(expectedData);
-}
+  }
 
-function clickTab(label: string) {
+  function clickTab(label: string) {
     const tabs = fixture.debugElement.queryAll(By.css('.mat-tab-label-content'));
     const tab = tabs.find(item => {
-        return item.nativeElement.textContent == label;
+      return item.nativeElement.textContent == label;
     });
 
     tab.nativeElement.click();
@@ -113,12 +113,12 @@ function clickTab(label: string) {
     fixture.detectChanges();
     flush();
     fixture.detectChanges();
-}
+  }
 
-function clickExpansion(label: string) {
+  function clickExpansion(label: string) {
     const expansions = fixture.debugElement.queryAll(By.css('.mat-expansion-panel-header-title'));
     const expansion = expansions.find(item => {
-        return item.nativeElement.textContent == label;
+      return item.nativeElement.textContent == label;
     });
 
     expansion.nativeElement.click();
@@ -127,7 +127,7 @@ function clickExpansion(label: string) {
     fixture.detectChanges();
     flush();
     fixture.detectChanges();
-}
+  }
 
 
 

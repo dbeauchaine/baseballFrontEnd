@@ -13,36 +13,15 @@
                         <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
                             <mat-tab label="Box Stats">
                                 <ng-template matTabContent>
-                                    <app-basic-batting-table *ngIf="teams" [data]="teams" (rowClick)="goToTeam($event)">
+                                    <app-basic-batting-table class="basic-batting-table" *ngIf="teams" [data]="teams"
+                                        (rowClick)="goToTeam($event)">
                                     </app-basic-batting-table>
                                 </ng-template>
                             </mat-tab>
                             <mat-tab label="Advanced Stats">
                                 <ng-template matTabContent>
-                                    <app-advanced-batting-table *ngIf="teams" [data]="teams" (rowClick)="goToTeam($event)">
-                                    </app-advanced-batting-table>
-                                </ng-template>
-                            </mat-tab>
-                        </mat-tab-group>
-                    </ng-template>
-                </mat-expansion-panel>
-                <mat-expansion-panel *ngIf="teamsPost" [expanded]="false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>{{year}} Post-Season Leaderboard</mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
-                            <mat-tab label="Box Stats">
-                                <ng-template matTabContent>
-                                    <app-basic-batting-table *ngIf="teamsPost"
-                                        [data]="teamsPost" (rowClick)="goToTeam($event)">
-                                    </app-basic-batting-table>
-                                </ng-template>
-                            </mat-tab>
-                            <mat-tab label="Advanced Stats">
-                                <ng-template matTabContent>
-                                    <app-advanced-batting-table *ngIf="teamsPost"
-                                        [data]="teamsPost" (rowClick)="goToTeam($event)">
+                                    <app-advanced-batting-table class="advanced-batting-table" *ngIf="teams"
+                                        [data]="teams" (rowClick)="goToTeam($event)">
                                     </app-advanced-batting-table>
                                 </ng-template>
                             </mat-tab>
@@ -52,4 +31,4 @@
             </mat-accordion>
         </mat-card-content>
     </mat-card>
-  </div>
+</div>

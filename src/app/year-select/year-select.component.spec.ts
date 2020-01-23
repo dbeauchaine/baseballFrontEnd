@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { YearSelectComponent } from './year-select.component';
+import { MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('YearSelectComponent', () => {
   let component: YearSelectComponent;
@@ -8,7 +11,15 @@ describe('YearSelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ YearSelectComponent ]
+      imports: [
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        NoopAnimationsModule,
+      ],
+      declarations: [ 
+        YearSelectComponent 
+      ]
     })
     .compileComponents();
   }));

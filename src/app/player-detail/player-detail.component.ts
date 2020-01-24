@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
@@ -10,7 +10,7 @@ import { Pitching } from '../pitching';
 import { PitchingService } from '../pitching.service';
 import { BattingPost } from '../battingPost';
 import { Title } from '@angular/platform-browser';
-import { ColumnConfig, DisplayFormat } from '../columnConfig';
+import { ColumnConfig } from '../columnConfig';
 import { ColumnDefinitions } from '../columnDefinitions';
 @Component({
     selector: 'app-player-detail',

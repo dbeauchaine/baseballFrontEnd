@@ -27,6 +27,33 @@ export class ColumnDefinitions {
         ]);
     }
 
+    battingBoxLeaderboard(): Map<string,ColumnConfig>{
+        return new Map([
+            ['nameFirst', { columnName: "First Name" }],
+            ['nameLast', { columnName: "Last Name" }],
+            ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
+            ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+            ['g', { columnName: 'G', headerTooltip: "Games" }],
+            ['ab', { columnName: 'AB', headerTooltip: "At Bats" }],
+            ['pa', { columnName: 'PA', headerTooltip: "Plate Appearances" }],
+            ['h', { columnName: 'H', headerTooltip: "Hits" }],
+            ['singles', { columnName: '1B', headerTooltip: "Singles" }],
+            ['x2b', { columnName: '2B', headerTooltip: "Doubles" }],
+            ['x3b', { columnName: '3B', headerTooltip: "Triples" }],
+            ['hr', { columnName: 'HR', headerTooltip: "Homeruns" }],
+            ['rbi', { columnName: 'RBI', headerTooltip: "Runs Batted In"}],
+            ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
+            ['ibb', { columnName: 'IBB', headerTooltip: "Intentional Walks"}],
+            ['hbp', { columnName: 'HBP', headerTooltip: "Hit By Pitch"}],
+            ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
+            ['sb', { columnName: 'SB', headerTooltip: "Stolen Bases"}],
+            ['cs', { columnName: 'CS', headerTooltip: "Caught Stealing"}],
+            ['sh', { columnName: 'SH', headerTooltip: "Sacrifice Hits"}],
+            ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
+            ['gidp', { columnName: 'GIDP', headerTooltip: "Ground Into Double Play"}],
+        ]);
+    }
+
     battingAdv(): Map<string, ColumnConfig>{
         return new Map([
             ['yearId', { columnName: "Year" }],
@@ -67,6 +94,69 @@ export class ColumnDefinitions {
             ['sh', { columnName: 'SH', headerTooltip: "Sacrifice Hits"}],
             ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
             ['gidp', { columnName: 'GIDP', headerTooltip: "Ground Into Double Play"}],
+        ]);
+    }
+
+    battingPostLeaderboard(): Map<string,ColumnConfig>{
+        return new Map([
+            ['nameFirst', { columnName: "First Name" }],
+            ['nameLast', { columnName: "Last Name" }],
+            ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
+            ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+            ['round', { columnName: 'Round', headerTooltip: "Playoff Round" }],
+            ['g', { columnName: 'G', headerTooltip: "Games" }],
+            ['ab', { columnName: 'AB', headerTooltip: "At Bats" }],
+            ['pa', { columnName: 'PA', headerTooltip: "Plate Appearances" }],
+            ['h', { columnName: 'H', headerTooltip: "Hits" }],
+            ['singles', { columnName: '1B', headerTooltip: "Singles" }],
+            ['x2b', { columnName: '2B', headerTooltip: "Doubles" }],
+            ['x3b', { columnName: '3B', headerTooltip: "Triples" }],
+            ['hr', { columnName: 'HR', headerTooltip: "Homeruns" }],
+            ['rbi', { columnName: 'RBI', headerTooltip: "Runs Batted In"}],
+            ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
+            ['ibb', { columnName: 'IBB', headerTooltip: "Intentional Walks"}],
+            ['hbp', { columnName: 'HBP', headerTooltip: "Hit By Pitch"}],
+            ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
+            ['sb', { columnName: 'SB', headerTooltip: "Stolen Bases"}],
+            ['cs', { columnName: 'CS', headerTooltip: "Caught Stealing"}],
+            ['sh', { columnName: 'SH', headerTooltip: "Sacrifice Hits"}],
+            ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
+            ['gidp', { columnName: 'GIDP', headerTooltip: "Ground Into Double Play"}],
+        ]);
+    }
+
+    battingAdvLeaderboard(): Map<string, ColumnConfig>{
+        return new Map([
+            ['nameFirst', { columnName: "First Name" }],
+            ['nameLast', { columnName: "Last Name" }],
+            ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
+            ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average"}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #"}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #"}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #"}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power"}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play"}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate"}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate"}],
+        ]);
+    }
+
+    battingPostAdvLeaderboard(): Map<string, ColumnConfig>{
+        return new Map([
+            ['nameFirst', { columnName: "First Name" }],
+            ['nameLast', { columnName: "Last Name" }],
+            ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
+            ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+            ['round', { columnName: 'Round', headerTooltip: "Playoff Round" }],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average"}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #"}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #"}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #"}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power"}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play"}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate"}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate"}],
         ]);
     }
 

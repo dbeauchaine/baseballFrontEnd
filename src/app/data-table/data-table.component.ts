@@ -12,8 +12,8 @@ export class DataTableComponent implements OnInit {
     public dataSource: MatTableDataSource<any>;
     public displayFormat = DisplayFormat;
     public numberFormat = NumberFormat;
-    
-    @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
+
+    @Output() rowClick: EventEmitter<any> = new EventEmitter<any>();
     @Input() data: any;
     @Input() propertyToLabelMap: Map<string, ColumnConfig>;
 
@@ -27,13 +27,14 @@ export class DataTableComponent implements OnInit {
         this.displayedColumns = Array.from(this.propertyToLabelMap.keys());
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+
     }
 
     ngOnChanges() {
         this.dataSource = new MatTableDataSource(this.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }
+    }
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -43,8 +44,7 @@ export class DataTableComponent implements OnInit {
         }
     }
 
-    itemClick(row){
+    itemClick(row) {
         this.rowClick.emit(row);
-      }
-
+    }
 }

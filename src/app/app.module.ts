@@ -31,6 +31,7 @@ import { YearSelectComponent } from './year-select/year-select.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamListElementComponent } from './team-list-element/team-list-element.component';
+import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { TeamListElementComponent } from './team-list-element/team-list-element.
         TeamDetailComponent,
         TeamListComponent,
         TeamListElementComponent,
+        PitchingLeaderboardComponent,
     ],
     imports: [
         BrowserModule,

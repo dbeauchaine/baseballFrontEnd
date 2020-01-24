@@ -3,6 +3,9 @@ import { Team } from '../team';
 import { TeamService } from '../team.service';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BattingPostLeaderboard } from '../battingPostLeaderboard';
+import { ColumnDefinitions } from '../columnDefinitions';
+import { ColumnConfig } from '../columnConfig';
 
 @Component({
   selector: 'app-team-standings',
@@ -12,6 +15,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class TeamStandingsComponent implements OnInit {
   public year: number;
   public teams: Team[];
+  public battingPostLeaderboard: BattingPostLeaderboard[];
+  columnDefinitions: ColumnDefinitions;
+  battingPropertyToLabelMap: Map<string, ColumnConfig>;
+  advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
 
   constructor(
     private teamService: TeamService,
@@ -24,6 +31,9 @@ export class TeamStandingsComponent implements OnInit {
     this.route.paramMap.subscribe(year => {
       this.year = Number(year.get('year'));
       this.titleService.setTitle(`Team Leaderboards`);
+      this.columnDefinitions = new ColumnDefinitions();
+      this.battingPropertyToLabelMap = this.columnDefinitions.teamBattingBox();
+      this.advancedBattingPropertyToLabelMap = this.columnDefinitions.battingAdv();
       this.getTeamsByYear();
     });
   }

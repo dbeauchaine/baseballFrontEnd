@@ -3,6 +3,8 @@ import { Team } from '../team';
 import { TeamService } from '../team.service';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ColumnDefinitions } from '../columnDefinitions';
+import { ColumnConfig } from '../columnConfig';
 
 @Component({
   selector: 'app-team-stats',
@@ -12,6 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TeamStatsComponent implements OnInit {
   public team: Team[];
   public id: string;
+  columnDefinitions: ColumnDefinitions;
+  battingPropertyToLabelMap: Map<string, ColumnConfig>;
+  advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
+  pitchingPropertyToLabelMap: Map<string, ColumnConfig>;
 
   constructor(
     private teamService:TeamService,
@@ -23,7 +29,11 @@ export class TeamStatsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(id => {
       this.id = id.get('id');
+      this.columnDefinitions = new ColumnDefinitions();
       this.titleService.setTitle(`Team Stats`);
+      this.battingPropertyToLabelMap = this.columnDefinitions.teamBattingBox();
+      this.advancedBattingPropertyToLabelMap = this.columnDefinitions.battingAdv();
+      this.pitchingPropertyToLabelMap = this.columnDefinitions.teamPitchingBox();
       this.getTeam();
     });
 

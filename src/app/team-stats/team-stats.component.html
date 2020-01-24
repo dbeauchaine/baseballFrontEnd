@@ -13,14 +13,16 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-batting-table class="basic-batting-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
-                  </app-basic-batting-table>
+                  <app-data-table class="basic-batting-table" *ngIf="team" [data]="team"
+                    [propertyToLabelMap]="battingPropertyToLabelMap" (rowClick)="goToTeam($event)">
+                  </app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab label="Advanced Stats">
                 <ng-template matTabContent>
-                  <app-advanced-batting-table class="advanced-batting-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
-                  </app-advanced-batting-table>
+                  <app-data-table class="advanced-batting-table" *ngIf="team" [data]="team"
+                    [propertyToLabelMap]="advancedBattingPropertyToLabelMap" (rowClick)="goToTeam($event)">
+                  </app-data-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
@@ -34,8 +36,9 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-pitching-table class="basic-pitching-table" *ngIf="team" [data]="team" (rowClick)="goToTeam($event)">
-                  </app-basic-pitching-table>
+                  <app-data-table class="basic-pitching-table" *ngIf="team" [data]="team"
+                    [propertyToLabelMap]="pitchingPropertyToLabelMap" (rowClick)="goToTeam($event)">
+                  </app-data-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>

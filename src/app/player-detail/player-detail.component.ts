@@ -12,6 +12,8 @@ import { BattingPost } from '../battingPost';
 import { Title } from '@angular/platform-browser';
 import { ColumnConfig } from '../columnConfig';
 import { ColumnDefinitions } from '../columnDefinitions';
+import { FieldingPost } from '../fieldingPost';
+import { PitchingPost } from '../pitchingPost';
 @Component({
     selector: 'app-player-detail',
     templateUrl: './player-detail.component.html',
@@ -24,13 +26,15 @@ export class PlayerDetailComponent implements OnInit {
     public fielding: Fielding[];
     public pitching: Pitching[];
     public battingPost: BattingPost[];
+    public fieldingPost: FieldingPost[];
+    public pitchingPost: PitchingPost[];
     columnDefinitions: ColumnDefinitions;
     battingPropertyToLabelMap: Map<string, ColumnConfig>;
     advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
     battingPostPropertyToLabelMap: Map<string, ColumnConfig>;
     fieldingPropertyToLabelMap: Map<string, ColumnConfig>;
     pitchingPropertyToLabelMap: Map<string, ColumnConfig>;
-    
+    fieldingPostPropertyToLabelMap: Map<string, ColumnConfig>;
 
     constructor(
         private route: ActivatedRoute,
@@ -50,11 +54,14 @@ export class PlayerDetailComponent implements OnInit {
             this.getBattingPost();
             this.getFielding();
             this.getPitching();
+            this.getFieldingPost();
+            this.getPitchingPost();
             this.battingPropertyToLabelMap = this.columnDefinitions.battingBox();
             this.advancedBattingPropertyToLabelMap = this.columnDefinitions.battingAdv();
             this.battingPostPropertyToLabelMap = this.columnDefinitions.battingPostBox();
             this.fieldingPropertyToLabelMap = this.columnDefinitions.fieldingBox();
             this.pitchingPropertyToLabelMap = this.columnDefinitions.pitchingBox();
+            this.fieldingPostPropertyToLabelMap = this.columnDefinitions.fieldingPostBox();
         });
     }
 
@@ -99,6 +106,17 @@ export class PlayerDetailComponent implements OnInit {
             });
     }
 
+    private getFieldingPost(): void {
+        this.fieldingService.getFieldingPostStats(this.id)
+            .subscribe(data => {
+                if (data.length > 0) {
+                    this.fieldingPost = data;
+                } else {
+                    this.fieldingPost = null;
+                }
+            });
+    }
+
     private getPitching(): void {
         this.pitchingService.getPitchingStats(this.id)
             .subscribe(pitching => {
@@ -106,6 +124,17 @@ export class PlayerDetailComponent implements OnInit {
                     this.pitching = pitching;
                 } else {
                     this.pitching = null;
+                }
+            });
+    }
+
+    private getPitchingPost(): void {
+        this.pitchingService.getPitchingPostStats(this.id)
+            .subscribe(data => {
+                if (data.length > 0) {
+                    this.pitchingPost = data;
+                } else {
+                    this.pitchingPost = null;
                 }
             });
     }

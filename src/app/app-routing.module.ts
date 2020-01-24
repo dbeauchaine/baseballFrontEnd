@@ -7,6 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { TeamStandingsComponent } from './team-standings/team-standings.component';
 import { TeamListComponent } from './team-list/team-list.component';
+import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'home-page', component: HomePageComponent},
     { path: '', redirectTo: '/home-page', pathMatch: 'full' },
     { path: 'batting-leaderboard/:year', component: BattingLeaderboardComponent},
+    { path: 'pitching-leaderboard/:year', component: PitchingLeaderboardComponent},
     { path: 'team/:id', component: TeamStatsComponent},
     { path: 'teams/standings/:year', component: TeamStandingsComponent},
     { path: 'teams', component: TeamListComponent}

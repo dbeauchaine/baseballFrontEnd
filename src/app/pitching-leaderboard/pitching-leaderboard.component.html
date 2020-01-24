@@ -1,0 +1,47 @@
+<div class="pitching-leaderboard-div">
+    <mat-card class="pitching-leaderboard-card mat-elevation-z8">
+        <mat-card-title>Pitching Leaderboard By Year</mat-card-title>
+        <mat-card-content>
+            <app-year-select (yearChange)="updateData($event)"></app-year-select>
+            <mat-accordion>
+                <mat-expansion-panel *ngIf="pitchingLeaderboard" [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{year}} Regular-Season Leaderboard</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="min-ab">* minimum 100 Atbats.</p>
+                    <ng-template matExpansionPanelContent>
+                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+                            <mat-tab label="Box Stats">
+                                <ng-template matTabContent>
+                                    <app-data-table class="basic-pitching-table" *ngIf="pitchingLeaderboard"
+                                        [data]="pitchingLeaderboard"
+                                        [propertyToLabelMap]="pitchingLeaderboardPropertyToLabelMap"
+                                        (rowClick)="goToPlayer($event)">
+                                    </app-data-table>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </ng-template>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="pitchingPostLeaderboard" [expanded]="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{year}} Post-Season Leaderboard</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                        <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
+                            <mat-tab label="Box Stats">
+                                <ng-template matTabContent>
+                                    <app-data-table class="post-basic-pitching-table" *ngIf="pitchingPostLeaderboard"
+                                        [data]="pitchingPostLeaderboard"
+                                        [propertyToLabelMap]="pitchingLeaderboardPropertyToLabelMap"
+                                        (rowClick)="goToPlayer($event)">
+                                    </app-data-table>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </ng-template>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </mat-card>
+</div>

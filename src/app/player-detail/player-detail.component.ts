@@ -11,6 +11,7 @@ import { PitchingService } from '../pitching.service';
 import { BattingPost } from '../battingPost';
 import { Title } from '@angular/platform-browser';
 import { ColumnConfig, DisplayFormat } from '../columnConfig';
+import { ColumnDefinitions } from '../columnDefinitions';
 @Component({
     selector: 'app-player-detail',
     templateUrl: './player-detail.component.html',
@@ -23,7 +24,13 @@ export class PlayerDetailComponent implements OnInit {
     public fielding: Fielding[];
     public pitching: Pitching[];
     public battingPost: BattingPost[];
+    columnDefinitions: ColumnDefinitions;
     battingPropertyToLabelMap: Map<string, ColumnConfig>;
+    advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
+    battingPostPropertyToLabelMap: Map<string, ColumnConfig>;
+    fieldingPropertyToLabelMap: Map<string, ColumnConfig>;
+    pitchingPropertyToLabelMap: Map<string, ColumnConfig>;
+    
 
     constructor(
         private route: ActivatedRoute,
@@ -37,32 +44,17 @@ export class PlayerDetailComponent implements OnInit {
     ngOnInit() {
         this.route.paramMap.subscribe(id => {
             this.id = id.get('id');
+            this.columnDefinitions = new ColumnDefinitions();
             this.getPlayer();
             this.getBatting();
             this.getBattingPost();
             this.getFielding();
             this.getPitching();
-            this.battingPropertyToLabelMap = new Map([
-                ['yearId', { columnName: "Year" }],
-                ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
-                ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
-                ['g', { columnName: 'G', tooltip: "Games" }],
-                ['ab', { columnName: 'AB', tooltip: "At Bats" }],
-                ['h', { columnName: 'H', tooltip: "Hits" }],
-                ['x2b', { columnName: '2B', tooltip: "Doubles" }],
-                ['x3b', { columnName: '3B', tooltip: "Triples" }],
-                ['hr', { columnName: 'HR', tooltip: "Homeruns" }],
-                ['rbi', { columnName: 'RBI', tooltip: "Runs Batted In"}],
-                ['bb', { columnName: 'BB', tooltip: "Walks"}],
-                ['ibb', { columnName: 'IBB', tooltip: "Intentional Walks"}],
-                ['hbp', { columnName: 'HBP', tooltip: "Hit By Pitch"}],
-                ['so', { columnName: 'K', tooltip: "Strikeouts"}],
-                ['sb', { columnName: 'SB', tooltip: "Stolen Bases"}],
-                ['cs', { columnName: 'CS', tooltip: "Caught Stealing"}],
-                ['sh', { columnName: 'SH', tooltip: "Sacrifice Hits"}],
-                ['sf', { columnName: 'SF', tooltip: "Sacrifice Flies"}],
-                ['gidp', { columnName: 'GIDP', tooltip: "Ground Into Double Play"}],
-            ]);
+            this.battingPropertyToLabelMap = this.columnDefinitions.battingBox();
+            this.advancedBattingPropertyToLabelMap = this.columnDefinitions.battingAdv();
+            this.battingPostPropertyToLabelMap = this.columnDefinitions.battingPostBox();
+            this.fieldingPropertyToLabelMap = this.columnDefinitions.fieldingBox();
+            this.pitchingPropertyToLabelMap = this.columnDefinitions.pitchingBox();
         });
     }
 

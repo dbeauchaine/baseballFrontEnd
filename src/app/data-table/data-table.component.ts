@@ -26,6 +26,12 @@ export class DataTableComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     }
+    
+    ngOnChanges() {
+        this.dataSource = new MatTableDataSource(this.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();

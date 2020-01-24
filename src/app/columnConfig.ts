@@ -1,6 +1,6 @@
 export interface ColumnConfig {
     columnName:string;
-    tooltip?:string;
+    headerTooltip?:string;
     displayFormat?:DisplayFormat;
 }
 

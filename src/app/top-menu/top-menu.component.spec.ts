@@ -42,7 +42,6 @@ describe('TopMenuComponent', () => {
         template: '',
     })
     class MockPlayerSearchComponent {
-        @Input() data: any;
     }
 
 });

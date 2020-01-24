@@ -36,7 +36,7 @@ describe('AdvancedBattingTableComponent', () => {
 
   });
 
-  it('should create', () => {
+  it('should render proper headerss', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });

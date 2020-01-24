@@ -27,10 +27,6 @@ import { PlayerSearchComponent } from './player-search/player-search.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { TeamStandingsComponent } from './team-standings/team-standings.component';
-import { BasicBattingTableComponent } from './basic-batting-table/basic-batting-table.component';
-import { AdvancedBattingTableComponent } from './advanced-batting-table/advanced-batting-table.component';
-import { BasicPitchingTableComponent } from './basic-pitching-table/basic-pitching-table.component';
-import { BasicFieldingTableComponent } from './basic-fielding-table/basic-fielding-table.component';
 import { YearSelectComponent } from './year-select/year-select.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamListComponent } from './team-list/team-list.component';
@@ -52,10 +48,6 @@ import { TeamListElementComponent } from './team-list-element/team-list-element.
         HomePageComponent,
         TeamStatsComponent,
         TeamStandingsComponent,
-        BasicBattingTableComponent,
-        AdvancedBattingTableComponent,
-        BasicPitchingTableComponent,
-        BasicFieldingTableComponent,
         YearSelectComponent,
         TeamDetailComponent,
         TeamListComponent,

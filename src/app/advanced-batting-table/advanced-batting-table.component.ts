@@ -55,35 +55,35 @@ export class AdvancedBattingTableComponent implements OnInit {
       columns = columns.concat(['lgId']);
     }
 
-    if(typeof(this.data[0].avg) !== 'undefined'){
+    if(this.data[0].avg !== null){
       columns = columns.concat(['avg']);
     }
 
-    if(typeof(this.data[0].slg) !== 'undefined'){
+    if(this.data[0].slg !== null){
       columns = columns.concat(['slg']);
     }
 
-    if(typeof(this.data[0].obp) !== 'undefined'){
+    if(this.data[0].obp !== null){
       columns = columns.concat(['obp']);
     }
 
-    if(typeof(this.data[0].ops) !== 'undefined'){
+    if(this.data[0].ops !== null){
       columns = columns.concat(['ops']);
     }
 
-    if(typeof(this.data[0].iso) !== 'undefined'){
+    if(this.data[0].iso !== null){
       columns = columns.concat(['iso']);
     }
 
-    if(typeof(this.data[0].babip) !== 'undefined'){
+    if(this.data[0].babip !== null){
       columns = columns.concat(['babip']);
     }
 
-    if(typeof(this.data[0].bbRate) !== 'undefined'){
+    if(this.data[0].bbRate !== null){
       columns = columns.concat(['bbRate']);
     }
 
-    if(typeof(this.data[0].kRate) !== 'undefined'){
+    if(this.data[0].kRate !== null){
       columns = columns.concat(['kRate']);
     }
 

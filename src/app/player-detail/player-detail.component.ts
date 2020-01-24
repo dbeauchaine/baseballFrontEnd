@@ -10,6 +10,7 @@ import { Pitching } from '../pitching';
 import { PitchingService } from '../pitching.service';
 import { BattingPost } from '../battingPost';
 import { Title } from '@angular/platform-browser';
+import { ColumnConfig, DisplayFormat } from '../columnConfig';
 @Component({
     selector: 'app-player-detail',
     templateUrl: './player-detail.component.html',
@@ -22,6 +23,7 @@ export class PlayerDetailComponent implements OnInit {
     public fielding: Fielding[];
     public pitching: Pitching[];
     public battingPost: BattingPost[];
+    battingPropertyToLabelMap: Map<string, ColumnConfig>;
 
     constructor(
         private route: ActivatedRoute,
@@ -40,6 +42,27 @@ export class PlayerDetailComponent implements OnInit {
             this.getBattingPost();
             this.getFielding();
             this.getPitching();
+            this.battingPropertyToLabelMap = new Map([
+                ['yearId', { columnName: "Year" }],
+                ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
+                ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+                ['g', { columnName: 'G', tooltip: "Games" }],
+                ['ab', { columnName: 'AB', tooltip: "At Bats" }],
+                ['h', { columnName: 'H', tooltip: "Hits" }],
+                ['x2b', { columnName: '2B', tooltip: "Doubles" }],
+                ['x3b', { columnName: '3B', tooltip: "Triples" }],
+                ['hr', { columnName: 'HR', tooltip: "Homeruns" }],
+                ['rbi', { columnName: 'RBI', tooltip: "Runs Batted In"}],
+                ['bb', { columnName: 'BB', tooltip: "Walks"}],
+                ['ibb', { columnName: 'IBB', tooltip: "Intentional Walks"}],
+                ['hbp', { columnName: 'HBP', tooltip: "Hit By Pitch"}],
+                ['so', { columnName: 'K', tooltip: "Strikeouts"}],
+                ['sb', { columnName: 'SB', tooltip: "Stolen Bases"}],
+                ['cs', { columnName: 'CS', tooltip: "Caught Stealing"}],
+                ['sh', { columnName: 'SH', tooltip: "Sacrifice Hits"}],
+                ['sf', { columnName: 'SF', tooltip: "Sacrifice Flies"}],
+                ['gidp', { columnName: 'GIDP', tooltip: "Ground Into Double Play"}],
+            ]);
         });
     }
 
@@ -56,7 +79,7 @@ export class PlayerDetailComponent implements OnInit {
             .subscribe(batting => {
                 if (batting.length > 0) {
                     this.batting = batting;
-                }else{
+                } else {
                     this.batting = null;
                 }
             });
@@ -64,13 +87,13 @@ export class PlayerDetailComponent implements OnInit {
 
     private getBattingPost(): void {
         this.battingService.getBattingPostStats(this.id)
-        .subscribe(batting => {
-            if(batting.length > 0) {
-                this.battingPost = batting;
-            }else{
-                this.battingPost = null;
-            }
-        });
+            .subscribe(batting => {
+                if (batting.length > 0) {
+                    this.battingPost = batting;
+                } else {
+                    this.battingPost = null;
+                }
+            });
     }
 
     private getFielding(): void {
@@ -78,7 +101,7 @@ export class PlayerDetailComponent implements OnInit {
             .subscribe(fielding => {
                 if (fielding.length > 0) {
                     this.fielding = fielding;
-                }else{
+                } else {
                     this.fielding = null;
                 }
             });
@@ -89,7 +112,7 @@ export class PlayerDetailComponent implements OnInit {
             .subscribe(pitching => {
                 if (pitching.length > 0) {
                     this.pitching = pitching;
-                }else{
+                } else {
                     this.pitching = null;
                 }
             });

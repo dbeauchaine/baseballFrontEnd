@@ -69,19 +69,19 @@ export class BasicBattingTableComponent implements OnInit {
     if (this.data[0].h !== null) {
       columns = columns.concat('h');
     }
-    if (this.data[0].singles !== null) {
+    if (this.data[0].singles !== null  && typeof(this.data[0].singles) != 'undefined') {
       columns = columns.concat('singles');
     }
-    if (this.data[0].x2b !== null) {
+    if (this.data[0].x2b !== null  && typeof(this.data[0].x2b) != 'undefined') {
       columns = columns.concat('x2b');
     }
-    if (this.data[0].x3b !== null) {
+    if (this.data[0].x3b !== null  && typeof(this.data[0].x3b) != 'undefined') {
       columns = columns.concat('x3b');
     }
-    if (this.data[0].hr !== null) {
+    if (this.data[0].hr !== null && typeof(this.data[0].hr) != 'undefined') {
       columns = columns.concat('hr');
     }
-    if (this.data[0].rbi !== null) {
+    if (this.data[0].rbi !== null && typeof(this.data[0].rbi) != 'undefined') {
       columns = columns.concat('rbi');
     }
     if (this.data[0].sb !== null) {

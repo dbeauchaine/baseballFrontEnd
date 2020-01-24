@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { ColumnConfig, DisplayFormat } from '../columnConfig';
 
 @Component({
     selector: 'app-data-table',
@@ -9,8 +10,10 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 export class DataTableComponent implements OnInit {
     public displayedColumns: string[];
     public dataSource: MatTableDataSource<any>;
+    public displayFormat = DisplayFormat;
+    
     @Input() data: any;
-    @Input() propertyToLabelMap: Map<string, string>;
+    @Input() propertyToLabelMap: Map<string, ColumnConfig>;
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -31,4 +34,5 @@ export class DataTableComponent implements OnInit {
             this.dataSource.paginator.firstPage();
         }
     }
+
 }

@@ -13,9 +13,11 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Box Stats">
                 <ng-template matTabContent>
-                  <app-basic-batting-table class="basic-batting-table" *ngIf="batting" [data]="batting"></app-basic-batting-table>
+                  <!-- <app-basic-batting-table class="basic-batting-table" *ngIf="batting" [data]="batting"></app-basic-batting-table> -->
+                  <app-data-table *ngIf="batting" [data]="batting" [propertyToLabelMap]="battingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
+         
               <mat-tab label="Regular Season Advanced Stats">
                 <ng-template matTabContent>
                   <app-advanced-batting-table class ="advanced-batting-table" *ngIf="batting" [data]="batting"></app-advanced-batting-table>

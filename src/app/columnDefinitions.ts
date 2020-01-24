@@ -1,4 +1,4 @@
-import { ColumnConfig, DisplayFormat } from './columnConfig';
+import { ColumnConfig, DisplayFormat, NumberFormat } from './columnConfig';
 
 export class ColumnDefinitions {
     //individual
@@ -35,14 +35,14 @@ export class ColumnDefinitions {
             ['yearId', { columnName: "Year" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
             ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
-            ['avg', { columnName: 'AVG', headerTooltip: "Average"}],
-            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #"}],
-            ['obp', { columnName: 'OBP', headerTooltip: "On Base #"}],
-            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #"}],
-            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power"}],
-            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play"}],
-            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate"}],
-            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate"}],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average", numberFormat:NumberFormat.Decimal}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #", numberFormat:NumberFormat.Decimal}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power", numberFormat:NumberFormat.Decimal}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play", numberFormat:NumberFormat.Decimal}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate", numberFormat:NumberFormat.Decimal}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate", numberFormat:NumberFormat.Decimal}],
         ]);
     }
 
@@ -113,7 +113,7 @@ export class ColumnDefinitions {
             ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
             ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
             ['baopp', { columnName: 'BAOpp', headerTooltip: "Opponents' Batting Average"}],
-            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average"}],
+            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average", numberFormat:NumberFormat.Decimal}],
             ['ibb', { columnName: 'IBB', headerTooltip: "Intentional Walks"}],
             ['wp', { columnName: 'WP', headerTooltip: "Wild Pitches"}],
             ['bk', { columnName: 'BK', headerTooltip: "Balks"}],
@@ -187,14 +187,14 @@ export class ColumnDefinitions {
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
             ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
-            ['avg', { columnName: 'AVG', headerTooltip: "Average"}],
-            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #"}],
-            ['obp', { columnName: 'OBP', headerTooltip: "On Base #"}],
-            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #"}],
-            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power"}],
-            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play"}],
-            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate"}],
-            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate"}],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average", numberFormat:NumberFormat.Decimal}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #", numberFormat:NumberFormat.Decimal}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power", numberFormat:NumberFormat.Decimal}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play", numberFormat:NumberFormat.Decimal}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate", numberFormat:NumberFormat.Decimal}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate", numberFormat:NumberFormat.Decimal}],
         ]);
     }
 
@@ -204,15 +204,15 @@ export class ColumnDefinitions {
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
             ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
-            ['round', { columnName: 'Round', headerTooltip: "Playoff Round" }],
-            ['avg', { columnName: 'AVG', headerTooltip: "Average"}],
-            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #"}],
-            ['obp', { columnName: 'OBP', headerTooltip: "On Base #"}],
-            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #"}],
-            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power"}],
-            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play"}],
-            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate"}],
-            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate"}],
+            ['round', { columnName: 'Round', headerTooltip: "Playoff Round", numberFormat:NumberFormat.Decimal}],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average", numberFormat:NumberFormat.Decimal}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #", numberFormat:NumberFormat.Decimal}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power", numberFormat:NumberFormat.Decimal}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play", numberFormat:NumberFormat.Decimal}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate", numberFormat:NumberFormat.Decimal}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate", numberFormat:NumberFormat.Decimal}],
         ]);
     }
 
@@ -256,7 +256,7 @@ export class ColumnDefinitions {
             ['hr', { columnName: 'HR', headerTooltip: "Homeruns"}],
             ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
             ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
-            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average"}],
+            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average", numberFormat:NumberFormat.Decimal}],
             ['r', { columnName: 'R', headerTooltip: "Runs Allowed"}],
             ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
         ]);

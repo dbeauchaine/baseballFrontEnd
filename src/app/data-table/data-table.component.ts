@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { ColumnConfig, DisplayFormat } from '../columnConfig';
+import { ColumnConfig, DisplayFormat, NumberFormat } from '../columnConfig';
 
 @Component({
     selector: 'app-data-table',
@@ -11,6 +11,7 @@ export class DataTableComponent implements OnInit {
     public displayedColumns: string[];
     public dataSource: MatTableDataSource<any>;
     public displayFormat = DisplayFormat;
+    public numberFormat = NumberFormat;
     
     @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
     @Input() data: any;

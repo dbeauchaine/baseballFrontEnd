@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { ColumnConfig, DisplayFormat, NumberFormat } from '../columnConfig';
 
 @Component({
     selector: 'app-data-table',
@@ -9,8 +10,12 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 export class DataTableComponent implements OnInit {
     public displayedColumns: string[];
     public dataSource: MatTableDataSource<any>;
+    public displayFormat = DisplayFormat;
+    public numberFormat = NumberFormat;
+    
+    @Output() rowClick:EventEmitter<any> = new EventEmitter<any>();
     @Input() data: any;
-    @Input() propertyToLabelMap: Map<string, string>;
+    @Input() propertyToLabelMap: Map<string, ColumnConfig>;
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -24,6 +29,12 @@ export class DataTableComponent implements OnInit {
         this.dataSource.sort = this.sort;
     }
 
+    ngOnChanges() {
+        this.dataSource = new MatTableDataSource(this.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }
+
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -31,4 +42,9 @@ export class DataTableComponent implements OnInit {
             this.dataSource.paginator.firstPage();
         }
     }
+
+    itemClick(row){
+        this.rowClick.emit(row);
+      }
+
 }

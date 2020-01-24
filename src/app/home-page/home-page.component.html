@@ -2,8 +2,64 @@
     <mat-card class="home-page-card">
         <mat-card-title class="home-page-card-title"> Home Page</mat-card-title>
         <mat-card-subtitle class="home-page-card-subtitle">
+            Overview
         </mat-card-subtitle>
         <mat-card-content class="home-page-card-content">
+            <p>
+                This website is an example project to serve as a demonstration of my software
+                development ability. It is a work in progress and by no means does it represent
+                a finished product. 
+                Please contact me at danbeauchaine@gmail.com with questions or comments.
+            </p>
+            <p>
+                Individual player statistics can be accessed by searching for their name (partial searches work)
+                in the search bar at the top right, direct naviagion using their Lahman ID, or by clicking their name in a leaderboard. 
+                An example of an individual player's statistics: <a href="http://localhost:4200/player/suzukic01">Ichiro Stats</a>.
+            </p>
+            <p>
+                Leaderboards can be accessed via the top bar, or by direct navigation using the desired year. 
+                An example of a batting leaderboard: <a href="http://localhost:4200/batting-leaderboard/2000"> 2000 Batting Leaderboard</a>.
+            </p>
+            <p>
+                Individual team statistics can be accessed by clicking on a team in the <a href="http://localhost:4200/teams">list of teams</a>, 
+                direct navigation to /teams, by clicking on team in the team standings, 
+                or by selecting team statistics from the menu bar and selecting a team.
+            </p>
+            <p>
+                Team standings can be accessed by selecting standings from the team menu. Example of team standings: 
+                <a href="http://localhost:4200/teams/standings/1974">1974 Team Standings</a>.
+            </p>
+        </mat-card-content>
+        <mat-card-subtitle>
+            Back End
+        </mat-card-subtitle>
+        <mat-card-content>
+            The back end is a .NET core application written in C# which
+            serves Rest API endpoints to baseball statistics obtained from the
+            <a href="http://www.seanlahman.com/baseball-archive/statistics/">Lahman Database</a>
+            and statistics computed from that data. The back end application interacts with the SQL database via
+            Entity Framework Core. All services, controllers, mappers, and calculators are unit tested via Nunit.
+            The back end project is hosted on github <a href="https://github.com/dbeauchaine/baseballAPI">here</a>.
+        </mat-card-content>
+        <mat-card-subtitle>
+            Front End
+        </mat-card-subtitle>
+        <mat-card-content>
+            <p>
+                The front end is a website built with angular with services components implemented in Typescript.
+                I have used <a href="https://material.angular.io/">Angular Material </a> components when possible.
+                The styling is achieved through sass. Components and services are unit tested using jasmine. The front
+                end application calls the back end API and displays the data in useful tables. The front end project is
+                hosted on github <a href="https://github.com/dbeauchaine/baseballFrontEnd">here</a>.
+            </p>
+        </mat-card-content>
+
+        <mat-card-subtitle>
+            Notes
+        </mat-card-subtitle>
+        <mat-card-content>
+            I do not own any database, logo, or player image displayed on this website. It is for demonstration purposes only, 
+            not for monetary gain.
         </mat-card-content>
     </mat-card>
 </div>

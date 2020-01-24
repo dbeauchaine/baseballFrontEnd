@@ -12,6 +12,7 @@ export class TeamListComponent implements OnInit {
   nlEast:Map<string,string>;
   nlCentral:Map<string,string>;
   nlWest:Map<string,string>;
+  
   constructor() { }
 
   ngOnInit() {

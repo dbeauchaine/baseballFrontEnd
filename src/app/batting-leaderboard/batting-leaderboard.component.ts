@@ -4,6 +4,8 @@ import { BattingPostLeaderboard } from '../battingPostLeaderboard';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BattingService } from '../batting.service';
+import { ColumnConfig } from '../columnConfig';
+import { ColumnDefinitions } from '../columnDefinitions';
 
 @Component({
   selector: 'app-batting-leaderboard',
@@ -14,7 +16,11 @@ export class BattingLeaderboardComponent implements OnInit {
   public year: number;
   public battingLeaderboard: BattingLeaderboard[];
   public battingPostLeaderboard: BattingPostLeaderboard[];
-
+  columnDefinitions: ColumnDefinitions;
+  battingPropertyToLabelMap: Map<string, ColumnConfig>;
+  advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
+  battingPostPropertyToLabelMap: Map<string, ColumnConfig>;
+  advancedPostPropertyToLabelMap: Map<string, ColumnConfig>;
   constructor(
     private titleService: Title,
     private router: Router,
@@ -26,6 +32,11 @@ export class BattingLeaderboardComponent implements OnInit {
     this.route.paramMap.subscribe(year => {
     this.year = Number(year.get('year'));
     this.titleService.setTitle(`Batting Leaderboards`);
+    this.columnDefinitions = new ColumnDefinitions();
+    this.battingPropertyToLabelMap = this.columnDefinitions.battingBoxLeaderboard();
+    this.advancedBattingPropertyToLabelMap = this.columnDefinitions.battingAdvLeaderboard();
+    this.battingPostPropertyToLabelMap = this.columnDefinitions.battingPostLeaderboard();
+    this.advancedPostPropertyToLabelMap = this.columnDefinitions.battingPostAdvLeaderboard();
     this.getBattingByYear();
     this.getBattingPostByYear();
     });

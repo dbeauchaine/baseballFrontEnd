@@ -16,7 +16,6 @@ export class PlayerSearchComponent implements OnInit {
   isLoading = false;
   playersForm: FormGroup;
 
-
   constructor(private fb: FormBuilder, private playerService: PlayerService) {
   }
 

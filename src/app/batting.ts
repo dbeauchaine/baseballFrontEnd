@@ -33,3 +33,4 @@ export class Batting {
     iso: number;
     babip: number;
 }
+

@@ -29,7 +29,7 @@ export class PitchingLeaderboardComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(year => {
     this.year = Number(year.get('year'));
-    this.titleService.setTitle(`Batting Leaderboards`);
+    this.titleService.setTitle(`Pitching Leaderboards`);
     this.columnDefinitions = new ColumnDefinitions();
     this.pitchingLeaderboardPropertyToLabelMap = this.columnDefinitions.pitchingLeaderboard();
     this.getPitchingByYear();
@@ -56,7 +56,7 @@ export class PitchingLeaderboardComponent implements OnInit {
     this.year = event;
     this.getPitchingByYear();
     this.getPitchingPostByYear();
-    this.router.navigateByUrl(`/batting-leaderboard/${this.year}`);
+    this.router.navigateByUrl(`/pitching-leaderboard/${this.year}`);
   }
 
   public goToPlayer(event): void{

@@ -12,6 +12,11 @@ export class BattingLeaderboard {
   }
 
   getRegularSeasonBoxTable(){
+    // element.all(by.css('mat-expansion-panel')).filter((elem) => {
+    //   return elem.getText().then(text=>{
+    //     return(text === '2018 Regular-Season Leaderboard');
+    //   });
+    // }).first().click();
     element.all(by.css('.mat-tab-label')).get(0).click();
     return new DataTable('.basic-batting-table');
   }

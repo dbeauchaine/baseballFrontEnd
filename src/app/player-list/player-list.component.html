@@ -13,9 +13,9 @@
         <span class="birth-city" *ngIf="player.birthCity">in {{player.birthCity}} </span>
         <span class="birth-state" *ngIf="player.birthState">{{player.birthState}}, </span>
         <span class="birth-country" *ngIf="player.birthCountry">{{player.birthCountry}}</span>
-        <app-label-value label="Died"
-                         value="{{player.deathMonth}}/{{player.deathDay}}/{{player.deathYear}}"
-                         *ngIf="player.deathYear">
+        <app-label-value *ngIf="player.deathYear" 
+                         label="Died"
+                         value="{{player.deathMonth}}/{{player.deathDay}}/{{player.deathYear}}">
         </app-label-value>
 
       </mat-card-subtitle>

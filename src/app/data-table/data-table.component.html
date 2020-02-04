@@ -14,6 +14,8 @@
         <ng-container *ngIf="!column.value.displayFormat && !column.value.numberFormat">{{data[column.key]}}</ng-container>
         <ng-container *ngIf="column.value.numberFormat == numberFormat.Decimal">{{data[column.key] | number : '0.3-3'}}
         </ng-container>
+        <!-- <ng-container *ngIf="column.value.numberFormat == numberFormat.Era">{{data[column.key] | number : '1.2-2'}}
+        </ng-container> -->
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

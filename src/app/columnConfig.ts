@@ -10,5 +10,6 @@ export enum DisplayFormat{
 }
 
 export enum NumberFormat{
-    Decimal = "Decimal"
+    Decimal = "Decimal",
+    Era = "Era"
 }

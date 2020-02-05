@@ -32,6 +32,7 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamListElementComponent } from './team-list-element/team-list-element.component';
 import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
+import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-le
         TeamListComponent,
         TeamListElementComponent,
         PitchingLeaderboardComponent,
+        BottomBarComponent,
     ],
     imports: [
         BrowserModule,

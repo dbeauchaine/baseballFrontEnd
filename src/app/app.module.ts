@@ -13,7 +13,7 @@ import {
     MatSortModule, MatTableModule, MatToolbarModule,
     MatButtonModule, MatMenuModule, MatTabsModule, MatFormFieldModule,
     MatListModule, MatOptionModule, MatSelectModule, MatAutocompleteModule, 
-    MatProgressSpinnerModule, MatGridListModule, MatExpansionModule, MatIconModule, MatTooltipModule
+    MatProgressSpinnerModule, MatGridListModule, MatExpansionModule, MatIconModule, MatTooltipModule, MatSidenavModule
 } from '@angular/material';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { DataTableComponent } from './data-table/data-table.component';
@@ -82,7 +82,8 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
         MatGridListModule,
         MatExpansionModule,
         MatIconModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatSidenavModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -6,7 +6,8 @@ export interface ColumnConfig {
 }
 
 export enum DisplayFormat{
-    Logo = "Logo"
+    Logo = "Logo",
+    Photo = "Photo"
 }
 
 export enum NumberFormat{

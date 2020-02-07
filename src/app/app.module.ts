@@ -33,6 +33,7 @@ import { TeamListComponent } from './team-list/team-list.component';
 import { TeamListElementComponent } from './team-list-element/team-list-element.component';
 import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
 import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
+import { TeamRosterViewComponent } from './team-roster-view/team-roster-view.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
         TeamListElementComponent,
         PitchingLeaderboardComponent,
         BottomBarComponent,
+        TeamRosterViewComponent,
     ],
     imports: [
         BrowserModule,

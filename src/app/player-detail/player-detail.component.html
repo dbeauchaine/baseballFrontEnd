@@ -4,7 +4,7 @@
       <app-bio-info *ngIf="player" [player]="player"></app-bio-info>
     </mat-card-title>
     <mat-card-content class="player-detail-card-content">
-      <mat-accordion>
+      <mat-accordion multi="true">
         <mat-expansion-panel *ngIf="batting" [expanded]="true">
           <mat-expansion-panel-header>
             <mat-panel-title>Batting Statistics</mat-panel-title>

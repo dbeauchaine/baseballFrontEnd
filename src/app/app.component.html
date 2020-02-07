@@ -1,7 +1,12 @@
-<body class="site">
-    <app-top-menu></app-top-menu>
-    <main class="content">
-        <router-outlet></router-outlet>
-    </main>
-    <app-bottom-bar></app-bottom-bar>
-</body>
+<app-top-menu></app-top-menu>
+<mat-sidenav-container class="sidenav-container" hasBackdrop="false">
+    <mat-sidenav class="sidenav"opened mode="side" disableClose="true" fixedInViewport="true" fixedTopGap=80 fixedBottomGap=150>
+        <app-player-sidenav></app-player-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <main class="content">
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<app-bottom-bar></app-bottom-bar>

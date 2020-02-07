@@ -3,7 +3,7 @@
         <mat-card-title>Pitching Leaderboard By Year</mat-card-title>
         <mat-card-content>
             <app-year-select (yearChange)="updateData($event)"></app-year-select>
-            <mat-accordion>
+            <mat-accordion multi="true">
                 <mat-expansion-panel *ngIf="pitchingLeaderboard" [expanded]="true">
                     <mat-expansion-panel-header>
                         <mat-panel-title>{{year}} Regular-Season Leaderboard</mat-panel-title>

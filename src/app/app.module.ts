@@ -34,6 +34,7 @@ import { TeamListElementComponent } from './team-list-element/team-list-element.
 import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
 import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 import { TeamRosterViewComponent } from './team-roster-view/team-roster-view.component';
+import { BaseballLiteratureComponent } from './baseball-literature/baseball-literature.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { TeamRosterViewComponent } from './team-roster-view/team-roster-view.com
         PitchingLeaderboardComponent,
         BottomBarComponent,
         TeamRosterViewComponent,
+        BaseballLiteratureComponent,
     ],
     imports: [
         BrowserModule,

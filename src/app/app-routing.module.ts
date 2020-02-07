@@ -8,6 +8,7 @@ import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { TeamStandingsComponent } from './team-standings/team-standings.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { PitchingLeaderboardComponent } from './pitching-leaderboard/pitching-leaderboard.component';
+import { BaseballLiteratureComponent } from './baseball-literature/baseball-literature.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'pitching-leaderboard/:year', component: PitchingLeaderboardComponent},
     { path: 'team/:id', component: TeamStatsComponent},
     { path: 'teams/standings/:year', component: TeamStandingsComponent},
-    { path: 'teams', component: TeamListComponent}
+    { path: 'teams', component: TeamListComponent},
+    { path: 'papers', component: BaseballLiteratureComponent}
 ];
 
 @NgModule({

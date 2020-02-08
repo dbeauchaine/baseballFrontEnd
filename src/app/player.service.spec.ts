@@ -41,7 +41,7 @@ describe('PlayerService', () => {
                 });
 
             const req = httpMock.expectOne(
-                `https://localhost:5001/player/id`
+                `${environment.baseUrl}/player/id`
             );
 
             expect(req.request.method).toEqual('GET');

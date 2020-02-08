@@ -45,7 +45,7 @@
                   <app-data-table *ngIf="pitching" [data]="pitching" [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
-              <mat-tab label="Post-Season Stats">
+              <mat-tab *ngIf="pitchingPost" label="Post-Season Stats">
                 <ng-template matTabContent>
                   <app-data-table *ngIf="pitchingPost" [data]="pitchingPost" [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
                 </ng-template>
@@ -64,7 +64,7 @@
                   <app-data-table *ngIf="fielding" [data]="fielding" [propertyToLabelMap]="fieldingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
-              <mat-tab label="Post-Season Stats">
+              <mat-tab *ngIf="fieldingPost" label="Post-Season Stats">
                 <ng-template matTabContent>
                   <app-data-table *ngIf="fieldingPost" [data]="fieldingPost" [propertyToLabelMap]="fieldingPostPropertyToLabelMap"></app-data-table>
                 </ng-template>

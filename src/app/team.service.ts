@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from './team';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
-  private teamUrl = 'https://localhost:5001/team';
+  private teamUrl = `${environment.baseUrl}/team`;
 
   constructor(private http: HttpClient) { }
 

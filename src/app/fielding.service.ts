@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Fielding } from './fielding';
 import { FieldingPost } from './fieldingPost';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FieldingService {
-  private fieldingUrl = 'https://localhost:5001/fielding';
+  private fieldingUrl = `${environment.baseUrl}/fielding`;
 
   constructor(private http: HttpClient) { }
 

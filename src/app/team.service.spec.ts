@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { TeamService } from './team.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
 
 describe('TeamService', () => {
   let httpMock: HttpTestingController;
@@ -43,7 +44,7 @@ describe('Getting Team Data', () => {
             });
 
         const req = httpMock.expectOne(
-            `https://localhost:5001/team/${mockTeam.teamId}`
+            `${environment.baseUrl}/team/${mockTeam.teamId}`
         );
 
         expect(req.request.method).toEqual('GET');
@@ -68,7 +69,7 @@ describe('Getting Team Data', () => {
           });
 
       const req = httpMock.expectOne(
-          `https://localhost:5001/team/year/${mockTeam.yearId}`
+          `${environment.baseUrl}/team/year/${mockTeam.yearId}`
       );
 
       expect(req.request.method).toEqual('GET');

@@ -5,12 +5,13 @@ import { Batting } from './batting';
 import { BattingLeaderboard } from './battingLeaderboard';
 import { BattingPostLeaderboard } from './battingPostLeaderboard';
 import { BattingPost } from './battingPost';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BattingService {
-  private battingUrl = 'https://localhost:5001/batting';
+  private battingUrl = `${environment.baseUrl}/batting`;
 
   constructor(private http: HttpClient) { }
 

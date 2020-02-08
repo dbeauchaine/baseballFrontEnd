@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { PitchingService } from './pitching.service';
+import { environment } from 'src/environments/environment';
 
 describe('PitchingService', () => {
     let httpMock: HttpTestingController;
@@ -40,7 +41,7 @@ describe('PitchingService', () => {
                 });
 
             const req = httpMock.expectOne(
-                `https://localhost:5001/pitching/${mockPitching.playerId}`
+                `${environment.baseUrl}/pitching/${mockPitching.playerId}`
             );
 
             expect(req.request.method).toEqual('GET');

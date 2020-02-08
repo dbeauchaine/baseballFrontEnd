@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Player } from './player';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PlayerService {
-    private playerUrl = 'https://localhost:5001/player';
+    private playerUrl = `${environment.baseUrl}/player`;
 
     constructor(private http: HttpClient) { }
 

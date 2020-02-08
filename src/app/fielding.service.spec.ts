@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FieldingService } from './fielding.service';
+import { environment } from 'src/environments/environment';
 
 describe('Fielding Service', () => {
     let httpMock: HttpTestingController;
@@ -40,7 +41,7 @@ describe('Fielding Service', () => {
                 });
 
             const req = httpMock.expectOne(
-                `https://localhost:5001/fielding/${mockFielding.playerId}`
+                `${environment.baseUrl}/fielding/${mockFielding.playerId}`
             );
 
             expect(req.request.method).toEqual('GET');

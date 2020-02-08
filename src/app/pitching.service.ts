@@ -5,12 +5,13 @@ import { Pitching } from './pitching';
 import { PitchingLeaderboard } from './pitchingLeaderboard';
 import { PitchingPost } from './pitchingPost';
 import { PitchingPostLeaderboard } from './pitchingPostLeaderboard';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PitchingService {
-  private pitchingUrl = 'https://localhost:5001/pitching';
+  private pitchingUrl = `${environment.baseUrl}/pitching`;
 
   constructor(private http: HttpClient) { }
 

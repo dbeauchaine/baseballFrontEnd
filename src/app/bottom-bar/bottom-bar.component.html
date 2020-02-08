@@ -1,15 +1,18 @@
 <div>
     <mat-toolbar class="mat-elevation-z4" color="primary">
-        <mat-toolbar-row>
+        <mat-toolbar-row class="disclaimer">
             *I do not own any database, logo, or player image displayed on this website. It is for demonstration
             purposes only,
             not for monetary gain.
         </mat-toolbar-row>
-
         <mat-toolbar-row>
-            <a href="https://github.com/dbeauchaine">My Github Profile</a>
+            <a mat-icon-button href="https://github.com/dbeauchaine">
+                <mat-icon svgIcon="githubicon" matTooltip="My Github Profile"></mat-icon>
+            </a>
             <span class="spacer"></span>
-            <a href="https://www.linkedin.com/in/daniel-beauchaine/">My LinkedIn Profile</a>
+            <a mat-icon-button href="https://www.linkedin.com/in/daniel-beauchaine/">
+                <mat-icon svgIcon="linkedinicon" matTooltip="My LinkedIn Profile"></mat-icon>
+            </a>
             <span class="spacer"></span>
             <a href="http://www.seanlahman.com/baseball-archive/statistics/">Lahman Database</a>
         </mat-toolbar-row>

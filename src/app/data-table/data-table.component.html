@@ -11,6 +11,10 @@
           <img src="assets/logos/{{data[column.key]}}.png" height="30" alt="{{data[column.key]}}"
             matTooltip="{{data[column.key]}}">
         </ng-container>
+        <ng-container *ngIf="column.value.displayFormat == displayFormat.Photo">
+          <img src="assets/headshots/{{data[column.key]}}.png" onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" height="30" alt="{{data[column.key]}}"
+            matTooltip="Player Photo">
+        </ng-container>
         <ng-container *ngIf="!column.value.displayFormat && !column.value.numberFormat">{{data[column.key]}}</ng-container>
         <ng-container *ngIf="column.value.numberFormat == numberFormat.Decimal">{{data[column.key] | number : '0.3-3'}}
         </ng-container>

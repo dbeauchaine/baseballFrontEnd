@@ -317,4 +317,38 @@ export class ColumnDefinitions {
             ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
         ]);
     }
+
+    rosterBatting(): Map<string,ColumnConfig>{
+        return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
+            ['nameFirst', { columnName: "First Name" }],
+            ['nameLast', { columnName: "Last Name" }],
+            ['g', { columnName: 'G', headerTooltip: "Games" }],
+            ['ab', { columnName: 'AB', headerTooltip: "At Bats" }],
+            ['pa', { columnName: 'PA', headerTooltip: "Plate Appearances" }],
+            ['h', { columnName: 'H', headerTooltip: "Hits" }],
+            ['singles', { columnName: '1B', headerTooltip: "Singles" }],
+            ['x2b', { columnName: '2B', headerTooltip: "Doubles" }],
+            ['x3b', { columnName: '3B', headerTooltip: "Triples" }],
+            ['hr', { columnName: 'HR', headerTooltip: "Homeruns" }],
+            ['rbi', { columnName: 'RBI', headerTooltip: "Runs Batted In"}],
+            ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
+            ['ibb', { columnName: 'IBB', headerTooltip: "Intentional Walks"}],
+            ['hbp', { columnName: 'HBP', headerTooltip: "Hit By Pitch"}],
+            ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
+            ['sb', { columnName: 'SB', headerTooltip: "Stolen Bases"}],
+            ['cs', { columnName: 'CS', headerTooltip: "Caught Stealing"}],
+            ['sh', { columnName: 'SH', headerTooltip: "Sacrifice Hits"}],
+            ['sf', { columnName: 'SF', headerTooltip: "Sacrifice Flies"}],
+            ['gidp', { columnName: 'GIDP', headerTooltip: "Ground Into Double Play"}],
+            ['avg', { columnName: 'AVG', headerTooltip: "Average", numberFormat:NumberFormat.Decimal}],
+            ['slg', { columnName: 'SLG', headerTooltip: "Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['obp', { columnName: 'OBP', headerTooltip: "On Base #", numberFormat:NumberFormat.Decimal}],
+            ['ops', { columnName: 'OPS', headerTooltip: "On Base # plus Slugging #", numberFormat:NumberFormat.Decimal}],
+            ['iso', { columnName: 'ISO', headerTooltip: "Isolated Power", numberFormat:NumberFormat.Decimal}],
+            ['babip', { columnName: 'BABIP', headerTooltip: "Batting Average On Balls In Play", numberFormat:NumberFormat.Decimal}],
+            ['bbRate', { columnName: 'BBRate', headerTooltip: "Walk Rate", numberFormat:NumberFormat.Decimal}],
+            ['kRate', { columnName: 'KRate', headerTooltip: "Strikeout Rate", numberFormat:NumberFormat.Decimal}],
+        ]);
+    }
 }

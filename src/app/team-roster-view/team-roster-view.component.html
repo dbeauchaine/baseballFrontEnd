@@ -1,0 +1,17 @@
+<mat-expansion-panel *ngIf="batting" [expanded]="true">
+    <mat-expansion-panel-header>
+        <mat-panel-title>{{team.yearId}} {{team.teamId}} Roster</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>* Select Row to View Player Detail.</p>
+    <ng-template matExpansionPanelContent>
+        <mat-tab-group class="roster-tab-group" color="accent" [selectedIndex]="0">
+            <mat-tab label="Regular Season Batting">
+                <ng-template matTabContent>
+                    <app-data-table class="roster-regular-batting" *ngIf="batting" [data]="batting"
+                        [propertyToLabelMap]="battingPropertyToLabelMap" (rowClick)="goToPlayer($event)">
+                    </app-data-table>
+                </ng-template>
+            </mat-tab>
+        </mat-tab-group>
+    </ng-template>
+</mat-expansion-panel>

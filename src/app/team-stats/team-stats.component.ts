@@ -14,6 +14,8 @@ import { ColumnConfig } from '../columnConfig';
 export class TeamStatsComponent implements OnInit {
   public team: Team[];
   public id: string;
+  public selectedTeam: Team[];
+
   columnDefinitions: ColumnDefinitions;
   battingPropertyToLabelMap: Map<string, ColumnConfig>;
   advancedBattingPropertyToLabelMap: Map<string, ColumnConfig>;
@@ -47,8 +49,8 @@ export class TeamStatsComponent implements OnInit {
     })
   }
 
-  goToTeam(event): void {
-    this.router.navigateByUrl(`team/${event.teamId}`);
+  public selectTeam(event): void {
+    this.selectedTeam = event;
   }
 
 

@@ -8,6 +8,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
+import { ColumnConfig } from '../columnConfig';
 
 describe('BattingTableComponent', () => {
     let component: DataTableComponent;
@@ -93,9 +94,9 @@ describe('BattingTableComponent', () => {
         return fakeBattings;
     }
 
-    function createFakePropertyToLabelMap() : Map<string,string>{
+    function createFakePropertyToLabelMap() : Map<string, ColumnConfig>{
         let propertyToLabelMap = new Map([
-            ['playerId', 'PlayerId']
+            ['playerId', { columnName: "Player Id" } ]
         ]);
 
         return propertyToLabelMap;

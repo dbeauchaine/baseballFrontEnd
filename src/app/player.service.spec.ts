@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { PlayerService } from './player.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Player } from './player';
+import { environment } from 'src/environments/environment';
 
 describe('PlayerService', () => {
     let httpMock: HttpTestingController;

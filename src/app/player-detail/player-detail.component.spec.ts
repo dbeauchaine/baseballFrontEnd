@@ -27,10 +27,6 @@ import { Fielding } from '../fielding';
 import { Pitching } from '../pitching';
 import { FieldingService } from '../fielding.service';
 import { PitchingService } from '../pitching.service';
-import { BasicBattingTableComponent } from '../basic-batting-table/basic-batting-table.component';
-import { AdvancedBattingTableComponent } from '../advanced-batting-table/advanced-batting-table.component';
-import { BasicPitchingTableComponent } from '../basic-pitching-table/basic-pitching-table.component';
-import { BasicFieldingTableComponent } from '../basic-fielding-table/basic-fielding-table.component';
 import { PlayerSearchComponent } from '../player-search/player-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -83,10 +79,6 @@ describe('PlayerDetailComponent', () => {
                 LabelValueComponent,
                 MockBioInfoComponent,
                 TopMenuComponent,
-                BasicBattingTableComponent,
-                AdvancedBattingTableComponent,
-                BasicPitchingTableComponent,
-                BasicFieldingTableComponent,
                 MockDataTableComponent,
                 PlayerSearchComponent,
             ],

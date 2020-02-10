@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import { Title, By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('TeamStatsComponent', () => {
+fdescribe('TeamStatsComponent', () => {
   let component: TeamStatsComponent;
   let fixture: ComponentFixture<TeamStatsComponent>;
   const fakeTeam = createFakeTeam();
@@ -26,10 +26,7 @@ describe('TeamStatsComponent', () => {
       declarations: [
         TeamStatsComponent,
         MockTeamDetailComponent,
-        MockBasicBattingTableComponent,
-        MockAdvancedBattingTableComponent,
-        MockBasicFieldingTableComponent,
-        MockBasicPitchingTableComponent,
+        MockDataTableComponent
       ],
       providers: [
         {
@@ -150,34 +147,10 @@ describe('TeamStatsComponent', () => {
   }
 
   @Component({
-    selector: 'app-basic-batting-table',
+    selector: 'app-data-table',
     template: '',
   })
-  class MockBasicBattingTableComponent {
-    @Input() data: any;
-  }
-
-  @Component({
-    selector: 'app-advanced-batting-table',
-    template: '',
-  })
-  class MockAdvancedBattingTableComponent {
-    @Input() data: any;
-  }
-
-  @Component({
-    selector: 'app-basic-fielding-table',
-    template: '',
-  })
-  class MockBasicFieldingTableComponent {
-    @Input() data: any;
-  }
-
-  @Component({
-    selector: 'app-basic-pitching-table',
-    template: '',
-  })
-  class MockBasicPitchingTableComponent {
+  class MockDataTableComponent {
     @Input() data: any;
   }
 });

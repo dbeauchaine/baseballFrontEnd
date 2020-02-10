@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { BattingService } from './batting.service';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
 
 describe('BattingService', () => {
     let httpMock: HttpTestingController;

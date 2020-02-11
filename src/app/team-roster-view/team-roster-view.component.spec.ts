@@ -7,7 +7,7 @@ import { ColumnConfig } from '../columnConfig';
 import { BattingService } from '../batting.service';
 import { of } from 'rxjs/internal/observable/of';
 import { Router } from '@angular/router';
-import { FakeDataGenerator } from '../test-helpers';
+import { FakeDataGenerator } from '../test-helpers.spec';
 
 fdescribe('TeamRosterViewComponent', () => {
   let component: TeamRosterViewComponent;

@@ -3,7 +3,7 @@ import { ComponentFixture, async, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
 import { Component, Input } from '@angular/core';
-import { FakeDataGenerator }  from '../test-helpers';
+import { FakeDataGenerator }  from '../test-helpers.spec';
 
 describe('BioInfoComponent', () => {
     let component: BioInfoComponent;

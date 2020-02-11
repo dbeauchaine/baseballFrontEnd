@@ -2,8 +2,10 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-import { MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatIconModule, MatIconRegistry, MatSidenavModule } from '@angular/material';
 import { Component } from '@angular/core';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -13,12 +15,30 @@ describe('AppComponent', () => {
                 MatMenuModule,
                 MatToolbarModule,
                 MatIconModule,
+                MatSidenavModule,
+                NoopAnimationsModule
             ],
             declarations: [
                 AppComponent,
                 MockTopMenuComponent,
                 MockPlayerSearchComponent,
+                MockPlayerSidenavComponent,
+                MockBottomBarComponent
             ],
+            providers: [
+                {
+                    provide: MatIconRegistry,
+                    useValue: {
+                        addSvgIcon(iconName: string, url: SafeResourceUrl) { }
+                    }
+                },
+                {
+                    provide: DomSanitizer,
+                    useValue: {
+                        bypassSecurityTrustResourceUrl(value: string) { }
+                    }
+                }
+            ]
         }).compileComponents();
     }));
 
@@ -46,5 +66,19 @@ describe('AppComponent', () => {
         template: '',
     })
     class MockTopMenuComponent {
+    }
+
+    @Component({
+        selector: 'app-player-sidenav',
+        template: '',
+    })
+    class MockPlayerSidenavComponent {
+    }
+
+    @Component({
+        selector: 'app-bottom-bar',
+        template: '',
+    })
+    class MockBottomBarComponent {
     }
 });

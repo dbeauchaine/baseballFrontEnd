@@ -1,35 +1,28 @@
 import { async, ComponentFixture, TestBed, flush, fakeAsync } from '@angular/core/testing';
 import { BattingLeaderboardComponent } from './batting-leaderboard.component';
-import { MatCardModule, MatFormFieldModule, MatSelectModule, MatTableModule, MatPaginatorModule, MatExpansionModule, MatTabsModule } from '@angular/material';
+import { MatCardModule, MatExpansionModule, MatTabsModule } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BattingService } from '../batting.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, Input } from '@angular/core';
-import { BattingPost } from '../battingPost';
-import { Batting } from '../batting';
 import { of } from 'rxjs';
 import { By, Title } from '@angular/platform-browser';
-import { BattingLeaderboard } from '../battingLeaderboard';
-import { BattingPostLeaderboard } from '../battingPostLeaderboard';
+import { FakeDataGenerator, TableChecker } from '../test-helpers.spec';
 
 describe('BattingLeaderboardComponent', () => {
   let component: BattingLeaderboardComponent;
   let fixture: ComponentFixture<BattingLeaderboardComponent>;
-  const fakeBatting = createFakeBatting();
-  const fakeBattingPost = createFakeBattingPost();
-  let fakeBattingService: BattingService;
+  const fakeDataGenerator = new FakeDataGenerator();
+  const fakeBatting = fakeDataGenerator.createFakeBatting();
+  const fakeBattingPost = fakeDataGenerator.createFakeBattingPost();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         MatCardModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatTableModule,
-        MatPaginatorModule,
-        NoopAnimationsModule,
         MatExpansionModule,
-        MatTabsModule
+        MatTabsModule,
+        NoopAnimationsModule
       ],
       declarations: [
         BattingLeaderboardComponent,
@@ -47,17 +40,17 @@ describe('BattingLeaderboardComponent', () => {
         {
           provide: BattingService,
           useValue:
-            {
-              getBattingStatsByYear(year: number) {
-                expect(year).toEqual(fakeBatting[0].yearId);
-                return of(fakeBatting);
-              },
-
-              getBattingPostStatsByYear(year: number) {
-                expect(year).toEqual(fakeBatting[0].yearId);
-                return of(fakeBattingPost);
-              }
+          {
+            getBattingStatsByYear(year: number) {
+              expect(year).toEqual(fakeBatting[0].yearId);
+              return of(fakeBatting);
             },
+
+            getBattingPostStatsByYear(year: number) {
+              expect(year).toEqual(fakeBatting[0].yearId);
+              return of(fakeBattingPost);
+            }
+          },
         },
 
         {
@@ -82,85 +75,29 @@ describe('BattingLeaderboardComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BattingLeaderboardComponent);
-    fakeBattingService = TestBed.get(BattingService);
     component = fixture.componentInstance;
   });
 
   it('should pass stats to table', fakeAsync(() => {
     fixture.detectChanges();
 
-    checkTable(`${fakeBatting[0].yearId} Regular-Season Leaderboard`, "Box Stats", ".basic-batting-table", fakeBatting);
+    const tableChecker = new TableChecker(fixture);
 
-    checkTable(`${fakeBatting[0].yearId} Regular-Season Leaderboard`, "Advanced Stats", ".advanced-batting-table", fakeBatting);
+    tableChecker.checkTable(`${fakeBatting[0].yearId} Regular-Season Leaderboard`, "Box Stats", ".basic-batting-table", fakeBatting);
 
-    checkTable(`${fakeBattingPost[0].yearId} Post-Season Leaderboard`, "Box Stats", ".post-basic-batting-table", fakeBattingPost);
-  
-  })); 
+    tableChecker.checkTable(`${fakeBatting[0].yearId} Regular-Season Leaderboard`, "Advanced Stats", ".advanced-batting-table", fakeBatting);
 
-  function checkTable(expansionLabel: string, tabLabel: string, className: string, expectedData: any) {
-    clickExpansion(expansionLabel);
-    clickTab(tabLabel);
-
-    const tableComponent = fixture.debugElement.query(By.css(className));
-    expect(tableComponent.componentInstance.data).toEqual(expectedData);
-  }
-
-  function clickTab(label: string) {
-    const tabs = fixture.debugElement.queryAll(By.css('.mat-tab-label-content'));
-    const tab = tabs.find(item => {
-      return item.nativeElement.textContent == label;
-    });
-
-    tab.nativeElement.click();
-
-    //workaround for async material tab behavior
-    fixture.detectChanges();
-    flush();
-    fixture.detectChanges();
-  }
-
-  function clickExpansion(label: string) {
-    const expansions = fixture.debugElement.queryAll(By.css('.mat-expansion-panel-header-title'));
-    const expansion = expansions.find(item => {
-      return item.nativeElement.textContent == label;
-    });
-
-    expansion.nativeElement.click();
-
-    //workaround for async material tab behavior
-    fixture.detectChanges();
-    flush();
-    fixture.detectChanges();
-  }
-
-  function createFakeBatting(): BattingLeaderboard[] {
-    const batting = new BattingLeaderboard();
-    batting.playerId = 'id';
-    batting.yearId = 2000;
-    batting.h = 20;
-    batting.hr = 2;
-    batting.avg = .203;
-    return [batting];
-  }
-
-  function createFakeBattingPost(): BattingPostLeaderboard[] {
-    const batting = new BattingPostLeaderboard();
-    batting.yearId = 2000;
-    batting.playerId = 'id';
-    batting.h = 20;
-    batting.hr = 2;
-    batting.avg = .203;
-    return [batting];
-  }
+    tableChecker.checkTable(`${fakeBattingPost[0].yearId} Post-Season Leaderboard`, "Box Stats", ".post-basic-batting-table", fakeBattingPost);
+  }));
 
   @Component({
     selector: 'app-data-table',
     template: '',
-})
-class MockDataTableComponent {
+  })
+  class MockDataTableComponent {
     @Input() data: any;
     @Input() propertyToLabelMap: Map<string, string>;
-}
+  }
 
   @Component({
     selector: 'app-year-select',

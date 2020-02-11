@@ -3,17 +3,15 @@ import { DataTableComponent } from './data-table.component';
 import { BattingService } from '../batting.service';
 import { of } from 'rxjs';
 import { Batting } from '../batting';
-import { ActivatedRoute } from '@angular/router';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatTooltipModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { ColumnConfig } from '../columnConfig';
 
-describe('BattingTableComponent', () => {
+describe('DataTableComponent', () => {
     let component: DataTableComponent;
     let fixture: ComponentFixture<DataTableComponent>;
-    let mockBattingService: BattingService;
     const fakeBatting = createFakeBatting();
 
     beforeEach(async(() => {
@@ -25,8 +23,8 @@ describe('BattingTableComponent', () => {
                 MatSortModule,
                 MatFormFieldModule,
                 MatInputModule,
+                MatTooltipModule,
                 NoopAnimationsModule
-
             ],
             declarations: [
                 DataTableComponent
@@ -51,11 +49,10 @@ describe('BattingTableComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DataTableComponent);
-        mockBattingService = TestBed.get(BattingService);
         component = fixture.componentInstance;
     });
 
-    it('should return batting', () => {
+    it('should contain batting data', () => {
         component.propertyToLabelMap = createFakePropertyToLabelMap();
         fixture.detectChanges();
 

@@ -33,10 +33,6 @@ import {FakeDataGenerator, TableChecker} from '../test-helpers.spec'
 describe('PlayerDetailComponent', () => {
     let component: PlayerDetailComponent;
     let fixture: ComponentFixture<PlayerDetailComponent>;
-    let mockPlayerService: PlayerService;
-    let mockBattingService: BattingService;
-    let mockFieldingService: FieldingService;
-    let mockPitchingService: PitchingService;
     let fakeDataGenerator = new FakeDataGenerator();
     const fakePlayer = fakeDataGenerator.createFakePlayer();
     const fakeBatting = fakeDataGenerator.createFakeBatting();
@@ -154,10 +150,6 @@ describe('PlayerDetailComponent', () => {
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PlayerDetailComponent);
-        mockPlayerService = TestBed.get(PlayerService);
-        mockBattingService = TestBed.get(BattingService);
-        mockFieldingService = TestBed.get(FieldingService);
-        mockPitchingService = TestBed.get(PitchingService);
         component = fixture.componentInstance;
     });
 

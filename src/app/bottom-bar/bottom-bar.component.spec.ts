@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BottomBarComponent } from './bottom-bar.component';
+import { MatToolbarModule, MatIconModule } from '@angular/material';
 
 describe('BottomBarComponent', () => {
   let component: BottomBarComponent;
@@ -8,6 +9,10 @@ describe('BottomBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[
+        MatToolbarModule,
+        MatIconModule,
+      ],
       declarations: [ BottomBarComponent ]
     })
     .compileComponents();

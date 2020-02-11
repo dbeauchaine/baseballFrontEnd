@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { FakeDataGenerator, TableChecker } from '../test-helpers.spec';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('TeamRosterViewComponent', () => {
+describe('TeamRosterViewComponent', () => {
   let component: TeamRosterViewComponent;
   let fixture: ComponentFixture<TeamRosterViewComponent>;
   const fakeDataGenerator = new FakeDataGenerator();

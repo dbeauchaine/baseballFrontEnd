@@ -101,6 +101,8 @@ export class FakeDataGenerator {
         batting.h = 20;
         batting.hr = 2;
         batting.avg = .242;
+        batting.yearId = 2000;
+        batting.teamId = 'teamId';
         return [batting];
     }
 
@@ -109,7 +111,8 @@ export class FakeDataGenerator {
         fielding.playerId = 'id';
         fielding.e = 2;
         fielding.a = 20;
-
+        fielding.yearId = 2000;
+        fielding.teamId = 'teamId';
         return [fielding];
     }
 
@@ -118,7 +121,8 @@ export class FakeDataGenerator {
         pitching.playerId = 'id';
         pitching.w = 20;
         pitching.l = 10;
-
+        pitching.yearId = 2000;
+        pitching.teamId = 'teamId';
         return [pitching];
     }
 
@@ -127,7 +131,8 @@ export class FakeDataGenerator {
         fielding.playerId = 'id';
         fielding.e = 2;
         fielding.a = 20;
-
+        fielding.yearId = 2000;
+        fielding.teamId = 'teamId';
         return [fielding];
     }
 
@@ -136,7 +141,8 @@ export class FakeDataGenerator {
         pitching.playerId = 'id';
         pitching.w = 20;
         pitching.l = 10;
-
+        pitching.yearId = 2000;
+        pitching.teamId = 'teamId';
         return [pitching];
     }
 }

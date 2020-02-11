@@ -80,6 +80,7 @@ export class FakeDataGenerator {
         team.hr = 2;
         team.avg = .242;
         team.era = 3.21;
+        team.yearId = 2000;
         return [team];
     }
 
@@ -90,6 +91,7 @@ export class FakeDataGenerator {
         batting.hr = 2;
         batting.avg = .242;
         batting.teamId = "teamId";
+        batting.yearId = 2000;
         return [batting];
     }
 

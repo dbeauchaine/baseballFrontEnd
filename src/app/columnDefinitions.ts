@@ -150,6 +150,7 @@ export class ColumnDefinitions {
     //leaderboards
     battingBoxLeaderboard(): Map<string,ColumnConfig>{
         return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
             ['nameFirst', { columnName: "First Name" }],
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
@@ -176,6 +177,7 @@ export class ColumnDefinitions {
     }
     battingPostLeaderboard(): Map<string,ColumnConfig>{
         return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
             ['nameFirst', { columnName: "First Name" }],
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
@@ -204,6 +206,7 @@ export class ColumnDefinitions {
 
     battingAdvLeaderboard(): Map<string, ColumnConfig>{
         return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
             ['nameFirst', { columnName: "First Name" }],
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
@@ -221,6 +224,7 @@ export class ColumnDefinitions {
 
     battingPostAdvLeaderboard(): Map<string, ColumnConfig>{
         return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
             ['nameFirst', { columnName: "First Name" }],
             ['nameLast', { columnName: "Last Name" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
@@ -240,14 +244,16 @@ export class ColumnDefinitions {
     
     pitchingLeaderboard(): Map<string,ColumnConfig>{
         return new Map([
+            ['playerId', {columnName: "", displayFormat: DisplayFormat.Photo}],
             ['nameFirst', { columnName: "First Name" }],
             ['nameLast', { columnName: "Last Name" }],
             ['yearId', { columnName: "Year" }],
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
             ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
+            ['g', { columnName: 'G', headerTooltip: "Games" }],
             ['w', { columnName: 'W', headerTooltip: "Wins" }],
             ['l', { columnName: 'L', headerTooltip: "Losses" }],
-            ['g', { columnName: 'G', headerTooltip: "Games" }],
+            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average", numberFormat:NumberFormat.Decimal}],
             ['gs', { columnName: 'GS', headerTooltip: "Games Started" }],
             ['cg', { columnName: 'CG', headerTooltip: "Complete Games" }],
             ['sho', { columnName: 'SHO', headerTooltip: "Shutouts" }],
@@ -258,8 +264,7 @@ export class ColumnDefinitions {
             ['hr', { columnName: 'HR', headerTooltip: "Homeruns"}],
             ['bb', { columnName: 'BB', headerTooltip: "Walks"}],
             ['so', { columnName: 'K', headerTooltip: "Strikeouts"}],
-            ['baopp', { columnName: 'BAOpp', headerTooltip: "Opponents' Batting Average", numberFormat:NumberFormat.Era}],
-            ['era', { columnName: 'ERA', headerTooltip: "Earned Run Average", numberFormat:NumberFormat.Decimal}],
+            ['baopp', { columnName: 'BAOpp', headerTooltip: "Opponents' Batting Average", numberFormat:NumberFormat.Decimal}],
             ['ibb', { columnName: 'IBB', headerTooltip: "Intentional Walks"}],
             ['wp', { columnName: 'WP', headerTooltip: "Wild Pitches"}],
             ['bk', { columnName: 'BK', headerTooltip: "Balks"}],

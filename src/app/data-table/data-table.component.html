@@ -8,11 +8,11 @@
         {{column.value.columnName}}</th>
       <td mat-cell *matCellDef="let data">
         <ng-container *ngIf="column.value.displayFormat == displayFormat.Logo">
-          <img src="assets/logos/{{data[column.key]}}.png" height="30" alt="{{data[column.key]}}"
+          <img src="assets/logos/{{data[column.key]}}.png" height="45" alt="{{data[column.key]}}"
             matTooltip="{{data[column.key]}}">
         </ng-container>
         <ng-container *ngIf="column.value.displayFormat == displayFormat.Photo">
-          <img src="assets/headshots/{{data[column.key]}}.png" onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" height="30" alt="{{data[column.key]}}"
+          <img src="assets/headshots/{{data[column.key]}}.png" onerror="this.onerror=null; this.src='assets/headshots/notfound.png'" height="50" alt="{{data[column.key]}}"
             matTooltip="Player Photo">
         </ng-container>
         <ng-container *ngIf="!column.value.displayFormat && !column.value.numberFormat">{{data[column.key]}}</ng-container>

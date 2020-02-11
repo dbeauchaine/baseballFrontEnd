@@ -22,7 +22,7 @@ export class PitchingService {
   }
 
   getPitchingStatsByYear(year: number): Observable<PitchingLeaderboard[]> {
-    const url = `${this.pitchingUrl}/post/year/${year.toString()}`;
+    const url = `${this.pitchingUrl}/year/${year.toString()}`;
 
     return this.http.get<PitchingLeaderboard[]>(url);
   }

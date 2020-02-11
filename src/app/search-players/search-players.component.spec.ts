@@ -8,13 +8,14 @@ import { Player } from '../player';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { generatePlayer } from '../test-helpers';
+import { FakeDataGenerator } from '../test-helpers';
 
 describe('SearchPlayersComponent', () => {
     let component: SearchPlayersComponent;
     let mockPlayerService: PlayerService;
     let fixture: ComponentFixture<SearchPlayersComponent>;
-    const fakeplayers = generatePlayer();
+    const fakeDataGenerator = new FakeDataGenerator();
+    const fakeplayers = fakeDataGenerator.createFakePlayer();
     let playerGroup = generateGroup();
 
     beforeEach(async(() => {

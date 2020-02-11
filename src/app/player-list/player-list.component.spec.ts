@@ -7,12 +7,13 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { generatePlayer } from '../test-helpers';
+import { FakeDataGenerator } from '../test-helpers';
 
 describe('PlayerListComponent', () => {
     let component: PlayerListComponent;
     let fixture: ComponentFixture<PlayerListComponent>;
-    const fakePlayer = generatePlayer();
+    let fakeDataGenerator = new FakeDataGenerator();
+    const fakePlayer = fakeDataGenerator.createFakePlayer();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({

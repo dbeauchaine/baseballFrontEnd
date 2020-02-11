@@ -279,6 +279,8 @@ export class ColumnDefinitions {
             ['lgId', {columnName: "League", displayFormat: DisplayFormat.Logo}],
             ['teamId', { columnName: 'Team', displayFormat: DisplayFormat.Logo}],
             ['g', { columnName: 'G', headerTooltip: "Games" }],
+            ['w', { columnName: 'W', headerTooltip: "Wins" }],
+            ['l', { columnName: 'L', headerTooltip: "Losses" }],
             ['ab', { columnName: 'AB', headerTooltip: "At Bats" }],
             ['pa', { columnName: 'PA', headerTooltip: "Plate Appearances" }],
             ['h', { columnName: 'H', headerTooltip: "Hits" }],

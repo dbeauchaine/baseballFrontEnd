@@ -13,22 +13,26 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab *ngIf="batting" label="Regular Season Box Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="batting" [data]="batting" [propertyToLabelMap]="battingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-batting-table" *ngIf="batting" [data]="batting"
+                    [propertyToLabelMap]="battingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab *ngIf="batting" label="Regular Season Advanced Stats">
                 <ng-template matTabContent>
-                 <app-data-table *ngIf="batting" [data]="batting" [propertyToLabelMap]="advancedBattingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="advanced-batting-table" *ngIf="batting" [data]="batting"
+                    [propertyToLabelMap]="advancedBattingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab *ngIf="battingPost" label="Post-Season Box Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="battingPost" [data]="battingPost" [propertyToLabelMap]="battingPostPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-batting-post" *ngIf="battingPost" [data]="battingPost"
+                    [propertyToLabelMap]="battingPostPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab *ngIf="battingPost" label="Post-Season Advanced Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="battingPost" [data]="battingPost" [propertyToLabelMap]="advancedBattingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="advanced-batting-post" *ngIf="battingPost" [data]="battingPost"
+                    [propertyToLabelMap]="advancedBattingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
@@ -42,12 +46,14 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="pitching" [data]="pitching" [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-pitching-table" *ngIf="pitching" [data]="pitching"
+                    [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab *ngIf="pitchingPost" label="Post-Season Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="pitchingPost" [data]="pitchingPost" [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-pitching-post" *ngIf="pitchingPost" [data]="pitchingPost"
+                    [propertyToLabelMap]="pitchingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>
@@ -61,12 +67,14 @@
             <mat-tab-group class="stat-tab-group" color="accent" [selectedIndex]="0">
               <mat-tab label="Regular Season Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="fielding" [data]="fielding" [propertyToLabelMap]="fieldingPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-fielding-table" *ngIf="fielding" [data]="fielding"
+                    [propertyToLabelMap]="fieldingPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
               <mat-tab *ngIf="fieldingPost" label="Post-Season Stats">
                 <ng-template matTabContent>
-                  <app-data-table *ngIf="fieldingPost" [data]="fieldingPost" [propertyToLabelMap]="fieldingPostPropertyToLabelMap"></app-data-table>
+                  <app-data-table class="basic-fielding-post" *ngIf="fieldingPost" [data]="fieldingPost"
+                    [propertyToLabelMap]="fieldingPostPropertyToLabelMap"></app-data-table>
                 </ng-template>
               </mat-tab>
             </mat-tab-group>

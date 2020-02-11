@@ -3,11 +3,12 @@ import { ComponentFixture, async, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material';
 import { By } from '@angular/platform-browser';
 import { Component, Input } from '@angular/core';
-import { generatePlayer } from '../test-helpers';
+import { FakeDataGenerator }  from '../test-helpers';
 
 describe('BioInfoComponent', () => {
     let component: BioInfoComponent;
     let fixture: ComponentFixture<BioInfoComponent>;
+    let fakeDataGenerator = new FakeDataGenerator();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -31,7 +32,7 @@ describe('BioInfoComponent', () => {
     it('should render player data', () => {
         expect(component).toBeTruthy();
 
-        component.player = generatePlayer();
+        component.player = fakeDataGenerator.createFakePlayer();
 
 
         fixture.detectChanges();

@@ -34,8 +34,7 @@ describe('BattingLeaderboardComponent', () => {
       declarations: [
         BattingLeaderboardComponent,
         MockYearSelectComponent,
-        MockBasicBattingTableComponent,
-        MockAdvancedBattingTableComponent
+        MockDataTableComponent
       ],
       providers: [
         {
@@ -95,7 +94,8 @@ describe('BattingLeaderboardComponent', () => {
     checkTable(`${fakeBatting[0].yearId} Regular-Season Leaderboard`, "Advanced Stats", ".advanced-batting-table", fakeBatting);
 
     checkTable(`${fakeBattingPost[0].yearId} Post-Season Leaderboard`, "Box Stats", ".post-basic-batting-table", fakeBattingPost);
-  }));
+  
+  })); 
 
   function checkTable(expansionLabel: string, tabLabel: string, className: string, expectedData: any) {
     clickExpansion(expansionLabel);
@@ -154,20 +154,13 @@ describe('BattingLeaderboardComponent', () => {
   }
 
   @Component({
-    selector: 'app-basic-batting-table',
+    selector: 'app-data-table',
     template: '',
-  })
-  class MockBasicBattingTableComponent {
+})
+class MockDataTableComponent {
     @Input() data: any;
-  }
-
-  @Component({
-    selector: 'app-advanced-batting-table',
-    template: '',
-  })
-  class MockAdvancedBattingTableComponent {
-    @Input() data: any;
-  }
+    @Input() propertyToLabelMap: Map<string, string>;
+}
 
   @Component({
     selector: 'app-year-select',

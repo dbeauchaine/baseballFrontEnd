@@ -50,8 +50,8 @@
                             </mat-tab>
                             <mat-tab label="Advanced Stats">
                                 <ng-template matTabContent>
-                                    <app-data-table class="post-advanced-batting-table"
-                                        *ngIf="battingPostLeaderboard" [data]="battingPostLeaderboard"
+                                    <app-data-table class="post-advanced-batting-table" *ngIf="battingPostLeaderboard"
+                                        [data]="battingPostLeaderboard"
                                         [propertyToLabelMap]="advancedBattingPropertyToLabelMap"
                                         (rowClick)="goToPlayer($event)">
                                     </app-data-table>

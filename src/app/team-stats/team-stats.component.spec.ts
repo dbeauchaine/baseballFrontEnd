@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import { Title, By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ColumnConfig } from '../columnConfig';
-import { TableChecker, FakeDataGenerator } from '../test-helpers';
+import { TableChecker, FakeDataGenerator } from '../test-helpers.spec';
 
 describe('TeamStatsComponent', () => {
   let component: TeamStatsComponent;

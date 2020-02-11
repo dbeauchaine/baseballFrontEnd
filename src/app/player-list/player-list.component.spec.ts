@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { FakeDataGenerator } from '../test-helpers';
+import { FakeDataGenerator } from '../test-helpers.spec';
 
 describe('PlayerListComponent', () => {
     let component: PlayerListComponent;

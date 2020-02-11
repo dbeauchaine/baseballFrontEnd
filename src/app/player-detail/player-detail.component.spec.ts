@@ -27,7 +27,7 @@ import { PitchingService } from '../pitching.service';
 import { PlayerSearchComponent } from '../player-search/player-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import {FakeDataGenerator, TableChecker} from '../test-helpers'
+import {FakeDataGenerator, TableChecker} from '../test-helpers.spec'
 
 
 describe('PlayerDetailComponent', () => {

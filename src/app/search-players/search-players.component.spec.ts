@@ -8,7 +8,7 @@ import { Player } from '../player';
 import { Component, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { FakeDataGenerator } from '../test-helpers';
+import { FakeDataGenerator } from '../test-helpers.spec';
 
 describe('SearchPlayersComponent', () => {
     let component: SearchPlayersComponent;

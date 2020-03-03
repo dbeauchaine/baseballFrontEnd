@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, switchMap, tap, finalize } from 'rxjs/operators';
-
 import { Observable, Subject, ObservableInput } from 'rxjs';
 import { PlayerService } from '../player.service';
 import { Player } from '../player';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-player-search',
   templateUrl: './player-search.component.html',

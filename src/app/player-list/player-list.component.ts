@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Player } from '../player';
 
 @Component({
@@ -13,6 +12,6 @@ export class PlayerListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.url = `/player-detail/${this.player.playerId}`
+        this.url = `/player-detail/${this.player.playerId}`;
     }
 }
